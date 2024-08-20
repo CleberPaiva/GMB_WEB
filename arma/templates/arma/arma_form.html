@@ -1,0 +1,280 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CADASTRO DE ARMA</h4>
+
+   <!-- Nome -->
+    <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="numeroserie" name="numeroserie" type="text" required>
+    </div>
+
+    <!-- Documento -->
+    <div class="form-group col-md-4">
+        <label>CNPJ</label>
+        <input class="form-control" id="cnpj" name="cnpj" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>Nº DE PATRIMÔNIO</label>
+        <input class="form-control" id="numeropatri" name="numeropatri" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>Nº DO SINARM</label>
+        <input class="form-control" id="numerosinarm" name="numerosinarm" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie" type="text" required>
+    </div>
+
+<!-- Setor Visitado -->
+    <div class="form-group col-md-4">
+        <label>MARCA</label>
+        <select class="form-control" id="marca" name="marca"  required>
+            <option>Selecione</option>
+            <option value="1">TAURUS</option>
+            <option value="2">CBC</option>
+        </select>
+    </div>
+
+ <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>CALIBRE</label>
+        <input class="form-control" id="calibre" name="calibre" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>CAPACIDADE</label>
+        <input class="form-control" id="capacidade" name="capacidade" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE CARREGADOR</label>
+        <input class="form-control" id="qtcarregador" name="qtcarregador" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>FUNCIONAMENTO</label>
+        <input class="form-control" id="funcionamento" name="funcionamento" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>ACABAMENTO</label>
+        <input class="form-control" id="acabamento" name="acabamento" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE CANOS</label>
+        <input class="form-control" id="qtcanos" name="qtcanos" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>COMPRIMENTO</label>
+        <input class="form-control" id="compricanos" name="compricanos" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>TIPO DE ALMA</label>
+        <input class="form-control" id="tipoalma" name="tipoalma" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE RAIAS</label>
+        <input class="form-control" id="qtraias" name="qtraias" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>SENTIDO DAS RAIAS</label>
+        <input class="form-control" id="sentidorais" name="sentidorais" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>PAIS DA FABRICAÇÃO</label>
+        <input class="form-control" id="paisfabricacao" name="paisfabricacao" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>ACESSÓRIOS</label>
+        <input class="form-control" id="acessorios" name="acessorios" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>DOCUMENTO DE REGISTRO</label>
+        <input class="form-control" id="docregistro" name="docregistro" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>TIPO DE MUNIÇÃO</label>
+        <input class="form-control" id="tipomunicao" name="tipomunicao" type="text"  required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>DATA DA COMPRA</label>
+        <input class="form-control" id="datacompra" name="datacompra" type="date" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+            <select class="form-control" id="unidade" name="unidade"  required>
+                <option>Selecione</option>
+                <option value="ACAPS - ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA">ACAPS - ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</option>
+                <option value="CASA DO ALBERGADO DE FLORIANÓPOLIS">CASA DO ALBERGADO DE FLORIANÓPOLIS</option>
+                <option value="COLÔNIA PENAL AGRICOLA DA PALHOÇA">COLÔNIA PENAL AGRICOLA DA PALHOÇA</option>
+                <option value="COPE - COMPLEXO PENITENCIÁRIO DO ESTADO">COPE - COMPLEXO PENITENCIÁRIO DO ESTADO</option>
+                <option value="CONSELHO PENITENCIÁRIO">CONSELHO PENITENCIÁRIO</option>
+                <option value="DELEGACIA DE POLICIA DE SÃO PEDRO DE ALCÂNTARA">DELEGACIA DE POLICIA DE SÃO PEDRO DE ALCÂNTARA</option>
+                <option value="DEASE - DEPARTAMENTO DE ADMINISTRAÇÃO SOCIOEDUCATIVA">DEASE - DEPARTAMENTO DE ADMINISTRAÇÃO SOCIOEDUCATIVA</option>
+                <option value="DINF - DIRETORIA DE INTELIGÊNCIA E INFORMAÇÃO">DINF - DIRETORIA DE INTELIGÊNCIA E INFORMAÇÃO</option>
+                <option value="DOC - DIVISÃO DE OPERAÇÕES COM CÃES">DOC - DIVISÃO DE OPERAÇÕES COM CÃES</option>
+                <option value="DPP - DEPARTAMENTO DE POLICIA PENAL">DPP - DEPARTAMENTO DE POLICIA PENAL</option>
+                <option value="GAECO - SMO">GAECO - SMO</option>
+                <option value="GMOP - GERENTE DE MONITORAMENTO E CONTROLE PENITENCIÁRIO">GMOP - GERENTE DE MONITORAMENTO E CONTROLE PENITENCIÁRIO</option>
+                <option value="GMB - GERÊNCIA DE MATERIAL BÉLICO">GMB - GERÊNCIA DE MATERIAL BÉLICO</option>
+                <option value="GOA - GRUPO DE OPERAÇÕES AÉREAS">GOA - GRUPO DE OPERAÇÕES AÉREAS</option>
+                <option value="GTI - GRUPO TÁTICO DE INTERVENÇÃO">GTI - GRUPO TÁTICO DE INTERVENÇÃO</option>
+                <option value="HCTP - HOSPITAL DE CUSTÓDIA E TRATAMENTO PSIQUIATRICO">HCTP - HOSPITAL DE CUSTÓDIA E TRATAMENTO PSIQUIATRICO</option>
+                <option value="NSI - NÚCLEO DE SEGURANÇA INSTITUCIONAL">NSI - NÚCLEO DE SEGURANÇA INSTITUCIONAL</option>
+                <option value="NOT 01 - NÚCLEO DE OPERAÇÕES TÁTICAS - R01">NOT 01 - NÚCLEO DE OPERAÇÕES TÁTICAS - R01</option>
+                <option value="NOT 02 - NÚCLEO DE OPERAÇÕES TÁTICAS - R02">NOT 02 - NÚCLEO DE OPERAÇÕES TÁTICAS - R02</option>
+                <option value="NOT 03 - NÚCLEO DE OPERAÇÕES TÁTICAS - R03">NOT 03 - NÚCLEO DE OPERAÇÕES TÁTICAS - R03</option>
+                <option value="NOT 04 - NÚCLEO DE OPERAÇÕES TÁTICAS - R04">NOT 04 - NÚCLEO DE OPERAÇÕES TÁTICAS - R04</option>
+                <option value="NOT 05 - NUCLEO DE OPERAÇÕES TÁTICAS - R05">NOT 05 - NUCLEO DE OPERAÇÕES TÁTICAS - R05</option>
+                <option value="NOT 06 - NUCLEO DE OPERAÇÕES TÁTICAS - R06">NOT 06 - NUCLEO DE OPERAÇÕES TÁTICAS - R06</option>
+                <option value="NOT 07 - NÚCLEO DE OPERAÇÕES TÁTICAS - R07">NOT 07 - NÚCLEO DE OPERAÇÕES TÁTICAS - R07</option>
+                <option value="NOT 08 - NÚCLEO DE OPERAÇÕES TÁTICAS - R08">NOT 08 - NÚCLEO DE OPERAÇÕES TÁTICAS - R08</option>
+                <option value="PENITENCIÁRA DE FLORIANÓPOLIS">PENITENCIÁRA DE FLORIANÓPOLIS</option>
+                <option value="PENITENCIÁRIA - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI">PENITENCIÁRIA - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI</option>
+                <option value="PENITENCIÁRIA  REGIONAL DE CURITIBANOS">PENITENCIÁRIA  REGIONAL DE CURITIBANOS</option>
+                <option value="PENITENCIÁRIA AGRÍCOLA DE CHAPECÓ">PENITENCIÁRIA AGRÍCOLA DE CHAPECÓ</option>
+                <option value="PENITENCIÁRIA DE FLORIANÓPOLIS">PENITENCIÁRIA DE FLORIANÓPOLIS</option>
+                <option value="PENITENCIÁRIA FEMININA DE CRICIÚMA">PENITENCIÁRIA FEMININA DE CRICIÚMA</option>
+                <option value="PENITENCIÁRIA INDUSTRIAL DE BLUMENAU">PENITENCIÁRIA INDUSTRIAL DE BLUMENAU</option>
+                <option value="PENITENCIÁRIA INDUSTRIAL DE CHAPECÓ">PENITENCIÁRIA INDUSTRIAL DE CHAPECÓ</option>
+                <option value="PENITENCIÁRIA INDUSTRIAL DE JOINVILLE">PENITENCIÁRIA INDUSTRIAL DE JOINVILLE</option>
+                <option value="PENITENCIÁRIA INDUSTRIAL DE SÃO CRISTOVÃO">PENITENCIÁRIA INDUSTRIAL DE SÃO CRISTOVÃO</option>
+                <option value="PENITENCIÁRIA MASCULINA DE TUBARÃO">PENITENCIÁRIA MASCULINA DE TUBARÃO</option>
+                <option value="PENITENCIÁRIA SUL - CRICIÚMA">PENITENCIÁRIA SUL - CRICIÚMA</option>
+                <option value="PRESÍDIO - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI">PRESÍDIO - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI</option>
+                <option value="PRESÍDIO DE BARRA VELHA">PRESÍDIO DE BARRA VELHA</option>
+                <option value="PRESÍDIO DE BLUMENAU">PRESÍDIO DE BLUMENAU</option>
+                <option value="PRESÍDIO DE BRUSQUE">PRESÍDIO DE BRUSQUE</option>
+                <option value="PRESÍDIO DE CAMPOS NOVOS">PRESÍDIO DE CAMPOS NOVOS</option>
+                <option value="PRESÍDIO DE CANOINHAS">PRESÍDIO DE CANOINHAS</option>
+                <option value="PRESÍDIO DE CONCÓRDIA">PRESÍDIO DE CONCÓRDIA</option>
+                <option value="PRESÍDIO DE IMBITUBA">PRESÍDIO DE IMBITUBA</option>
+                <option value="PRESÍDIO DE INDAIAL">PRESÍDIO DE INDAIAL</option>
+                <option value="PRESÍDIO DE ITAJAÍ">PRESÍDIO DE ITAJAÍ</option>
+                <option value="PRESÍDIO DE ITAPEMA">PRESÍDIO DE ITAPEMA</option>
+                <option value="PRESÍDIO DE ITUPORANGA">PRESÍDIO DE ITUPORANGA</option>
+                <option value="PRESÍDIO DE JARAGUÁ DO SUL">PRESÍDIO DE JARAGUÁ DO SUL</option>
+                <option value="PRESÍDIO DE JOAÇABA">PRESÍDIO DE JOAÇABA</option>
+                <option value="PRESÍDIO DE JOINVILLE">PRESÍDIO DE JOINVILLE</option>
+                <option value="PRESÍDIO DE LAGUNA">PRESÍDIO DE LAGUNA</option>
+                <option value="PRESÍDIO DE MAFRA">PRESÍDIO DE MAFRA</option>
+                <option value="PRESÍDIO DE MARAVILHA">PRESÍDIO DE MARAVILHA</option>
+                <option value="PRESÍDIO DE PORTO UNIÃO">PRESÍDIO DE PORTO UNIÃO</option>
+                <option value="PRESÍDIO DE RIO DO SUL">PRESÍDIO DE RIO DO SUL</option>
+                <option value="PRESÍDIO DE SÃO FRANCISCO DO SUL">PRESÍDIO DE SÃO FRANCISCO DO SUL</option>
+                <option value="PRESÍDIO DE SÃO JOSÉ DO CEDRO">PRESÍDIO DE SÃO JOSÉ DO CEDRO</option>
+                <option value="PRESÍDIO DE SÃO MIGUEL DO OESTE">PRESÍDIO DE SÃO MIGUEL DO OESTE</option>
+                <option value="PRESÍDIO DE VIDEIRA">PRESÍDIO DE VIDEIRA</option>
+                <option value="PRESÍDIO FEMININO DE CHAPECÓ">PRESÍDIO FEMININO DE CHAPECO</option>
+                <option value="PRESÍDIO FEMININO DE FLORIANÓPOLIS">PRESÍDIO FEMININO DE FLORIANÓPOLIS</option>
+                <option value="PRESÍDIO FEMININO DE ITAJAÍ">PRESÍDIO FEMININO DE ITAJAÍ</option>
+                <option value="PRESÍDIO FEMININO DE JOINVILLE">PRESÍDIO FEMININO DE JOINVILLE</option>
+                <option value="PRESÍDIO FEMININO DE TUBARAO">PRESÍDIO FEMININO DE TUBARAO</option>
+                <option value="PRESÍDIO MASCULINO DE FLORIANÓPOLIS">PRESÍDIO MASCULINO DE FLORIANÓPOLIS</option>
+                <option value="PRESÍDIO MASCULINO DE LAGES">PRESÍDIO MASCULINO DE LAGES</option>
+                <option value="PRESÍDIO MASCULINO DE TUBARÃO">PRESÍDIO MASCULINO DE TUBARÃO</option>
+                <option value="PRESÍDIO REGIONAL DE ARARANGUÁ">PRESÍDIO REGIONAL DE ARARANGUÁ</option>
+                <option value="PRESÍDIO REGIONAL DE BIGUAÇU">PRESÍDIO REGIONAL DE BIGUAÇU</option>
+                <option value="PRESÍDIO REGIONAL DE BLUMENAU">PRESÍDIO REGIONAL DE BLUMENAU</option>
+                <option value="PRESÍDIO REGIONAL DE CAÇADOR">PRESÍDIO REGIONAL DE CAÇADOR</option>
+                <option value="PRESÍDIO REGIONAL DE CAMPOS NOVOS">PRESÍDIO REGIONAL DE CAMPOS NOVOS</option>
+                <option value="PRESÍDIO REGIONAL DE CHAPECÓ">PRESÍDIO REGIONAL DE CHAPECÓ</option>
+                <option value="PRESÍDIO REGIONAL DE CONCORDIA">PRESÍDIO REGIONAL DE CONCORDIA</option>
+                <option value="PRESÍDIO REGIONAL DE CRICIÚMA">PRESÍDIO REGIONAL DE CRICIÚMA</option>
+                <option value="PRESÍDIO REGIONAL DE IMBITUBA">PRESÍDIO REGIONAL DE IMBITUBA</option>
+                <option value="PRESÍDIO REGIONAL DE JARAGUÁ DO SUL">PRESÍDIO REGIONAL DE JARAGUÁ DO SUL</option>
+                <option value="PRESÍDIO REGIONAL DE JOAÇABA">PRESÍDIO REGIONAL DE JOAÇABA</option>
+                <option value="PRESÍDIO REGIONAL DE JOINVILLE">PRESÍDIO REGIONAL DE JOINVILLE</option>
+                <option value="PRESÍDIO REGIONAL DE LAGES">PRESÍDIO REGIONAL DE LAGES</option>
+                <option value="PRESÍDIO REGIONAL DE LAGUNA">PRESÍDIO REGIONAL DE LAGUNA</option>
+                <option value="PRESÍDIO REGIONAL DE MAFRA">PRESÍDIO REGIONAL DE MAFRA</option>
+                <option value="PRESÍDIO REGIONAL DE RIO DO SUL">PRESÍDIO REGIONAL DE RIO DO SUL</option>
+                <option value="PRESÍDIO REGIONAL DE TIJUCAS">PRESÍDIO REGIONAL DE TIJUCAS</option>
+                <option value="PRESÍDIO REGIONAL DE TUBARÃO">PRESÍDIO REGIONAL DE TUBARÃO</option>
+                <option value="PRESÍDIO REGIONAL DE VIDEIRA">PRESÍDIO REGIONAL DE VIDEIRA</option>
+                <option value="PRESÍDIO REGIONAL DE XANXERÊ">PRESÍDIO REGIONAL DE XANXERÊ</option>
+                <option value="PRESÍDIO REGIONAL FEMININO DE ITAJAÍ">PRESÍDIO REGIONAL FEMININO DE ITAJAÍ</option>
+                <option value="PRESÍDIO SÃO JOSÉ DO CEDRO">PRESÍDIO SÃO JOSÉ DO CEDRO</option>
+                <option value="PROCON / SC">PROCON / SC</option>
+                <option value="PROTEGE">PROTEGE</option>
+                <option value="SAP - SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA">SAP - SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</option>
+                <option value="SOE - SERVIÇO DE OPERAÇÕES E ESCOLTA">SOE - SERVIÇO DE OPERAÇÕES E ESCOLTA</option>
+                <option value="SR08">SR08</option>
+                <option value="UNIDADE DE SEGURANÇA MÁXIMA">UNIDADE DE SEGURANÇA MÁXIMA</option>
+                <option value="UNIDADE PRISIONAL AVANÇADA DE BARRA VELHA">UNIDADE PRISIONAL AVANÇADA DE BARRA VELHA</option>
+                <option value="UNIDADE PRISIONAL AVANÇADA DE LAGUNA">UNIDADE PRISIONAL AVANÇADA DE LAGUNA</option>
+                <option value="OUTRA">OUTRA</option>
+        </select>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>SERVIDOR</label>
+        <select class="form-control" id="servidor" name="servidor"  required>
+
+            <option value=" {{ form.servidor }}
+
+        </select>
+    </div>
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

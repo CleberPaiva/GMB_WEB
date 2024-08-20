@@ -1,0 +1,340 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<head>
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    /* Fixed sidenav, full height */
+    /* Fixed sidenav, full height */
+    .sidenav {
+      height: 100%;
+      width: 210px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      bottom: 0%;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    #menu_lateral {
+      height: 100%;
+      margin-bottom: 0;
+    }
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a,
+    .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #818181;
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* On mouse-over */
+    .sidenav a:hover,
+    .dropdown-btn:hover {
+      color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 240px;
+      /* Same as the width of the sidenav */
+      font-size: 20px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+      color: white;
+      margin-top: 0px;
+    }
+
+    .h2_main {
+      margin-bottom: 0px;
+    }
+
+    /* Add an active class to the active dropdown button */
+    .active {
+      background-color: green;
+      color: white;
+    }
+
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+      display: none;
+      background-color: #262626;
+      padding-left: 8px;
+    }
+
+    /* Optional: Style the caret down icon */
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+    }
+
+    .fa {
+      margin-right: 5px;
+    }
+
+    /* dashboard */
+    .dashboard {
+      padding: 0;
+      width: 100%;
+      display: block;
+    }
+
+    .dashboard h4 {
+      font-size: 20px;
+    }
+
+    .dashboard span {
+      font-size: 40px;
+      display: block;
+      width: 100%;
+    }
+
+    .dashboard-box {
+      float: left;
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 32%;
+      text-align: center;
+    }
+
+    .dashboard-box:nth-child(2) {
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+    }
+
+    #dashboard-lastdays {
+      background-color: #225fc0;
+    }
+
+    #dashboard-done {
+      background-color: #13c43f;
+    }
+
+    #dashboard-doing {
+      background-color: #330c95;
+    }
+
+    .box-display-1 {
+      margin-top: 20px;
+    }
+
+    .box-display-2 {
+      margin-top: 20px;
+    }
+
+    .img-index {
+      border-radius: 50%;
+      width: 150px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    #links-menu {
+      margin-top: -200px;
+
+    }
+
+    #permissao {
+      margin-top: 100px;
+    }
+
+
+    /* Some media queries for responsiveness */
+    @media only screen and (max-width: 768px) {
+      .main {
+        margin-left: 2px;
+        margin-right: 2px;
+        font-size: 14px;
+        margin-top: 0px;
+      }
+
+      .h1,
+      h1 {
+        font-size: 26px;
+      }
+
+      .h2,
+      h2 {
+        font-size: 26px;
+      }
+
+      .h3,
+      h3 {
+        font-size: 18px;
+      }
+
+      #menu_direita {
+        width: 98%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+      }
+
+      #menu_lateral {
+        display: none;
+      }
+
+      .buttons {
+        padding-bottom: 10px;
+        padding-top: 10px;
+        height: 120px;
+      }
+
+      .ancora {
+        height: 118px;
+        font-size: 17px;
+      }
+
+      #links-menu {
+        margin-top: 10px;
+      }
+
+      .menu-lateral {
+        font-size: 20px;
+      }
+
+      #h2_texto {
+        font-size: 24px;
+        margin-left: 0%;
+        text-align: center;
+      }
+
+      #menu_direita {
+        width: 100%;
+        align-items: center;
+      }
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body style="background-image: url(/static/image/a10.jpg)">
+
+
+  <div class="main">
+
+
+    <form method="post" enctype="multipart/form-data">
+
+      {% csrf_token %}
+
+      {{ bootstrap }}
+
+      <h3 style="margin-bottom: 30px;">CADASTRO DE ARMA PARTICULAR - POLICIAIS PENAIS</h3>
+
+      <div class="form-group col-md-4">
+        <label>NOME</label>
+        <input class="form-control" id="nome" name="nome" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>CPF</label>
+        <input class="form-control" id="cpf" name="cpf" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>RG</label>
+        <input class="form-control" id="rg" name="rg" type="text" required>
+      </div>
+      
+      <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="numeroserie" name="numeroserie" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>Nº SIGMA</label>
+        <input class="form-control" id="numerosigma" name="numerosigma" type="text" required>
+      </div>
+
+      <!-- Empresa -->
+      <div class="form-group col-md-4">
+        <label>Nº SINARM</label>
+        <input class="form-control" id="numerosinarm" name="numerosinarm" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>Nº REGISTRO</label>
+        <input class="form-control" id="numeroregistro" name="numeroregistro" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>AMPARO</label>
+        <input class="form-control" id="amparo" name="amparo" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>TIPO</label>
+        <input class="form-control" id="tipo" name="tipo" type="text" required>
+      </div>
+
+      <!-- Setor Visitado -->
+      <div class="form-group col-md-4">
+        <label>MARCA</label>
+        <input class="form-control" id="marca" name="marca" type="text" required>
+      </div>
+
+      <!-- Portaria -->
+      <div class="form-group col-md-4">
+        <label>CALIBRE</label>
+        <input class="form-control" id="calibre" name="calibre" type="text" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>DATA EXPEDIÇÃO</label>
+        <input class="form-control" id="dataexpedicao" name="dataexpedicao" type="date" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label>DATA VALIDADE</label>
+        <input class="form-control" id="datavalidade" name="datavalidade" type="date" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="imagem">IMAGEM DOCUMENTO</label>
+        <input class="form-control" id="imagem" name="imagem" type="file" accept="image/*" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="imagem">IMAGEM NUMERAÇÃO A</label>
+        <input class="form-control" id="imagem2" name="imagem2" type="file" accept="image/*" required>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="imagem">IMAGEM NUMERAÇÃO B</label>
+        <input class="form-control" id="imagem3" name="imagem3" type="file" accept="image/*" required>
+      </div>
+
+
+      <div class=" form-group col-md-12">
+        <button style="color: #111;">Salvar</button>
+      </div>
+      <div class="preview">
+        <p>.</p>
+      </div>
+      <p>.</p>
+    </form>
+  </div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row" style="width: 1400px">
+        <div class="col-md-12" style="border: solid 5px #29AB87" id="menu_direita">
+            <div style="width: 1400px" class="col-md-12">
+                <img style="width: 80px" id="img-index" src="/static/image/gmb.jpeg">
+                <p>SECRETARIA</p>
+            </div>
+            <div class="col-md-12 text-center">
+                <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CAUTELA DE ARMAMENTO</h4>
+
+   <!-- Nome -->
+    <div class="form-group col-md-6">
+        <label>Nº DE SÉRIE</label>
+        <input id="numeroserie" name="numeroserie" type="text" value="{{ arma.numeroserie }}" readonly>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-6">
+        <label>Nº DE PATRIMÔNIO</label>
+        <input id="numeropatri" name="numeropatri" type="text" value="{{ arma.numeropatri }}" readonly>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-6">
+        <label>Nº DO SINARM</label>
+        <input id="numerosinarm" name="numerosinarm" type="text" value="{{ arma.numerosinarm }}">
+    </div>
+
+<!-- Setor Visitado -->
+    <div class="form-group col-md-6">
+        <label>MARCA</label>
+        <input id="marca" name="marca" type="text" value="{{ arma.marca }}" readonly>
+    </div>
+
+ <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>MODELO</label>
+        <input id="modelo" name="modelo" type="text" value="{{ arma.modelo }}" readonly>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>CALIBRE</label>
+        <input id="calibre" name="calibre" type="text" value="{{ arma.calibre }}" readonly>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>CAPACIDADE</label>
+        <input id="capacidade" name="capacidade" type="text" value="{{ arma.capacidade }}" readonly>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>QUANTIDADE DE CARREGADOR</label>
+        <input id="qtcarregador" name="qtcarregador" type="text" value="{{ arma.qtcarregador }}" readonly>
+    </div>
+
+         <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>TIPO DE MUNIÇÃO</label>
+        <input id="tipomunicao" name="tipomunicao" type="text"  value="{{ arma.tipomunicao }}">
+    </div>
+
+        <!-- Quantidade de munição -->
+    <div class="form-group col-md-6">
+        <label>QUANTIDADE DE MUNIÇÃO </label>
+        <input id="qtmunicao" name="qtmunicao" type="text"  value="{{ arma.qtmunicao }}">
+    </div>
+
+    <!-- Gens munição -->
+    <div class="form-group col-md-6">
+        <label>GENS DA MUNIÇÃO</label>
+        <input id="gensmunicao" name="gensmunicao" type="text"  value="{{ arma.gensmunicao }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>ACESSÓRIOS</label>
+        <input id="acessorios" name="acessorios" type="text" value="{{ arma.acessorios }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>DOCUMENTO DE REGISTRO</label>
+        <input id="docregistro" name="docregistro" type="text" value="{{ arma.docregistro }}">
+    </div>
+
+
+    <div class="form-group col-md-6">
+        <label>UNIDADE</label>
+        <input id="unidade" name="unidade" type="text" value="{{ arma.unidade }}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>SERVIDOR</label>
+                <input id="servidor" name="servidor" type="text" value="{{ arma.servidor }}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>MATRICULA</label>
+                <input id="matricula" name="matricula" type="text" value="{{ arma.matricula }}" required>
+    </div>
+        <div class="form-group col-md-6">
+        <label>TELEFONE</label>
+                <input id="telefone" name="telefone" type="text" value="{{ arma.telefone }}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>DATA DA CAUTELA</label>
+                <input id="datacautela" name="datacautela" type="date" value="{{ arma.datacautela }}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>Nº DE SGPE</label>
+                <input id="numerosgpe" name="numerosgpe" type="text" value="{{ arma.numerosgpe }}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label>DOCUMENTO DE REGISTRO</label>
+                <input id="docregistro" name="docregistro" type="text" value="{{ arma.docregistro }}" required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <p id="p-usuario"> CAUTELADO POR {{ usuario.servidor }}. </p>
+    </div>
+
+        <!-- Observações -->
+    <div class="form-group col-md-6">
+        <label>OBSERVAÇÕES</label>
+        <input id="observacoes" name="observacoes" type="text"  value="{{ arma.observacoes }}">
+    </div>
+
+
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+
+
+        <p>.</p>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endblock %}

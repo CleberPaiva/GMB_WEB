@@ -1,0 +1,183 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  /* Fixed sidenav, full height */
+  .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a,
+  .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover,
+  .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  .table-hover-2:hover {
+    color: #1a1c19;
+  }
+
+  /* Main content */
+  .main {
+    margin-left: 240px;
+    /* Same as the width of the sidenav */
+    margin-right: 20px;
+    font-size: 20px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    color: white;
+    margin-top: -215px;
+  }
+
+  .h2_main {
+    margin-bottom: 20px;
+  }
+
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: green;
+    color: white;
+  }
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+  .fa {
+    margin-right: 5px;
+  }
+
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+    }
+
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+</style>
+
+<body style="background-image: url(/static/image/a10.jpg)"></body>
+
+<div class="main">
+
+  <form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+    {{ bootstrap }}
+
+    <h3 style="margin-left: 15px; 
+                font-weight: bold; 
+                font-size: 26px; 
+                margin-bottom: 30px;">
+      DADOS DA RESTRIÇÃO
+    </h3>
+    <div class="form-group col-md-12" style="border: 2px solid white; padding: 5px;">
+      <div class="form-group col-md-4">
+        <label>SERVIDOR</label>
+        <input class="form-control" id="servidor" name="servidor" type="text" value="{{ restricoes.servidor }}"
+          readonly>
+      </div>
+      <div class="form-group col-md-2">
+        <label>MATRICULA</label>
+        <input class="form-control" id="matricula" name="matricula" type="text" value="{{ restricoes.matricula }}"
+          readonly>
+      </div>
+      <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+        <input class="form-control" id="lotacao" name="lotacao" value="{{ restricoes.lotacao }}" readonly>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12" style="border: 2px solid white; padding: 5px;">
+      <div class="form-group col-md-2">
+        <label>SÉRIE</label>
+        <input class="form-control" id="serie" name="serie" type="text" value="{{ restricoes.serie }}" readonly>
+      </div>
+      <div class="form-group col-md-2">
+        <label>PATRIMÔNIO</label>
+        <input class="form-control" id="patrimonio" name="patrimonio" type="text" value="{{ restricoes.patrimonio }}"
+          readonly>
+      </div>
+      <div class="form-group col-md-2">
+        <label>MARCA</label>
+        <input class="form-control" id="marca" name="marca" value="{{ restricoes.marca }}" readonly>
+      </div>
+      <div class="form-group col-md-2">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie" value="{{ restricoes.especie }}" readonly>
+      </div>
+      <div class="form-group col-md-2">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" value="{{ restricoes.modelo }}" readonly>
+      </div>
+    </div>
+
+    <div class="form-group col-md-12" style="border: 2px solid white; padding: 5px;">
+      <div class="form-group col-md-2">
+        <label>DATA ENTREGA</label>
+        <input class="form-control" id="datacadastramento" name="datacadastramento" type="text"
+          value="{{ restricoes.datacadastramento|date:"d/m/y" }}" readonly>
+      </div>
+      <div class="form-group col-md-3">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="responsavelcadastramento" name="responsavelcadastramento" type="text"
+          value="{{ restricoes.responsavelcadastramento }}" readonly>
+      </div>
+      <div class="form-group col-md-5">
+        <label>OBSERVAÇÕES</label>
+        <textarea class="form-control" rows="15" id="observacoes" name="observacoes" type="textarea" readonly>{{ restricoes.obsevacoes }}</textarea>
+      </div>
+    </div>
+
+    <div class="preview">
+      <p>.</p>
+    </div>
+    <p>.</p>
+  </form>
+
+
+  {% endblock %}

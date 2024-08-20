@@ -1,0 +1,265 @@
+{% csrf_token %}
+
+<h3
+  style="
+    margin-left: 15px;
+    font-weight: bold;
+    font-size: 26px;
+    margin-bottom: 30px;
+  "
+>
+  CADASTRO DE ARMA NOVA
+</h3>
+
+<!-- Nome -->
+<div class="form-group col-md-4">
+  <label for="numeroserie">Nº DE SÉRIE</label>
+  <input
+    class="form-control"
+    id="numeroserie"
+    name="numeroserie"
+    type="text"
+    value="{{ arma.numeroserie }}"
+  />
+</div>
+
+<!-- Empresa -->
+<div class="form-group col-md-4">
+  <label for="numeropatri">Nº DE PATRIMÔNIO</label>
+  <input
+    class="form-control"
+    id="numeropatri"
+    name="numeropatri"
+    type="text"
+    value="{{ arma.numeropatri }}"
+  />
+</div>
+
+<!-- Empresa -->
+<div class="form-group col-md-4">
+  <label for="numerosinarm">Nº DO SINARM</label>
+  <input
+    class="form-control"
+    id="numerosinarm"
+    name="numerosinarm"
+    type="text"
+    value="{{ arma.numerosinarm }}"
+    required
+  />
+</div>
+
+<!-- Setor Visitado -->
+<div class="form-group col-md-4">
+  <label for="marca">MARCA</label>
+  <input
+    class="form-control"
+    id="marca"
+    name="marca"
+    value="{{ arma.marca }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="modelo">MODELO</label>
+  <input
+    class="form-control"
+    id="modelo"
+    name="modelo"
+    type="text"
+    value="{{ arma.modelo }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="calibre">CALIBRE</label>
+  <input
+    class="form-control"
+    id="calibre"
+    name="calibre"
+    type="text"
+    value="{{ arma.calibre }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="capacidade">CAPACIDADE</label>
+  <input
+    class="form-control"
+    id="capacidade"
+    name="capacidade"
+    type="text"
+    value="{{ arma.capacidade }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="qtcarregador">QUANTIDADE DE CARREGADOR</label>
+  <input
+    class="form-control"
+    id="qtcarregador"
+    name="qtcarregador"
+    type="text"
+    value="{{ arma.qtcarregador }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="acessorios">ACESSÓRIOS</label>
+  <input
+    class="form-control"
+    id="acessorios"
+    name="acessorios"
+    type="text"
+    value="{{ arma.acessorios }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="tipomunicao">TIPO DE MUNIÇÃO</label>
+  <input
+    class="form-control"
+    id="tipomunicao"
+    name="tipomunicao"
+    type="text"
+    value="{{ arma.tipomunicao }}"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="gensmunicao">GENS DA MUNIÇÃO</label>
+  <input
+    class="form-control"
+    id="gensmunicao"
+    name="gensmunicao"
+    type="text"
+    value="{{ arma.gensmunicao }}"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="qtmunicao">QUANTIDADE DE MUNIÇÃO</label>
+  <input
+    class="form-control"
+    id="qtmunicao"
+    name="qtmunicao"
+    value="{{ arma.qtmunicao }}"
+    required
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="unidade">UNIDADE</label>
+  <select
+    class="form-control"
+    id="unidade"
+    name="unidade"
+    placeholder="{{ arma.unidade }}"
+    required
+  >
+    <option value="{{ arma.unidade }}">{{ arma.unidade }}</option>
+    {% for unidade in unidades %}
+    <option value="{{ unidade.nome }}">{{ unidade.nome }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="form-group col-md-4">
+  <label for="servidor">SERVIDOR</label>
+  <input
+    class="form-control"
+    id="servidor"
+    name="servidor"
+    type="text"
+    value="{{ arma.servidor }}"
+    required
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="matricula">MATRICULA</label>
+  <input
+    class="form-control"
+    id="matricula"
+    name="matricula"
+    type="text"
+    value="{{ arma.matricula }}"
+    required
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="telefone">TELEFONE </label>
+  <input
+    class="form-control"
+    id="telefone"
+    name="telefone"
+    type="text"
+    value="{{ arma.telefone }}"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="datacautela">DATA DA CAUTELA</label>
+  <input
+    class="form-control"
+    id="datacautela"
+    name="datacautela"
+    type="date"
+    value="{{ arma.datacautela }}"
+    required
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="numerosgpe">Nº DE SGPE</label>
+  <input
+    class="form-control"
+    id="numerosgpe"
+    name="numerosgpe"
+    type="text"
+    value="{{ arma.numerosgpe }}"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="responsavel">RESPONSÁVEL</label>
+  <input
+    class="form-control"
+    id="responsavel"
+    name="responsavel"
+    type="text"
+    value="{{ user.servidor }} - {{ user.username}}"
+    readonly
+  />
+</div>
+
+<!--
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="usuario" name="usuario" type="text" value="{{ user.servidor }}" required>
+    </div>
+    -->
+
+<!-- Observações -->
+<div class="form-group col-md-4">
+  <label for="observacoes">OBSERVAÇÕES:</label>
+  <textarea
+    class="form-control"
+    id="observacoes"
+    name="observacoes"
+    type="textarea"
+  >
+{{ arma.observacoes }}</textarea
+  >
+</div>
+
+<div class="form-group col-md-12">
+  <!-- <button style="color: #111; font-weight: bolder">Salvar</button> -->
+</div>

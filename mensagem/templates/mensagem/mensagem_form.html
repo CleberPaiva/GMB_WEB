@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>MENSAGEM</h4>
+
+   <!-- Nome -->
+    <div class="form-group col-md-8">
+        <label>Nome</label>
+        <input class="form-control" id="nome" name="nome" type="text" required>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group col-md-8">
+        <label>Email</label>
+        <input class="form-control" id="email" name="email" type="text" required>
+    </div>
+
+       <!-- Mensagem -->
+    <div class="form-group col-md-8">
+        <label>Mensagem</label>
+        <textarea class="form-control" id="mensagem" name="mensagem" rows="20" required>
+        </textarea>
+    </div>
+
+  <div class="form-group col-md-12">
+         <button>Enviar</button>
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

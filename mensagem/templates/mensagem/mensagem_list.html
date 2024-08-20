@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+
+
+
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h2 id="mensa" class="display-4">MENSAGENS</h2>
+		    <p class="lead"></p>
+		  </div>
+		  <div>
+		  </div>
+		  <div>
+          	<form method="GET" enctype="multipart/form-data">
+            	<input name="busca" class="form-inline" style="margin-top: 10px;" type="text" placeholder="Insira sua busca" >
+           		 <button type="submit" class="btn-btn-primary">Buscar</button>
+         	 </form>
+        </div>
+		</div>
+		<div class="row">
+				{% for mensagem in mensagens %}
+		    <div class="col">
+		      <div class="card" style="width: auto;">
+		        <div class="card-body">
+					<h4 class="card-title"><b><font color="blue"> {{ mensagem.nome }}</font></b></h4>
+							<div align="justify">
+                                <p class="card-text"> E-MAIL....:  {{ mensagem.email }}</p>
+                                <p class="card-text"> MENSAGEM...:  {{ mensagem.mensagem }}</p>
+							</div>
+						    <br>
+							<br>
+		        </div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if mensagens.has_previous %}
+							<a href="?page={{ mensagens.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ mensagens.number }} de {{ mensagens.paginator.num_pages }}
+					</span>
+
+					{% if mensagens.has_next %}
+							<a href="?page={{ mensagens.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+{% endblock %}

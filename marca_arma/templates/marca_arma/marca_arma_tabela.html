@@ -1,0 +1,77 @@
+{% extends 'base.html'%}
+
+{% block main %}
+
+<script>
+
+	$(document).ready(function(){
+	$("#tabela-listar").DataTable({
+        responsive: true,
+        // "bSort": false,
+        "aaSorting": [],
+        "pageLength": 25,
+        "language": {
+            "decimal": "",
+            "emptyTable": "Sem dados disponíveis",
+            "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+            "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+            "infoFiltered": "(filtrado de _MAX_ registos no total)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ registos",
+            "loadingRecords": "A carregar dados...",
+            "processing": "A processar...",
+            "search": "Procurar:",
+            "zeroRecords": "Não foram encontrados resultados",
+            "paginate": {
+                "first": "Primeiro",
+                "last": "Último",
+                "next": "Seguinte",
+                "previous": "Anterior"
+            },
+            "aria": {
+                "sortAscending": ": ordem crescente",
+                "sortDescending": ": ordem decrescente"
+            }
+        }
+    });
+});
+
+</script>
+
+    <div class="container">
+        <div class="area">
+            <header>
+                <h1>Fabricantes de Arma</h1><form method="get" action="/marca_arma/novo"><button type="submit">Cadastrar</button></form>
+                <p></p>
+            </header>
+        </div>
+        	<div class="table-responsive">
+				<table class="table table-hover" id="tabela-listar">
+					<thead>
+									<tr>
+                                        <td style="width:2px">ID</td>
+										<td style="width:200px">NOME DO FABRICANTE</td>
+                                    </tr>
+
+					</thead>
+
+					<tbody>
+				{% for marca_arma in marca_armas %}
+									<tr>
+                                        <td style="width:2
+                                        px">{{ marca_arma.id }}</td>
+										<td style="width:200px">{{ marca_arma.marcaArma }}</td>
+									</tr>
+				{% endfor %}
+					</tbody>
+			    </table>
+		    </div>
+		<div>
+			<br>
+			<br>
+			<br>
+		</div>
+    </div>
+
+{% endblock %}

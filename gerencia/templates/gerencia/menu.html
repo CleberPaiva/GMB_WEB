@@ -1,0 +1,402 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  /* Fixed sidenav, full height */
+  .sidenav {
+    height: 100%;
+    width: 210px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    bottom: 0%;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  #menu_lateral {
+    height: 100%;
+    margin-bottom: 0;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a,
+  .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover,
+  .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  /* Main content */
+  .main {
+    margin-left: 240px;
+    /* Same as the width of the sidenav */
+    font-size: 20px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+
+  .h2_main {
+    margin-bottom: 0px;
+  }
+
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: green;
+    color: white;
+  }
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+  .fa {
+    margin-right: 5px;
+  }
+
+  /* dashboard */
+  .dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+  }
+
+  .dashboard h4 {
+    font-size: 20px;
+  }
+
+  .dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+  }
+
+  .dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+  }
+
+  .dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+  }
+
+  #dashboard-lastdays {
+    background-color: #225fc0;
+  }
+
+  #dashboard-done {
+    background-color: #13c43f;
+  }
+
+  #dashboard-doing {
+    background-color: #330c95;
+  }
+
+  .box-display-1 {
+    margin-top: 20px;
+  }
+
+  .box-display-2 {
+    margin-top: 20px;
+  }
+
+  .img-index {
+    border-radius: 50%;
+    width: 150px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  #links-menu {
+    margin-top: -200px;
+
+  }
+
+  #menu_direita {
+    border: solid 5px #f5f8f8;
+    padding: 15px;
+  }
+
+  .buttons {
+    width: 380px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ancora {
+    padding: 5px;
+    margin: 5px;
+    width: 370px;
+    height: 100px;
+    background-color: #13c43f;
+  }
+
+  .ancora:hover {
+    width: 370px;
+    height: 100px;
+    color: #011811;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+    align-items: center;
+  }
+
+  #h2_texto {
+    margin-left: 20%;
+  }
+
+  #permissao {
+    margin-top: 80px;
+  }
+
+  .imggrafico {
+    width: 80%;
+    margin-bottom: 30px;
+  }
+
+  /* Some media queries for responsiveness */
+  @media only screen and (max-width: 768px) {
+    .main {
+      margin-left: 5px;
+      font-size: 18px;
+      margin-top: 0px;
+    }
+
+    #menu_direita {
+      width: 98%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    #menu_lateral {
+      display: none;
+    }
+
+    .buttons {
+      padding-bottom: 10px;
+      padding-top: 10px;
+      height: 120px;
+    }
+
+    .ancora {
+      height: 118px;
+      font-size: 17px;
+    }
+
+    /* dashboard */
+    .dashboard {
+      padding: 0;
+      width: 100%;
+      display: block;
+    }
+
+    .dashboard h4 {
+      font-size: 16px;
+    }
+
+    .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+    }
+
+    .dashboard-box {
+      float: left;
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 32%;
+      text-align: center;
+    }
+
+    .dashboard-box:nth-child(2) {
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+    }
+
+    #dashboard-lastdays {
+      background-color: #225fc0;
+    }
+
+    #dashboard-done {
+      background-color: #13c43f;
+    }
+
+    #dashboard-doing {
+      background-color: #330c95;
+    }
+
+    .box-display-1 {
+      margin-top: 20px;
+    }
+
+    .box-display-2 {
+      margin-top: 20px;
+    }
+
+    #links-menu {
+      margin-top: 10px;
+    }
+
+    .menu-lateral {
+      font-size: 20px;
+    }
+
+    #h2_texto {
+      font-size: 24px;
+      margin-left: 0%;
+      text-align: center;
+    }
+
+    #menu_direita {
+      width: 100%;
+      align-items: center;
+    }
+
+    .imggrafico {
+    width: 97%;
+    font-size: 10px;
+    }
+
+    .h1grafico {
+      font-size: 25px;
+    }
+  }
+
+  /* Some media queries for responsiveness */
+  @media only screen and (max-width: 1300px) {
+    .imggrafico {
+    width: 97%;
+    font-size: 10px;
+    }
+
+    .h1grafico {
+      font-size: 25px;
+    }
+  }  
+</style>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+</head>
+
+<div class="main">
+  <div class="col-md-12" style="margin-bottom: 30px;">
+    <h1 class="h1grafico">ARMAS POR REGIONAL E POR MODELO</h1>
+    <div id="chart_div" style="width: 1400px; height: 500px;"></div>
+  </div>
+  <div class="col-md-12" style="margin-bottom: 30px;">
+    <h1 class="h1grafico">PISTOLAS POLICIAIS PENAIS POR MODELO</h1>
+    <div id="chart_div2" style="width: 1400px; height: 500px;"></div>
+  </div>
+  <div class="col-md-12">
+    <h1 class="h1grafico">TOTAL DE ARMAS POR REGIONAL</h1>
+    <img src="/static/image/regionais.png" class="imggrafico" alt="">
+  </div>  
+  <div class="col-md-12">
+    <h1 class="h1grafico">TOTAL CAUTELAS INSTITUCIONAIS POR REGIONAL</h1>
+    <img src="/static/image/Institucionais.png" class="imggrafico" alt="">
+  </div>  
+  <div class="col-md-12">
+    <h1 class="h1grafico">TOTAL CAUTELAS INDIVIDUAIS POR REGIONAL</h1>
+    <img src="/static/image/Individuais.png" class="imggrafico" alt="">
+  </div>
+</div>
+
+<script>
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+      google.charts.setOnLoadCallback(drawVisualization2);
+      
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Modelo',       'APX', 'TH9', 'PT840', 'PT940', 'PT100', 'Cal.12', 'CT e CTT.40', '5.56 e 7.62'],
+          ['Regional 01', {{armas_apx_rg01}}, {{armas_th9_rg01}}, {{armas_pt840_rg01}}, {{armas_pt940_rg01}}, {{armas_pt100_rg01}}, {{armas_cal12_rg01}}, {{armas_ctt_rg01}}, {{armas_fuzil_rg01}}],
+          ['Regional 02', {{armas_apx_rg02}}, {{armas_th9_rg02}}, {{armas_pt840_rg02}}, {{armas_pt940_rg02}}, {{armas_pt100_rg02}}, {{armas_cal12_rg02}}, {{armas_ctt_rg02}}, {{armas_fuzil_rg02}}],
+          ['Regional 03', {{armas_apx_rg03}}, {{armas_th9_rg03}}, {{armas_pt840_rg03}}, {{armas_pt940_rg03}}, {{armas_pt100_rg03}}, {{armas_cal12_rg03}}, {{armas_ctt_rg03}}, {{armas_fuzil_rg03}}],
+          ['Regional 04', {{armas_apx_rg04}}, {{armas_th9_rg04}}, {{armas_pt840_rg04}}, {{armas_pt940_rg04}}, {{armas_pt100_rg04}}, {{armas_cal12_rg04}}, {{armas_ctt_rg04}}, {{armas_fuzil_rg04}}],
+          ['Regional 05', {{armas_apx_rg05}}, {{armas_th9_rg05}}, {{armas_pt840_rg05}}, {{armas_pt940_rg05}}, {{armas_pt100_rg05}}, {{armas_cal12_rg05}}, {{armas_ctt_rg05}}, {{armas_fuzil_rg05}}],
+          ['Regional 06', {{armas_apx_rg06}}, {{armas_th9_rg06}}, {{armas_pt840_rg06}}, {{armas_pt940_rg06}}, {{armas_pt100_rg06}}, {{armas_cal12_rg06}}, {{armas_ctt_rg06}}, {{armas_fuzil_rg06}}],
+          ['Regional 07', {{armas_apx_rg07}}, {{armas_th9_rg07}}, {{armas_pt840_rg07}}, {{armas_pt940_rg07}}, {{armas_pt100_rg07}}, {{armas_cal12_rg07}}, {{armas_ctt_rg07}}, {{armas_fuzil_rg07}}],
+          ['Regional 08', {{armas_apx_rg08}}, {{armas_th9_rg08}}, {{armas_pt840_rg08}}, {{armas_pt940_rg08}}, {{armas_pt100_rg08}}, {{armas_cal12_rg08}}, {{armas_ctt_rg08}}, {{armas_fuzil_rg08}}],                             
+        ]);
+
+        var options = {
+          title : 'Armas por regional e modelo',
+          vAxis: {title: 'Total  Armas'},
+          hAxis: {title: 'Regionais'},
+          seriesType: 'bars',
+          series: {8: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }  
+
+      function drawVisualization2() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+          ['Modelo',       '2.070 com APX', '344 com TH9', '278 com PT940', '186 com PT840', '76 com PT100', '384 Sem arma', ],
+          ['Modelos', {{armas_apx}}, {{ armas_th9 }}, {{ armas_pt940 }}, {{ armas_pt840 }}, {{ armas_pt100 }}, {{ armas_sem_arma }},],                         
+        ]);
+
+        var options = {
+          title : 'Total de Policiais Penais ativos = 3.338 ',
+          vAxis: {title: 'Total  Armas'},
+          hAxis: {title: ''},
+          seriesType: 'bars',
+          series: {8: {type: 'line'}}
+        };
+
+        var chart = new google.visualization.ComboChart(document.getElementById('chart_div2'));
+        chart.draw(data, options);
+      } 
+</script>
+
+{% endblock %}

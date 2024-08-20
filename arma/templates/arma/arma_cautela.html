@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+<!-- Adicione os links para os arquivos CSS e JS do Select2 -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.table-hover-2:hover {
+  color: #1a1c19;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  margin-right: 20px;
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 30px;
+}
+
+.h2_main {
+  margin-bottom: 20px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<body style="background-image: url(/static/image/a10.jpg)"></body>
+
+<div class="main">
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h3 style="margin-left: 15px; 
+                font-weight: bold; 
+                font-size: 26px; 
+                margin-bottom: 30px;">
+        EDIÇÃO DO CADASTRO DE ARMA
+    </h3>
+
+   <!-- Nome -->
+    <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="numeroserie" name="numeroserie" type="text" value="{{ arma.numeroserie }}" readonly>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>Nº DE PATRIMÔNIO</label>
+        <input class="form-control" id="numeropatri" name="numeropatri" type="text" value="{{ arma.numeropatri }}">
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>Nº DO SINARM</label>
+        <input class="form-control" id="numerosinarm" name="numerosinarm" type="text" value="{{ arma.numerosinarm }}" required>
+    </div>
+
+<!-- Setor Visitado -->
+    <div class="form-group col-md-4">
+        <label>MARCA</label>
+        <input class="form-control" id="marca" name="marca"  value="{{ arma.marca }}">
+    </div>
+
+ <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" value="{{ arma.modelo }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>CALIBRE</label>
+        <input class="form-control" id="calibre" name="calibre" type="text" value="{{ arma.calibre }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>CAPACIDADE</label>
+        <input class="form-control" id="capacidade" name="capacidade" type="text" value="{{ arma.capacidade }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE CARREGADOR</label>
+        <input class="form-control" id="qtcarregador" name="qtcarregador" type="text" value="{{ arma.qtcarregador }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>ACESSÓRIOS</label>
+        <input class="form-control" id="acessorios" name="acessorios" type="text" value="{{ arma.acessorios }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>TIPO DE MUNIÇÃO</label>
+        <input class="form-control" id="tipomunicao" name="tipomunicao" type="text"  value="{{ arma.tipomunicao }}">
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>GENS DA MUNIÇÃO</label>
+        <input class="form-control" id="gensmunicao" name="gensmunicao" type="text"  value="{{ arma.gensmunicao }}">
+    </div>
+
+    <div class="form-group col-md-4">
+            <label>QUANTIDADE DE MUNIÇÃO</label>
+        <input class="form-control" id="qtmunicao" name="qtmunicao" value="{{ arma.qtmunicao }}" required>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>MATRICULA</label>
+      <select class="form-control" id="matricula" name="matricula" onchange="updateServidor()">
+          <option value="" disabled selected>Selecione uma matrícula</option>
+          {% for servidor in servidores %}
+          <option value="{{ servidor.matricula }}" data-nome="{{ servidor.nome }}">{{ servidor.matricula }}</option>
+          {% endfor %}
+      </select>
+    </div>
+
+    <!-- Servidor -->
+    <div class="form-group col-md-4">
+      <label>SERVIDOR</label>
+      <input class="form-control" id="servidor" name="servidor" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+      <label>UNIDADE</label>
+      <select class="form-control" id="unidade" name="unidade" placeholder="{{ arma.unidade }}" required>
+          <option value="{{ arma.unidade }}">{{ arma.unidade }}</option>
+          {% for unidade in unidades|dictsort:"nome" %}
+          <option value="{{ unidade.nome }}">{{ unidade.nome }}</option>
+          {% endfor %}
+      </select>
+    </div>    
+
+    <div class="form-group col-md-4">
+        <label>TELEFONE </label>
+        <input class="form-control" id="telefone" name="telefone" type="text" value="{{ arma.telefone }}">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>DATA DA CAUTELA</label>
+        <input class="form-control" id="datacautela" name="datacautela" type="date" value="{{ arma.datacautela }}" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>Nº DE SGPE</label>
+        <input class="form-control" id="numerosgpe" name="numerosgpe" type="text" value="{{ arma.numerosgpe }}">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="responsavel" name="responsavel" type="text" value="{{ user.servidor }} - {{ user.username}}" readonly>
+    </div>
+
+    <!--
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="usuario" name="usuario" type="text" value="{{ user.servidor }}" required>
+    </div>
+    -->
+
+    <div class="form-group col-md-4">
+      <label>TIPO</label>
+      <input class="form-control" id="tipo" name="tipo" type="text" value="{{ arma.tipo }}">
+    </div>
+
+        <!-- Observações -->
+    <div class="form-group col-md-4">
+        <label>OBSERVAÇÕES:</label>
+        <textarea class="form-control" id="observacoes" name="observacoes" type="textarea">{{ arma.observacoes }}</textarea>
+    </div>
+
+  <div class="form-group col-md-12">
+
+         <button style="color: #111; font-weight: bolder;">Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+<!-- Script para atualizar o campo SERVIDOR -->
+<script>
+  $(document).ready(function() {
+    $('#matricula').select2();
+  });
+
+  function updateServidor() {
+      const selectElem = document.getElementById('matricula');
+      const servidorInput = document.getElementById('servidor');
+      const selectedOption = selectElem.options[selectElem.selectedIndex];
+      servidorInput.value = selectedOption.getAttribute('data-nome');
+  }
+</script>
+
+
+{% endblock %}

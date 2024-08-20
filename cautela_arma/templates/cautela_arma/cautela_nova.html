@@ -1,0 +1,378 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.table-hover-2:hover {
+  color: #1a1c19;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  margin-right: 20px;
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 30px;
+}
+
+.h2_main {
+  margin-bottom: 20px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+
+
+
+<body style="background-image: url(/static/image/a10.jpg)"></body>
+
+
+<div class="main">
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h3 style="margin-left: 15px; 
+                font-weight: bold; 
+                font-size: 26px; 
+                margin-bottom: 30px;">
+        CADASTRAMENTO CAUTELA DE ARMA
+    </h3>
+
+
+    <div class="form-group col-md-4">
+        <label>DATA DA CAUTELA</label>
+        <input class="form-control" id="datacautela" name="datacautela" type="date" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>Nº DE SGPE</label>
+        <input class="form-control" id="numerosgpe" name="numerosgpe" type="text" value="{{ cautela.numerosgpe }}" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="responsavel" name="responsavel" type="text" value="{{ request.user }}" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>SERVIDOR</label>
+        <select onchange="dado_servidor()" class="form-control" id="servidor_id" name="servidor" required>
+            <option value="Selecione">Selecione --></option>
+            {% for servidor in servidores %}
+            <option value="{{ servidor.id }}">{{ servidor.nome }}</option>
+            {% endfor %}
+	    </select>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>MATRÍCULA</label>
+        <input class="form-control" id="matricula" name="matricula" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>TELEFONE</label>
+        <input class="form-control" id="telefone" name="telefone" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>Nº SÉRIE ARMA</label>
+        <select onchange="dado_arma()" class="form-control" id="arma_id" name="arma" required>
+            <option value="Selecione">Selecione --></option>
+            {% for arma in armas %}
+            <option value="{{ arma.id }}">{{ arma.numeroserie }}</option>
+            {% endfor %}
+	    </select>        
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>Nº PATRIMÔNIO ARMA</label>
+        <input class="form-control" id="numeropatri" name="numeropatri" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>Nº SINARM</label>
+        <input class="form-control" id="numerosinarm" name="numerosinarm" type="text">
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>CALIBRE</label>
+        <input class="form-control" id="calibre" name="calibre" type="text" readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+        <select class="form-control" id="unidade" name="unidade" required>
+            <option> Selecione --> </option>
+            <option value="ACAPS - ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA">ACAPS - ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</option>
+            <option value="CASA DO ALBERGADO DE FLORIANÓPOLIS">CASA DO ALBERGADO DE FLORIANÓPOLIS</option>
+            <option value="COLÔNIA PENAL AGRICOLA DA PALHOÇA">COLÔNIA PENAL AGRICOLA DA PALHOÇA</option>
+            <option value="COPE - COMPLEXO PENITENCIÁRIO DO ESTADO">COPE - COMPLEXO PENITENCIÁRIO DO ESTADO</option>
+            <option value="CONSELHO PENITENCIÁRIO">CONSELHO PENITENCIÁRIO</option>
+            <option value="DELEGACIA DE POLICIA DE SÃO PEDRO DE ALCÂNTARA">DELEGACIA DE POLICIA DE SÃO PEDRO DE ALCÂNTARA</option>
+            <option value="DEASE - DEPARTAMENTO DE ADMINISTRAÇÃO SOCIOEDUCATIVA">DEASE - DEPARTAMENTO DE ADMINISTRAÇÃO SOCIOEDUCATIVA</option>
+            <option value="DINF - DIRETORIA DE INTELIGÊNCIA E INFORMAÇÃO">DINF - DIRETORIA DE INTELIGÊNCIA E INFORMAÇÃO</option>
+            <option value="DOC - DIVISÃO DE OPERAÇÕES COM CÃES">DOC - DIVISÃO DE OPERAÇÕES COM CÃES</option>
+            <option value="DPP - DEPARTAMENTO DE POLICIA PENAL">DPP - DEPARTAMENTO DE POLICIA PENAL</option>
+            <option value="GAECO - SMO">GAECO - SMO</option>
+            <option value="GMOP - GERENTE DE MONITORAMENTO E CONTROLE PENITENCIÁRIO">GMOP - GERENTE DE MONITORAMENTO E CONTROLE PENITENCIÁRIO</option>
+            <option value="GMB - GERÊNCIA DE MATERIAL BÉLICO">GMB - GERÊNCIA DE MATERIAL BÉLICO</option>
+            <option value="GOA - GRUPO DE OPERAÇÕES AÉREAS">GOA - GRUPO DE OPERAÇÕES AÉREAS</option>
+            <option value="GTI - GRUPO TÁTICO DE INTERVENÇÃO">GTI - GRUPO TÁTICO DE INTERVENÇÃO</option>
+            <option value="HCTP - HOSPITAL DE CUSTÓDIA E TRATAMENTO PSIQUIATRICO">HCTP - HOSPITAL DE CUSTÓDIA E TRATAMENTO PSIQUIATRICO</option>
+            <option value="NSI - NÚCLEO DE SEGURANÇA INSTITUCIONAL">NSI - NÚCLEO DE SEGURANÇA INSTITUCIONAL</option>
+            <option value="NOT 01 - NÚCLEO DE OPERAÇÕES TÁTICAS - R01">NOT 01 - NÚCLEO DE OPERAÇÕES TÁTICAS - R01</option>
+            <option value="NOT 02 - NÚCLEO DE OPERAÇÕES TÁTICAS - R02">NOT 02 - NÚCLEO DE OPERAÇÕES TÁTICAS - R02</option>
+            <option value="NOT 03 - NÚCLEO DE OPERAÇÕES TÁTICAS - R03">NOT 03 - NÚCLEO DE OPERAÇÕES TÁTICAS - R03</option>
+            <option value="NOT 04 - NÚCLEO DE OPERAÇÕES TÁTICAS - R04">NOT 04 - NÚCLEO DE OPERAÇÕES TÁTICAS - R04</option>
+            <option value="NOT 05 - NUCLEO DE OPERAÇÕES TÁTICAS - R05">NOT 05 - NUCLEO DE OPERAÇÕES TÁTICAS - R05</option>
+            <option value="NOT 06 - NUCLEO DE OPERAÇÕES TÁTICAS - R06">NOT 06 - NUCLEO DE OPERAÇÕES TÁTICAS - R06</option>
+            <option value="NOT 07 - NÚCLEO DE OPERAÇÕES TÁTICAS - R07">NOT 07 - NÚCLEO DE OPERAÇÕES TÁTICAS - R07</option>
+            <option value="NOT 08 - NÚCLEO DE OPERAÇÕES TÁTICAS - R08">NOT 08 - NÚCLEO DE OPERAÇÕES TÁTICAS - R08</option>
+            <option value="PENITENCIÁRA DE FLORIANÓPOLIS">PENITENCIÁRA DE FLORIANÓPOLIS</option>
+            <option value="PENITENCIÁRIA - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI">PENITENCIÁRIA - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI</option>
+            <option value="PENITENCIÁRIA  REGIONAL DE CURITIBANOS">PENITENCIÁRIA  REGIONAL DE CURITIBANOS</option>
+            <option value="PENITENCIÁRIA AGRÍCOLA DE CHAPECÓ">PENITENCIÁRIA AGRÍCOLA DE CHAPECÓ</option>
+            <option value="PENITENCIÁRIA DE FLORIANÓPOLIS">PENITENCIÁRIA DE FLORIANÓPOLIS</option>
+            <option value="PENITENCIÁRIA FEMININA DE CRICIÚMA">PENITENCIÁRIA FEMININA DE CRICIÚMA</option>
+            <option value="PENITENCIÁRIA INDUSTRIAL DE BLUMENAU">PENITENCIÁRIA INDUSTRIAL DE BLUMENAU</option>
+            <option value="PENITENCIÁRIA INDUSTRIAL DE CHAPECÓ">PENITENCIÁRIA INDUSTRIAL DE CHAPECÓ</option>
+            <option value="PENITENCIÁRIA INDUSTRIAL DE JOINVILLE">PENITENCIÁRIA INDUSTRIAL DE JOINVILLE</option>
+            <option value="PENITENCIÁRIA INDUSTRIAL DE SÃO CRISTOVÃO">PENITENCIÁRIA INDUSTRIAL DE SÃO CRISTOVÃO</option>
+            <option value="PENITENCIÁRIA MASCULINA DE TUBARÃO">PENITENCIÁRIA MASCULINA DE TUBARÃO</option>
+            <option value="PENITENCIÁRIA SUL - CRICIÚMA">PENITENCIÁRIA SUL - CRICIÚMA</option>
+            <option value="PRESÍDIO - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI">PRESÍDIO - COMPLEXO PENITENCIÁRIO DO VALE DO ITAJAI</option>
+            <option value="PRESÍDIO DE BARRA VELHA">PRESÍDIO DE BARRA VELHA</option>
+            <option value="PRESÍDIO DE BLUMENAU">PRESÍDIO DE BLUMENAU</option>
+            <option value="PRESÍDIO DE BRUSQUE">PRESÍDIO DE BRUSQUE</option>
+            <option value="PRESÍDIO DE CAMPOS NOVOS">PRESÍDIO DE CAMPOS NOVOS</option>
+            <option value="PRESÍDIO DE CANOINHAS">PRESÍDIO DE CANOINHAS</option>
+            <option value="PRESÍDIO DE CONCÓRDIA">PRESÍDIO DE CONCÓRDIA</option>
+            <option value="PRESÍDIO DE IMBITUBA">PRESÍDIO DE IMBITUBA</option>
+            <option value="PRESÍDIO DE INDAIAL">PRESÍDIO DE INDAIAL</option>
+            <option value="PRESÍDIO DE ITAJAÍ">PRESÍDIO DE ITAJAÍ</option>
+            <option value="PRESÍDIO DE ITAPEMA">PRESÍDIO DE ITAPEMA</option>
+            <option value="PRESÍDIO DE ITUPORANGA">PRESÍDIO DE ITUPORANGA</option>
+            <option value="PRESÍDIO DE JARAGUÁ DO SUL">PRESÍDIO DE JARAGUÁ DO SUL</option>
+            <option value="PRESÍDIO DE JOAÇABA">PRESÍDIO DE JOAÇABA</option>
+            <option value="PRESÍDIO DE JOINVILLE">PRESÍDIO DE JOINVILLE</option>
+            <option value="PRESÍDIO DE LAGUNA">PRESÍDIO DE LAGUNA</option>
+            <option value="PRESÍDIO DE MAFRA">PRESÍDIO DE MAFRA</option>
+            <option value="PRESÍDIO DE MARAVILHA">PRESÍDIO DE MARAVILHA</option>
+            <option value="PRESÍDIO DE PORTO UNIÃO">PRESÍDIO DE PORTO UNIÃO</option>
+            <option value="PRESÍDIO DE RIO DO SUL">PRESÍDIO DE RIO DO SUL</option>
+            <option value="PRESÍDIO DE SÃO FRANCISCO DO SUL">PRESÍDIO DE SÃO FRANCISCO DO SUL</option>
+            <option value="PRESÍDIO DE SÃO JOSÉ DO CEDRO">PRESÍDIO DE SÃO JOSÉ DO CEDRO</option>
+            <option value="PRESÍDIO DE SÃO MIGUEL DO OESTE">PRESÍDIO DE SÃO MIGUEL DO OESTE</option>
+            <option value="PRESÍDIO DE VIDEIRA">PRESÍDIO DE VIDEIRA</option>
+            <option value="PRESÍDIO FEMININO DE CHAPECÓ">PRESÍDIO FEMININO DE CHAPECO</option>
+            <option value="PRESÍDIO FEMININO DE FLORIANÓPOLIS">PRESÍDIO FEMININO DE FLORIANÓPOLIS</option>
+            <option value="PRESÍDIO FEMININO DE ITAJAÍ">PRESÍDIO FEMININO DE ITAJAÍ</option>
+            <option value="PRESÍDIO FEMININO DE JOINVILLE">PRESÍDIO FEMININO DE JOINVILLE</option>
+            <option value="PRESÍDIO FEMININO DE TUBARAO">PRESÍDIO FEMININO DE TUBARAO</option>
+            <option value="PRESÍDIO MASCULINO DE FLORIANÓPOLIS">PRESÍDIO MASCULINO DE FLORIANÓPOLIS</option>
+            <option value="PRESÍDIO MASCULINO DE LAGES">PRESÍDIO MASCULINO DE LAGES</option>
+            <option value="PRESÍDIO MASCULINO DE TUBARÃO">PRESÍDIO MASCULINO DE TUBARÃO</option>
+            <option value="PRESÍDIO REGIONAL DE ARARANGUÁ">PRESÍDIO REGIONAL DE ARARANGUÁ</option>
+            <option value="PRESÍDIO REGIONAL DE BIGUAÇU">PRESÍDIO REGIONAL DE BIGUAÇU</option>
+            <option value="PRESÍDIO REGIONAL DE BLUMENAU">PRESÍDIO REGIONAL DE BLUMENAU</option>
+            <option value="PRESÍDIO REGIONAL DE CAÇADOR">PRESÍDIO REGIONAL DE CAÇADOR</option>
+            <option value="PRESÍDIO REGIONAL DE CAMPOS NOVOS">PRESÍDIO REGIONAL DE CAMPOS NOVOS</option>
+            <option value="PRESÍDIO REGIONAL DE CHAPECÓ">PRESÍDIO REGIONAL DE CHAPECÓ</option>
+            <option value="PRESÍDIO REGIONAL DE CONCORDIA">PRESÍDIO REGIONAL DE CONCORDIA</option>
+            <option value="PRESÍDIO REGIONAL DE CRICIÚMA">PRESÍDIO REGIONAL DE CRICIÚMA</option>
+            <option value="PRESÍDIO REGIONAL DE IMBITUBA">PRESÍDIO REGIONAL DE IMBITUBA</option>
+            <option value="PRESÍDIO REGIONAL DE JARAGUÁ DO SUL">PRESÍDIO REGIONAL DE JARAGUÁ DO SUL</option>
+            <option value="PRESÍDIO REGIONAL DE JOAÇABA">PRESÍDIO REGIONAL DE JOAÇABA</option>
+            <option value="PRESÍDIO REGIONAL DE JOINVILLE">PRESÍDIO REGIONAL DE JOINVILLE</option>
+            <option value="PRESÍDIO REGIONAL DE LAGES">PRESÍDIO REGIONAL DE LAGES</option>
+            <option value="PRESÍDIO REGIONAL DE LAGUNA">PRESÍDIO REGIONAL DE LAGUNA</option>
+            <option value="PRESÍDIO REGIONAL DE MAFRA">PRESÍDIO REGIONAL DE MAFRA</option>
+            <option value="PRESÍDIO REGIONAL DE RIO DO SUL">PRESÍDIO REGIONAL DE RIO DO SUL</option>
+            <option value="PRESÍDIO REGIONAL DE TIJUCAS">PRESÍDIO REGIONAL DE TIJUCAS</option>
+            <option value="PRESÍDIO REGIONAL DE TUBARÃO">PRESÍDIO REGIONAL DE TUBARÃO</option>
+            <option value="PRESÍDIO REGIONAL DE VIDEIRA">PRESÍDIO REGIONAL DE VIDEIRA</option>
+            <option value="PRESÍDIO REGIONAL DE XANXERÊ">PRESÍDIO REGIONAL DE XANXERÊ</option>
+            <option value="PRESÍDIO REGIONAL FEMININO DE ITAJAÍ">PRESÍDIO REGIONAL FEMININO DE ITAJAÍ</option>
+            <option value="PRESÍDIO SÃO JOSÉ DO CEDRO">PRESÍDIO SÃO JOSÉ DO CEDRO</option>
+            <option value="PROCON / SC">PROCON / SC</option>
+            <option value="PROTEGE">PROTEGE</option>
+            <option value="SAP - SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA">SAP - SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</option>
+            <option value="SOE - SERVIÇO DE OPERAÇÕES E ESCOLTA">SOE - SERVIÇO DE OPERAÇÕES E ESCOLTA</option>
+            <option value="SR08">SR08</option>
+            <option value="UNIDADE DE SEGURANÇA MÁXIMA">UNIDADE DE SEGURANÇA MÁXIMA</option>
+            <option value="UNIDADE PRISIONAL AVANÇADA DE BARRA VELHA">UNIDADE PRISIONAL AVANÇADA DE BARRA VELHA</option>
+            <option value="UNIDADE PRISIONAL AVANÇADA DE LAGUNA">UNIDADE PRISIONAL AVANÇADA DE LAGUNA</option>
+            <option value="OUTRA">OUTRA</option>
+	    </select>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>OBSERVAÇÃO</label>
+        <textarea class="form-control" id="observacao" name="observacao" type=""></textarea>
+    </div>
+
+
+  <div class="form-group col-md-12">
+
+         <button style="color: #111; font-weight: bolder;">Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+<script>
+function dado_servidor(){
+  servidor = document.getElementById('servidor_id')
+  console.log(servidor.value) 
+  csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value  
+  id_servidor = servidor.value
+
+  data = new FormData()
+  data.append('id_servidor', id_servidor)
+
+  fetch("/cautela_arma/servidor/",{
+    method: "POST",
+    headers:{
+      'X-CSRFToken': csrf_token,
+    },
+    body: data
+
+  }).then(function(result){
+    return result.json()
+  }).then(function(data){
+      matricula = document.getElementById('matricula')
+      matricula.value = data['matricula']
+
+      telefone = document.getElementById('telefone')
+      telefone.value = data['telefone']
+
+      console.log(data)
+
+  })
+}  
+
+  function dado_arma(){
+  arma = document.getElementById('arma_id')
+  console.log(arma.value) 
+  csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value  
+  id_arma = arma.value
+
+  data = new FormData()
+  data.append('id_arma', id_arma)
+
+  fetch("/cautela_arma/arma/",{
+    method: "POST",
+    headers:{
+      'X-CSRFToken': csrf_token,
+    },
+    body: data
+
+  }).then(function(result){
+    return result.json()
+  }).then(function(data){
+      numeropatri = document.getElementById('numeropatri')
+      numeropatri.value = data['numeropatri']
+      numerosinarm = document.getElementById('numerosinarm')
+      numerosinarm.value = data['numerosinarm']
+      especie = document.getElementById('especie')
+      especie.value = data['especie']
+      modelo = document.getElementById('modelo')
+      modelo.value = data['modelo']
+      calibre = document.getElementById('calibre')
+      calibre.value = data['calibre']                
+      console.log(data)
+
+  })
+
+}
+</script>
+
+</div>
+
+{% endblock %}

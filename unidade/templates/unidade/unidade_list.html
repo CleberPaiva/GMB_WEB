@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h2 class="display-4">UNIDADES</h2>
+		    <p class="lead"></p>
+		  </div>
+		  <div>
+
+			  <form method="get" action="/unidade/novo"><button type="submit">Cadastrar</button></form>
+
+		  </div>
+		  <div>
+          	<form method="GET" enctype="multipart/form-data">
+            	<input name="busca" class="form-inline" style="margin-top: 10px;" type="text" placeholder="Insira sua busca" >
+           		 <button type="submit" class="btn-btn-primary">Buscar</button>
+         	 </form>
+        </div>
+		</div>
+		<div class="row">
+				{% for unidade in unidades %}
+		    <div class="col">
+		      <div class="card" style="width: auto;">
+		        <div class="card-body">
+					<h4 class="card-title"><b><font color="blue"> {{ unidade.nome }}</font></b></h4>
+							<div align="justify">
+							<p class="card-text"> GESTOR...:  {{ unidade.gestor }}</p>
+							<p class="card-text"> TELEFONE...:  {{ unidade.telefone }}</p>
+							<p class="card-text"> EMAIL...:  {{ unidade.email }}</p>
+							<p class="card-text"> ENDEREÇO...:  {{ unidade.endereco }}</p>
+							<p class="card-text"> ÓRGÃO...:  {{ unidade.orgao }}</p>
+							</div>
+
+							<br>
+							<p><a href="{% url 'edit_unidade' unidade.id %}">Editar</a></p>
+							<hr />
+
+							<br>
+		        </div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if unidades.has_previous %}
+							<a href="?page={{ unidades.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ unidade.number }} de {{ unidades.paginator.num_pages }}
+					</span>
+
+					{% if unidades.has_next %}
+							<a href="?page={{ unidades.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+{% endblock %}

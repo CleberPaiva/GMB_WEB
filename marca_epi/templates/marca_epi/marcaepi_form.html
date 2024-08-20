@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>FABRICANTE DE EPI´s</h4>
+
+<!-- Nome Marca -->
+    <div class="form-group col-md-4">
+        <label>NOME DO FABRICANTE</label>
+        <input class="form-control" id="marcaEpi" name="marcaEpi" type="text" required>
+    </div>
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

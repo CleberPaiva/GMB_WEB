@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CADASTRO DE COLABORADOR</h4>
+
+   <!-- Nome -->
+    <div class="form-group col-md-12">
+        <label>NOME</label>
+        <input class="form-control" id="nome" name="nome" type="text" required>
+    </div>
+
+    <!-- Documento -->
+    <div class="form-group col-md-6">
+        <label>UNIDADE</label>
+        <input class="form-control" id="unidade" name="unidade" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-6">
+        <label>MATRICULA</label>
+        <input class="form-control" id="matricula" name="matricula" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-6">
+        <label>CPF</label>
+        <input class="form-control" id="cpf" name="cpf" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-6">
+        <label>ENDEREÇO</label>
+        <input class="form-control" id="endereco" name="endereco" type="text" required>
+    </div>
+
+<!-- Setor Visitado -->
+    <div class="form-group col-md-6">
+        <label>TELEFONE</label>
+        <input class="form-control" id="telefone" name="telefone" type="text" required>
+    </div>
+
+ <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>E-MAIL</label>
+        <input class="form-control" id="email" name="email" type="text" required>
+    </div>
+
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

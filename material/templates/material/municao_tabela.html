@@ -1,0 +1,84 @@
+{% extends 'base.html'%}
+
+{% block main %}
+
+<script>
+
+	$(document).ready(function(){
+	$("#tabela-listar").DataTable({
+        responsive: true,
+        // "bSort": false,
+        "aaSorting": [],
+        "pageLength": 25,
+        "language": {
+            "decimal": "",
+            "emptyTable": "Sem dados disponíveis",
+            "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+            "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+            "infoFiltered": "(filtrado de _MAX_ registos no total)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ registos",
+            "loadingRecords": "A carregar dados...",
+            "processing": "A processar...",
+            "search": "Procurar:",
+            "zeroRecords": "Não foram encontrados resultados",
+            "paginate": {
+                "first": "Primeiro",
+                "last": "Último",
+                "next": "Seguinte",
+                "previous": "Anterior"
+            },
+            "aria": {
+                "sortAscending": ": ordem crescente",
+                "sortDescending": ": ordem decrescente"
+            }
+        }
+    });
+});
+
+</script>
+
+    <div class="container">
+        <div class="area">
+            <header>
+                <h1>MUNIÇÃO</h1>
+                <p></p>
+            </header>
+        </div>
+        	<div class="table-responsive">
+				<table class="table table-hover" id="tabela-listar">
+					<thead>
+									<tr>
+										<td style="width:200px">GENS</td>
+										<td style="width:200px">CALIBRE</td>
+										<td style="width:200px">MODELO</td>
+										<td style="width:200px">FABRICANTE</td>
+                                        <td style="width:200px">QTD CAIXAS</td>
+                                        <td style="width:200px">QTD PRODUTO</td>
+                                    </tr>
+
+					</thead>
+
+					<tbody>
+				{% for municao in municaos %}
+									<tr>
+										<td style="width:200px">{{ municao.gens }}</td>
+										<td style="width:200px">{{ municao.calibre }}</td>
+										<td style="width:200px">{{ municao.modelo }}</td>
+										<td style="width:200px">{{ municao.fabricante }}</td>
+                                        <td style="width:200px">{{ municao.qtdcaixas }}</td>
+                                        <td style="width:200px">{{ municao.qtdproduto }}</td>
+									</tr>
+				{% endfor %}
+					</tbody>
+			    </table>
+		    </div>
+		<div>
+			<br>
+			<br>
+			<br>
+		</div>
+    </div>
+
+{% endblock %}

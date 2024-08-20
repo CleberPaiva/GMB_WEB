@@ -1,0 +1,646 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 210px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 0px;
+}
+
+.h2_main {
+  margin-bottom: 0px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #225fc0;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #330c95;
+}
+.box-display-1{
+    margin-top: 20px;
+  }
+  .box-display-2{
+    margin-top: 20px;
+  }
+
+.img-index {
+    border-radius: 50%; 
+    width: 150px; 
+    margin-top: 30px; 
+    margin-bottom:30px;
+  }
+  #links-menu {
+    margin-top: -200px;
+
+  }
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+@media screen and (max-width: 600px) {
+  .main {
+    margin-left: 5px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .h2_main{
+    margin-top: 0px;
+  }
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: 0px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: column;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .dashboard-box:nth-child(2) {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 55px; 
+    height: 55px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 750px) {
+  .main {
+    margin-left: 5px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .h2_main{
+    margin-top: 0px;
+  }
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: 0px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: column;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 5px;
+      box-sizing: border-box;
+      height: 140px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .dashboard-box:nth-child(2) {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 55px; 
+    height: 55px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 768px) {
+.navbar-collapse.collapse {
+    height: 100%;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 900px) {
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-box {
+      padding: 5px;
+  }
+  .dashboard span {
+      font-size: 25px;
+      display: block;
+      width: 100%;
+  }
+  .dashboard h4 {
+      font-size: 18px;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 901px) and (max-width: 1150px) {
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-box {
+      padding: 5px;
+  }
+  .dashboard span {
+      font-size: 27px;
+      display: block;
+      width: 100%;
+  }
+  .dashboard h4 {
+      font-size: 19px;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 1150px) and (max-width: 1300px) {
+  .main {
+    margin-left: 240px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .sidenav{
+    width: 210px;
+    height: 750px;
+  }
+  .h2_main{
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+  /* menu nav superior */
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: -330px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 10px;
+      box-sizing: border-box;
+      height: 140px;
+      width: 32%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .dashboard-box:nth-child(2) {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 155px; 
+    height: 155px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+
+
+@media (min-width: 1301px) and (max-width: 2300px){
+  #menu_lateral {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+  }
+}
+
+
+</style>
+</head>
+<body style="background-image: url(/static/image/a10.jpg)">
+
+    <div class="navbar-header">
+        <img id="img-index" class="img-index" src="/static/image/gmb.jpeg">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#links-menu" style="background-color: white;">
+					<i class="material-icons">menu</i>
+				</button>
+			</div>
+      <nav id="links-menu" class="collapse navbar-collapse">
+        <li class="menu-lateral"><a href="" style="color: #f1f1f1;"><i class="fa fa-fw fa-home"></i>Início</a></li>
+          {% if perms.global_permissions.pode_acessar_armas_tabelas %}
+        <li class="menu-lateral"><a href="/arma/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-table"></i>Armas</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_armas %}
+        <li class="menu-lateral"><a href="/arma/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-list"></i>Armas Lista</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_coletes %}
+        <li class="menu-lateral"><a href="/colete/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-shield"></i>Colete</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_estoque %}
+        <li class="menu-lateral"><a href="/estoque/" style="color: #f1f1f1;"><i class="fa fa-fw fa-cube"></i>Estoque</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_servidores %}
+        <li class="menu-lateral"><a href="/servidor/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-user"></i>Servidores</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_fornecedores %}
+        <li class="menu-lateral"><a href="/fornecedor/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-truck"></i>Fornecedores</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_oficina %}
+        <li class="menu-lateral"><a href="/oficina/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-wrench"></i>Oficina</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_mural %}
+        <li class="menu-lateral"><a href="/mural/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-newspaper-o"></i>Mural</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_cadastros %}
+        <li class="menu-lateral"><a href="/cadastros" style="color: #f1f1f1;"><i class="fa fa-fw fa-floppy-o"></i>Cadastros</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_restricoes %}
+        <li class="menu-lateral"><a href="/restricoes" style="color: #f1f1f1;"><i class="fa fa-fw fa-floppy-o"></i>Restrições</a></li>
+          {% endif %}
+          {% if perms.global_permissions.pode_acessar_gestaodpp %}
+        <li class="menu-lateral"><a href="/gestaodpp" style="color: #f1f1f1;"><i class="fa fa-fw fa-floppy-o"></i>Relatórios</a></li>
+          {% endif %}
+        <li class="menu-lateral"><a href="{% url 'logout' %}" style="color: #f1f1f1;"><i class="fa fa-fw fa-home"></i>Sair</a></li>
+      </nav>
+
+
+<div id="menu_lateral" class="sidenav collapse navbar-collapse" style="margin-left: 15px; padding-left: 10px; ">
+    <img id="img-index" style="border-radius: 50%; width: 150px; margin-top: 30px; margin-bottom:30px" src="/static/image/gmb.jpeg">
+    <a href=""><i class="fa fa-fw fa-home"></i>Início</a>
+    {% if perms.global_permissions.pode_acessar_armas_tabelas %}
+    <a href="/arma/tabela"><i class="fa fa-fw fa-table"></i>Armas</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_armas %}
+    <a href="/arma/list"><i class="fa fa-fw fa-list"></i>Armas Lista</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+    <a href="/colete/tabela"><i class="fa fa-fw fa-shield"></i>Colete</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+    <a href="/colete/list"><i class="fa fa-fw fa-shield"></i>Colete Lista</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_estoque %}
+    <a href="/estoque/"><i class="fa fa-fw fa-cube"></i>Estoque</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_servidores %}
+    <a href="/servidor/list"><i class="fa fa-fw fa-user"></i>Servidores</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_fornecedores %}
+    <a href="/fornecedor/list"><i class="fa fa-fw fa-truck"></i>Fornecedores</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_oficina %}
+    <a href="/oficina/tabela"><i class="fa fa-fw fa-wrench"></i>Oficina</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_mural %}
+    <a href="/mural/list"><i class="fa fa-fw fa-newspaper-o"></i>Mural</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_cadastros %}
+    <a href="/cadastros"><i class="fa fa-fw fa-floppy-o"></i>Cadastros</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_restricoes %}
+    <a href="/restricoes"><i class="fa fa-fw fa-floppy-o"></i>Restrições</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_gestaodpp %}
+    <a href="/gestaodpp"><i class="fa fa-fw fa-list"></i>Relatórios</a>
+    {% endif %}
+    <a href="{% url 'logout' %}"><i class="fa fa-fw fa-home"></i>Sair</a>
+</div>
+
+
+<div class="main">
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h3 style="margin-left: 15px; 
+                font-weight: bold; 
+                font-size: 26px; 
+                margin-bottom: 30px;">
+        EDIÇÃO DO CADASTRO DE COLETE
+    </h3>
+
+    <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="numeroserie" name="numeroserie" type="text" value="{{ colete.numeroserie }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>Nº DE PATRIMÔNIO</label>
+        <input class="form-control" id="numeropatri" name="numeropatri" type="text" value="{{ colete.numeropatri }}">
+    </div>
+    <div class="form-group col-md-4">
+        <label>MARCA</label>
+        <input class="form-control" id="marca" name="marca"  value="{{ colete.marca }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie"  value="{{ colete.especie }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>NÍVEL</label>
+        <input class="form-control" id="nivel" name="nivel"  value="{{ colete.nivel }}" readonly>
+    </div>    
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" value="{{ colete.modelo }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+        <input class="form-control" id="unidade" name="unidade" value="{{ colete.unidade }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>SERVIDOR</label>
+        <input class="form-control" id="servidor" name="servidor" type="text"  value="{{ colete.servidor }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>MATRICULA</label>
+        <input class="form-control" id="matricula" name="matricula" type="text" value="{{ colete.matricula }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label for="cargo">CARGO</label>
+        <select class="form-control" id="cargo" name="cargo" required>
+            <option value="{{ colete.cargo }}"> {{ colete.cargo }} </option>
+            <option value="Policial Penal">Policial Penal</option>
+            <option value="Agente Socioeducativo">Agente Socioeducativo</option>
+            <option value="Outros">Outros</option>
+        </select>
+    </div>   
+    <div class="form-group col-md-4">
+        <label>DATA FABRICAÇÃO</label>
+        <input class="form-control" id="datafabricacao" name="datafabricacao" type="text" value="{{ colete.datafabricacao }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>GARANTIA</label>
+        <input class="form-control" id="garantia" name="garantia" type="text" value="{{ colete.garantia }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>CAPA</label>
+        <input class="form-control" id="capa" name="capa" type="text" value="{{ colete.capa }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>Nº DE SGPE</label>
+        <input class="form-control" id="sgpe" name="sgpe" type="text" value="{{ colete.sgpe }}" required>
+    </div>    
+    <div class="form-group col-md-4">
+        <label>DATA DA CAUTELA</label>
+        <input class="form-control" id="datacautela" name="datacautela" type="date" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>TIPO</label>
+        <input class="form-control" id="tipo" name="tipo" type="text" value="{{ colete.tipo }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="responsavel" name="responsavel" type="text" value="{{ user.servidor }} - {{ user.username}}" readonly>
+    </div>
+
+        <!-- Observações
+    <div class="form-group col-md-4">
+        <label>OBSERVAÇÕES:</label>
+        <textarea class="form-control" id="observacoes" name="observacoes" type="textarea">{{ colete.observacoes }}</textarea>
+    </div>-->
+
+  <div class="form-group col-md-12">
+
+         <button style="color: #111; font-weight: bolder;">Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,224 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv=”content-type” content="text/html;" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>GMB</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+  <!-- ESTILOS PARA ESTA PÁGINA -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <link rel="stylesheet" href="/static/css/styles.css">
+
+
+  <!-- JAVASCRIPT E JQUERY -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    /* ... (código existente) ... */
+
+    /* Menu hambúrguer */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 24px;
+    }
+
+    .table-hover-2:hover {
+      color: black;
+    }
+
+    /* Estilos para o menu lateral responsivo */
+    @media screen and (max-width: 600px) {
+      #menu_lateral {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        /* largura negativa do menu lateral */
+        width: 250px;
+        height: 100%;
+        z-index: 1000;
+        transition: 0.3s;
+      }
+
+      #menu_lateral.open {
+        left: 550px;
+      }
+
+      .hamburger {
+        display: inline;
+      }
+    }
+  </style>
+
+</head>
+
+
+<body style="background-image: url(/static/image/a10.jpg)">
+
+  <div class="navbar-header">
+    <!-- <img id="img-index" class="img-index" src="/static/image/gmb.jpeg"> -->
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#links-menu"
+      style="background-color: white;">
+      <i class="material-icons">menu</i>
+    </button>
+  </div>
+  <nav id="links-menu" class="collapse navbar-collapse">
+    <li class="menu-lateral"><a href="/""/" style="color: #f1f1f1;"><i class="fa fa-fw fa-home"></i>Início</a></li>
+    <!--
+          {% if perms.global_permissions.pode_acessar_armas_tabelas %}
+        <li class="menu-lateral"><a href="/arma/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-table"></i>Armas</a></li>
+          {% endif %}
+          -->
+    {% if perms.global_permissions.pode_acessar_armas %}
+    <li class="menu-lateral"><a href="/arma/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-list"></i>Arma</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_armas %}
+    <li class="menu-lateral"><a href="/arma_particular/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-user-circle-o"></i>Arma Particular</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+    <li class="menu-lateral"><a href="/municao/list/" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-battery-full"></i>Munição</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+    <li class="menu-lateral"><a href="/colete/tabela" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-shield"></i>Colete</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_estoque %}
+    <li class="menu-lateral"><a href="/estoque/" style="color: #f1f1f1;"><i class="fa fa-fw fa-cube"></i>Materiais/a>
+    </li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_servidores %}
+    <li class="menu-lateral"><a href="/pessoa/list" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-user"></i>Servidores</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_unidades %}
+    <li class="menu-lateral"><a href="/cautela_unidade/list" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-building"></i>Unidades</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_fornecedores %}
+    <li class="menu-lateral"><a href="/fornecedor/list" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-truck"></i>Fornecedores</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_oficina %}
+    <li class="menu-lateral"><a href="/oficina/tabela" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-wrench"></i>Oficina</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_mural %}
+    <li class="menu-lateral"><a href="/mural/list" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-newspaper-o"></i>Mural</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_cadastros %}
+    <li class="menu-lateral"><a href="/cadastros" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-floppy-o"></i>Cadastros</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_restricoes %}
+    <li class="menu-lateral"><a href="/restricoes/tabela/" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-floppy-o"></i>Restrições</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_gestaodpp %}
+    <li class="menu-lateral"><a href="/gestaodpp" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-floppy-o"></i>Relatórios</a></li>
+    {% endif %}
+    <li class="menu-lateral"><a href="{% url 'logout' %}" style="color: #f1f1f1;"><i
+          class="fa fa-fw fa-home"></i>Sair</a></li>
+  </nav>
+
+  <div id="menu_lateral" class="sidenav collapse navbar-collapse" style="margin-left: 15px; padding-left: 10px; ">
+    <img id="img-index" style="border-radius: 50%; width: 150px; margin-top: 30px; margin-bottom:30px"
+      src="/static/image/gmb.jpeg">
+    <a href="/""/"><i class="fa fa-fw fa-home"></i>Início</a>
+    <!--
+        {% if perms.global_permissions.pode_acessar_armas_tabelas %}
+        <a href="/arma/tabela"><i class="fa fa-fw fa-table"></i>Armas</a>
+        {% endif %}
+        -->
+    {% if perms.global_permissions.pode_acessar_armas %}
+    <a href="/arma/list"><i class="fa fa-fw fa-list"></i>Arma</a>
+    {% endif %}
+    <!--
+        {% if perms.global_permissions.pode_acessar_coletes %}
+        <a href="/colete/tabela"><i class="fa fa-fw fa-shield"></i>Colete</a>
+        {% endif %}
+        -->
+    {% if perms.global_permissions.pode_acessar_armas %}
+    <a href="/arma_particular/list"><i class="fa fa-fw fa-user-circle-o"></i>Arma PP</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+    <a href="/municao/list/"><i class="fa fa-fw fa-battery-full"></i>Munição</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+    <a href="/colete/list"><i class="fa fa-fw fa-shield"></i>Colete</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_estoque %}
+    <a href="/estoque/"><i class="fa fa-fw fa-cube"></i>Materiais</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_servidores %}
+    <a href="/pessoa/list"><i class="fa fa-fw fa-user"></i>Servidores</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_servidores %}
+    <a href="/cautela_unidade/list"><i class="fa fa-fw fa-building"></i>Unidades</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_fornecedores %}
+    <a href="/fornecedor/list"><i class="fa fa-fw fa-truck"></i>Fornecedores</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_oficina %}
+    <a href="/oficina/tabela"><i class="fa fa-fw fa-wrench"></i>Oficina</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_mural %}
+    <a href="/mural/list"><i class="fa fa-fw fa-newspaper-o"></i>Mural</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_cadastros %}
+    <a href="/cadastros"><i class="fa fa-fw fa-floppy-o"></i>Cadastros</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_restricoes %}
+    <a href="/restricoes/tabela/"><i class="fa fa-fw fa-floppy-o"></i>Restrições</a>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_gestaodpp %}
+    <a href="/gerencia/menu"><i class="fa fa-fw fa-list"></i>Gerência</a>
+    {% endif %}
+    <a href="{% url 'logout' %}"><i class="fa fa-fw fa-home"></i>Sair</a>
+    <a href=""></a>
+  </div>
+  <div style="width: 100%; height: 100%;">
+
+    {% block main %} {% endblock %}
+
+  </div>
+  <!-- Script para controlar o menu lateral responsivo -->
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const hamburger = document.querySelector('.hamburger');
+      if (hamburger) {
+        hamburger.addEventListener('click', function () {
+          document.getElementById('menu_lateral').classList.toggle('open');
+          console.log("Teste");
+        });
+      }
+    });
+
+  </script>
+</body>
+
+</html>

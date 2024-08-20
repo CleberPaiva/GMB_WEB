@@ -1,0 +1,78 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h2 class="display-4">MUNIÇÕES</h2>
+		    <p class="lead"></p>
+		  </div>
+		  <div>
+
+			  <form method="get" action="/produto/novo"><button type="submit">Cadastrar</button></form>
+				</br>
+			  <form method="get" action="/material/tabelamunicao"><button type="submit">Tabela</button></form>
+
+		  </div>
+		  <div>
+          	<form method="GET" enctype="multipart/form-data">
+            	<input name="busca" class="form-inline" style="margin-top: 10px;" type="text" placeholder="Insira sua busca" >
+           		 <button type="submit" class="btn-btn-primary">Buscar</button>
+         	 </form>
+        </div>
+		</div>
+		<div class="row">
+		    <div class="col">
+		      <div class="card" style="width: auto;">
+		        <div class="card-body">
+					<table class="table table-hover" id="tabela-listar">
+					<thead>
+									<tr>
+										<td style="width:200px">GENS</td>
+										<td style="width:200px">CALIBRE</td>
+										<td style="width:200px">MODELO</td>
+										<td style="width:200px">FABRICANTE</td>
+                                        <td style="width:200px">QTD CAIXAS</td>
+                                        <td style="width:200px">QTD PRODUTO</td>
+                                    </tr>
+
+					</thead>
+
+					<tbody>
+				{% for municao in municaos %}
+									<tr>
+										<td style="width:200px">{{ municao.gens }}</td>
+										<td style="width:200px">{{ municao.calibre }}</td>
+										<td style="width:200px">{{ municao.modelo }}</td>
+										<td style="width:200px">{{ municao.fabricante }}</td>
+                                        <td style="width:200px">{{ municao.qtdcaixas }}</td>
+                                        <td style="width:200px">{{ municao.qtdproduto }}</td>
+									</tr>
+				{% endfor %}
+					</tbody>
+			    </table>
+		        </div>
+		      </div>
+				</div>
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if municaos.has_previous %}
+							<a href="?page={{ municaos.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ municaos.number }} de {{ municaos.paginator.num_pages }}
+					</span>
+
+					{% if municaos.has_next %}
+							<a href="?page={{ municaos.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+
+{% endblock %}

@@ -1,0 +1,229 @@
+
+<style>
+#container{
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 98%;
+}
+#cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content:space-around;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+#corpo {
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 98%;
+    border-top: 2px solid black;
+    margin-top: 20px;
+}
+
+.paragrafo{
+    text-align:justify;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.itens{
+    text-align: left;
+    padding-left: 20px;
+}
+
+#detalhes{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#assinatura{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 300px;
+    margin-top: 60px;
+    border-top: 2px solid black;
+}
+
+.assinatura{
+    margin-top: 2px;
+    padding: 1px;
+}
+
+
+#assinatura2{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 300px;
+    margin-top: 80px;
+    border-top: 2px solid black;
+}
+
+.assinatura2{
+    margin-top: 2px;
+    padding: 1px;
+}
+
+#rodape {
+    align-items: center;
+    text-align: center;
+    width: 800px;
+    position: absolute;
+    bottom: 0;
+}
+
+#gmb1 {
+    border: 2px solid rgb(0, 5, 10);
+    text-align: center;
+    height: 100px;
+    width: 230px;
+    margin: 5px;
+}
+
+#gmb2 {
+    border: 2px solid rgb(0, 4, 9);
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#gmb3 {
+    border: 2px solid rgb(0, 7, 15);
+    text-align: center;
+    height: 100px;
+    width: 230px;
+    margin: 5px;
+}
+
+.h3 {
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.h4 {
+    text-align: center;
+    margin-top: 2px;
+}
+
+.h5 {
+    text-align: center;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0.5;
+}
+
+.h6 {
+    line-height: 0.5;
+}
+
+.texto {
+    font-size: 14px;
+    font-family: Arial;
+    margin-top: 0px;
+}
+
+.texto3 {
+    font-size: 8px;
+    font-family: Arial;
+}
+
+.texto4 {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial;
+    margin-top: 35px;
+}
+
+.texto5 {
+    margin-top: 45px;
+}
+
+.brasao{
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin-top: 2px;
+}
+
+#logo2{
+    line-height: 1.5;
+}
+</style>
+
+    <div id="container">
+        <div id="cabecalho">
+            <div id="logo1">
+                <div class="brasao">
+                    <img id="img-index2" style="height: 80px; width: 80px;" src="/static/image/estado.png">
+                </div>
+            </div>
+            <div id="logo2">
+                <h5 class="h5">ESTADO DE SANTA CATARINA</h5>
+                <h5 class="h5">SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">GERÊNCIA DE MATERIAL BÉLICO – GMB</h5>
+            </div>
+            <div id="logo3">
+                <div class="brasao">
+                    <img id="img-index" style="height: 80px; width: 80px;" src="/static/image/gmb.jpeg">
+                </div>
+            </div>
+        </div>
+        <div class="corpo">
+            <p class="texto4"><span>RECIBO DE DEVOLUÇÃO DE ARMA</span></p>
+            <p class="paragrafo texto texto5">
+                Declaramos para os devidos fins, que o  {{ arma.servidor }}, Policial Penal, matricula {{ arma.matricula }},
+                lotado na(o) {{ arma.unidade }}, telefone {{ arma.telefone }}, devolveu nesta gerência, conforme processo SGPE
+                de número {{ arma.numerosgpe }}, os seguintes itens:
+            </p>
+            <p class="itens texto">- 01 arma de fogo, marca {{ arma.marca }}, calibre {{ arma.calibre }}, modelo {{ arma.modelo }};</p>
+            <p class="itens texto">- Nº de série: {{ arma.numeroserie }}, nº patrimônio: {{ arma.numeropatri }} e nº Sinarm: {{ arma.numerosinarm }};</p>
+            <p class="itens texto">- {{ arma.qtcarregador }} carregadores de capacidade de {{ arma.capacidade }} munições; </p>
+            <p class="itens texto">- {{ arma.qtmunicao }} de munições {{ arma.tipomunicao }} de gens {{ arma.gensmunicao }};</p>
+            <p class="itens texto">- Acessórios: {{ arma.acessorios }}</p>
+            <p class="itens texto">Observações: {{ arma.observacoes }}</p>
+            <p class="paragrafo texto">
+
+            </p>
+            <div id="detalhes">
+                <div>
+                    <h4 class="texto texto5">São Pedro de Alcântara, {{ arma.datacautela }}.</h4>
+                </div>
+                <div id="assinatura" class="texto5">
+                    <!--<h5 class="assinatura texto" style="width: 500px">{{ arma.responsavel }}</h5> -->
+                    <h5 class="assinatura texto">GERÊNCIA DE MATERIAL BÉLICO</h5>
+                </div>
+                <div id="assinatura2" class="texto5">
+                    <h5 class="assinatura texto" style="width: 500px">RUBRICA E MATRICULA</h5>
+                    <h5 class="assinatura texto" style="width: 500px">RESPONSÁVEL PELA DEVOLUÇÃO</h5>
+                </div>
+            </div>
+            <div id="rodape">
+                <h5 class="h4 texto">GERÊNCIA DE MATERIAL BÉLICO - GMB </h5>
+                <h6 class="texto3 h6">Rua Adriano Enning, s/n, Santa Tereza, São Pedro de Alcântara – CEP: 88125-000. Casa 4.</h6>
+                <h6 class="texto3 h6">Telefone: (48) 3244-2845 / 3249-1725 – E-mail: gmb@acaps.sc.gov.br </h6>
+            </div>
+        </div>
+    </div>
+

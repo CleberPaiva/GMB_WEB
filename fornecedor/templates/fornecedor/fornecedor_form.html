@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CADASTRO DE FORNECEDOR</h4>
+
+   <!-- Nome -->
+    <div class="form-group col-md-12">
+        <label>NOME FANTASIA</label>
+        <input class="form-control" id="nomefantasia" name="nomefantasia" type="text" required>
+    </div>
+
+    <!-- Documento -->
+    <div class="form-group col-md-6">
+        <label>RAZÃO SOCIAL</label>
+        <input class="form-control" id="razaosocial" name="razaosocial" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-6">
+        <label>ENDEREÇO</label>
+        <input class="form-control" id="endereco" name="endereco" type="text" required>
+    </div>
+
+<!-- Setor Visitado -->
+    <div class="form-group col-md-6">
+        <label>TELEFONE</label>
+        <input class="form-control" id="telefone" name="telefone" type="text" required>
+    </div>
+
+ <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>E-MAIL</label>
+        <input class="form-control" id="email" name="email" type="text" required>
+    </div>
+
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,624 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 210px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 0px;
+}
+
+.h2_main {
+  margin-bottom: 0px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #225fc0;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #330c95;
+}
+.box-display-1{
+    margin-top: 20px;
+  }
+  .box-display-2{
+    margin-top: 20px;
+  }
+
+.img-index {
+    border-radius: 50%; 
+    width: 150px; 
+    margin-top: 30px; 
+    margin-bottom:30px;
+  }
+  #links-menu {
+    margin-top: -200px;
+
+  }
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+@media screen and (max-width: 600px) {
+  .main {
+    margin-left: 5px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .h2_main{
+    margin-top: 0px;
+  }
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: 0px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: column;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .dashboard-box:nth-child(2) {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 55px; 
+    height: 55px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 750px) {
+  .main {
+    margin-left: 5px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .h2_main{
+    margin-top: 0px;
+  }
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: 0px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: column;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 5px;
+      box-sizing: border-box;
+      height: 140px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .dashboard-box:nth-child(2) {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 55px; 
+    height: 55px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 768px)
+.navbar-collapse.collapse {
+    height: 100%;
+}
+
+@media (min-width: 751px) and (max-width: 900px) {
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-box {
+      padding: 5px;
+  }
+  .dashboard span {
+      font-size: 25px;
+      display: block;
+      width: 100%;
+  }
+  .dashboard h4 {
+      font-size: 18px;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 901px) and (max-width: 1150px) {
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-box {
+      padding: 5px;
+  }
+  .dashboard span {
+      font-size: 27px;
+      display: block;
+      width: 100%;
+  }
+  .dashboard h4 {
+      font-size: 19px;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 1150px) and (max-width: 1300px) {
+  .main {
+    margin-left: 240px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .sidenav{
+    width: 210px;
+    height: 750px;
+  }
+  .h2_main{
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+  /* menu nav superior */
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: -330px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 10px;
+      box-sizing: border-box;
+      height: 140px;
+      width: 32%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .dashboard-box:nth-child(2) {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 155px; 
+    height: 155px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+
+
+@media (min-width: 1301px) and (max-width: 2300px){
+  #menu_lateral {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+  }
+}
+
+
+</style>
+
+<script>
+
+	$(document).ready(function(){
+	$("#tabela-listar").DataTable({
+        responsive: true,
+        // "bSort": false,
+        "aaSorting": [],
+        "pageLength": 10,
+        "language": {
+            "decimal": "",
+            "emptyTable": "Sem dados disponíveis",
+            "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+            "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+            "infoFiltered": "(filtrado de _MAX_ registos no total)",
+            "infoPostFix": "",
+            "thousands": ",",
+            "lengthMenu": "Mostrar _MENU_ registos",
+            "loadingRecords": "A carregar dados...",
+            "processing": "A processar...",
+            "search": "Procurar:",
+            "zeroRecords": "Não foram encontrados resultados",
+            "paginate": {
+                "first": "Primeiro",
+                "last": "Último",
+                "next": "Seguinte",
+                "previous": "Anterior"
+            },
+            "aria": {
+                "sortAscending": ": ordem crescente",
+                "sortDescending": ": ordem decrescente"
+            }
+        }
+    });
+});
+
+</script>
+
+<body style="background-image: url(/static/image/a10.jpg)"></body>
+
+<div class="navbar-header">
+  <!--<img id="img-index" class="img-index" src="/static/image/gmb.jpeg">-->
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#links-menu" style="background-color: white;">
+    <i class="material-icons">menu</i>
+  </button>
+</div>
+<nav id="links-menu" class="collapse navbar-collapse">
+  <li class="menu-lateral"><a href="/""/" style="color: #f1f1f1;"><i class="fa fa-fw fa-home"></i>Início</a></li>
+    {% if perms.global_permissions.pode_acessar_armas_tabelas %}
+  <li class="menu-lateral"><a href="/arma/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-table"></i>Armas</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_armas %}
+  <li class="menu-lateral"><a href="/arma/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-list"></i>Armas Lista</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_coletes %}
+  <li class="menu-lateral"><a href="/colete/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-shield"></i>Colete</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_estoque %}
+  <li class="menu-lateral"><a href="/estoque/" style="color: #f1f1f1;"><i class="fa fa-fw fa-cube"></i>Estoque</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_servidores %}
+  <li class="menu-lateral"><a href="/servidor/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-user"></i>Servidores</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_fornecedores %}
+  <li class="menu-lateral"><a href="/fornecedor/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-truck"></i>Fornecedores</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_oficina %}
+  <li class="menu-lateral"><a href="/oficina/tabela" style="color: #f1f1f1;"><i class="fa fa-fw fa-wrench"></i>Oficina</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_mural %}
+  <li class="menu-lateral"><a href="/mural/list" style="color: #f1f1f1;"><i class="fa fa-fw fa-newspaper-o"></i>Mural</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_cadastros %}
+  <li class="menu-lateral"><a href="/cadastros" style="color: #f1f1f1;"><i class="fa fa-fw fa-floppy-o"></i>Cadastros</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_restricoes %}
+  <li class="menu-lateral"><a href="/restricoes" style="color: #f1f1f1;"><i class="fa fa-fw fa-floppy-o"></i>Restrições</a></li>
+    {% endif %}
+    {% if perms.global_permissions.pode_acessar_gestaodpp %}
+  <li class="menu-lateral"><a href="/gestaodpp" style="color: #f1f1f1;"><i class="fa fa-fw fa-floppy-o"></i>Relatórios</a></li>
+    {% endif %}
+  <li class="menu-lateral"><a href="{% url 'logout' %}" style="color: #f1f1f1;"><i class="fa fa-fw fa-home"></i>Sair</a></li>
+</nav>
+
+
+<div id="menu_lateral" class="sidenav collapse navbar-collapse" style="margin-left: 15px; padding-left: 10px; ">
+<img id="img-index" style="border-radius: 50%; width: 150px; margin-top: 30px; margin-bottom:30px" src="/static/image/gmb.jpeg">
+<a href=""><i class="fa fa-fw fa-home"></i>Início</a>
+{% if perms.global_permissions.pode_acessar_armas_tabelas %}
+<a href="/arma/tabela"><i class="fa fa-fw fa-table"></i>Armas</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_armas %}
+<a href="/arma/list"><i class="fa fa-fw fa-list"></i>Armas Lista</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_coletes %}
+<a href="/colete/tabela"><i class="fa fa-fw fa-shield"></i>Colete</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_coletes %}
+<a href="/colete/list"><i class="fa fa-fw fa-shield"></i>Colete Lista</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_estoque %}
+<a href="/estoque/"><i class="fa fa-fw fa-cube"></i>Estoque</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_servidores %}
+<a href="/servidor/list"><i class="fa fa-fw fa-user"></i>Servidores</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_fornecedores %}
+<a href="/fornecedor/list"><i class="fa fa-fw fa-truck"></i>Fornecedores</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_oficina %}
+<a href="/oficina/tabela"><i class="fa fa-fw fa-wrench"></i>Oficina</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_mural %}
+<a href="/mural/list"><i class="fa fa-fw fa-newspaper-o"></i>Mural</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_cadastros %}
+<a href="/cadastros"><i class="fa fa-fw fa-floppy-o"></i>Cadastros</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_restricoes %}
+<a href="/restricoes"><i class="fa fa-fw fa-floppy-o"></i>Restrições</a>
+{% endif %}
+{% if perms.global_permissions.pode_acessar_gestaodpp %}
+<a href="/gestaodpp"><i class="fa fa-fw fa-list"></i>Relatórios</a>
+{% endif %}
+<a href="{% url 'logout' %}"><i class="fa fa-fw fa-home"></i>Sair</a>
+</div>
+
+<div class="main">
+<!-- <div class="container"> -->
+        <div class="area">
+            <header>
+                <h1>Tabela de Armas</h1>
+                <p></p>
+            </header>
+        </div>
+        	<div class="table-responsive">
+				<table class="table table-hover" id="tabela-listar">
+					<thead>
+									<tr>
+										<td style="width:150px">Nº SÉRIE</td>
+										<td style="width:150px">ESPÉCIE</td>
+										<td style="width:150px">MARCA</td>
+										<td style="width:150px">MODELO</td>
+										<td>CALIBRE</td>
+										<td style="width:250px">UNIDADE</td>
+										<td style="width:250px">SERVIDOR</td>
+										<td style="width:250px">REGIONAL</td>
+                                    </tr>
+
+					</thead>
+
+					<tbody>
+				{% for arma in armas %}
+									<tr class="table-hover-2">
+										<td style="width:150px">{{ arma.numeroserie }}</td>
+										<td style="width:150px">{{ arma.especie }}</td>
+										<td style="width:150px">{{ arma.marca }}</td>
+										<td style="width:150px">{{ arma.modelo }}</td>
+										<td>{{ arma.calibre }}</td>
+										<td style="width:250px">{{ arma.unidade }}</td>
+										<td style="width:250px">{{ arma.servidor }}</td>
+										<td style="width:250px">{{ arma.regional }}</td>
+									</tr>
+				{% endfor %}
+					</tbody>
+			    </table>
+		    </div>
+		<div>
+			<br>
+			<br>
+			<br>
+		</div>
+    </div>
+</div>
+
+</body>
+
+{% endblock %}

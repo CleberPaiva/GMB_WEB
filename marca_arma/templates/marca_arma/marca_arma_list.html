@@ -1,0 +1,63 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h2 class="display-4">FABRICANTES DE ARMAS</h2>
+		    <p class="lead"></p>
+		  </div>
+		  <div>
+
+			  <form method="get" action="/marca_arma/novo"><button type="submit">Cadastrar</button></form>
+				</br>
+			  <form method="get" action="/marca_arma/tabela"><button type="submit">Tabela</button></form>
+
+		  </div>
+		  <div>
+          	<form method="GET" enctype="multipart/form-data">
+            	<input name="busca" class="form-inline" style="margin-top: 10px;" type="text" placeholder="Insira sua busca" >
+           		 <button type="submit" class="btn-btn-primary">Buscar</button>
+         	 </form>
+        </div>
+		</div>
+		<div class="row">
+				{% for marca_arma in marca_armas %}
+		    <div class="col">
+		      <div class="card" style="width: auto;">
+		        <div class="card-body">
+					<h4 class="card-title"><b><font color="blue"> </font></b></h4>
+							<div align="justify">
+                                <p class="card-text"> NOME...:  {{ marca_arma.marcaArma }}</p>
+							</div>
+
+							<br>
+							<p><a href="{% url 'marca_arma_edit' marca_arma.id %}">Editar</a></p>
+							<hr />
+
+							<br>
+		        </div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if marca_armas.has_previous %}
+							<a href="?page={{ marca_armas.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ marca_armas.number }} de {{ marca_armas.paginator.num_pages }}
+					</span>
+
+					{% if marca_armas.has_next %}
+							<a href="?page={{ marca_armas.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+{% endblock %}

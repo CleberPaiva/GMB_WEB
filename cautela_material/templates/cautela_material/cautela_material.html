@@ -1,0 +1,443 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<head>
+
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+    }
+
+    /* Fixed sidenav, full height */
+    .sidenav {
+      height: 100%;
+      width: 210px;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      bottom: 0%;
+      background-color: #111;
+      overflow-x: hidden;
+      padding-top: 20px;
+    }
+
+    #menu_lateral {
+      height: 100%;
+      margin-bottom: 0;
+    }
+
+
+    /* Style the sidenav links and the dropdown button */
+    .sidenav a,
+    .dropdown-btn {
+      padding: 6px 8px 6px 16px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #818181;
+      display: block;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* On mouse-over */
+    .sidenav a:hover,
+    .dropdown-btn:hover {
+      color: #f1f1f1;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: 240px;
+      /* Same as the width of the sidenav */
+      font-size: 20px;
+      /* Increased text to enable scrolling */
+      padding: 0px 10px;
+      color: white;
+      margin-top: 0px;
+    }
+
+    .h2_main {
+      margin-bottom: 0px;
+    }
+
+    /* Add an active class to the active dropdown button */
+    .active {
+      background-color: green;
+      color: white;
+    }
+
+    /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+    .dropdown-container {
+      display: none;
+      background-color: #262626;
+      padding-left: 8px;
+    }
+
+    /* Optional: Style the caret down icon */
+    .fa-caret-down {
+      float: right;
+      padding-right: 8px;
+    }
+
+    .fa {
+      margin-right: 5px;
+    }
+
+    /* dashboard */
+    .dashboard {
+      padding: 0;
+      width: 100%;
+      display: block;
+    }
+
+    .dashboard h4 {
+      font-size: 20px;
+    }
+
+    .dashboard span {
+      font-size: 40px;
+      display: block;
+      width: 100%;
+    }
+
+    .dashboard-box {
+      float: left;
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 32%;
+      text-align: center;
+    }
+
+    .dashboard-box:nth-child(2) {
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+    }
+
+    #dashboard-lastdays {
+      background-color: #225fc0;
+    }
+
+    #dashboard-done {
+      background-color: #13c43f;
+    }
+
+    #dashboard-doing {
+      background-color: #330c95;
+    }
+
+    .box-display-1 {
+      margin-top: 20px;
+    }
+
+    .box-display-2 {
+      margin-top: 20px;
+    }
+
+    .img-index {
+      border-radius: 50%;
+      width: 150px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    #links-menu {
+      margin-top: -200px;
+
+    }
+
+    #permissao {
+      margin-top: 100px;
+    }
+
+    /* Some media queries for responsiveness */
+    @media only screen and (max-width: 768px) {
+      .main {
+        margin-left: 5px;
+        font-size: 20px;
+        margin-top: 0px;
+      }
+
+      #menu_lateral {
+        display: none;
+      }
+
+      /* dashboard */
+      .dashboard {
+        padding: 0;
+        width: 100%;
+        display: block;
+      }
+
+      .dashboard h4 {
+        font-size: 16px;
+      }
+
+      .dashboard span {
+        font-size: 30px;
+        display: block;
+        width: 100%;
+      }
+
+      .dashboard-box {
+        float: left;
+        background-color: #DFDFDF;
+        color: #FFF;
+        padding: 20px;
+        box-sizing: border-box;
+        height: 130px;
+        width: 32%;
+        text-align: center;
+      }
+
+      .dashboard-box:nth-child(2) {
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+      }
+
+      #dashboard-lastdays {
+        background-color: #225fc0;
+      }
+
+      #dashboard-done {
+        background-color: #13c43f;
+      }
+
+      #dashboard-doing {
+        background-color: #330c95;
+      }
+
+      .box-display-1 {
+        margin-top: 20px;
+      }
+
+      .box-display-2 {
+        margin-top: 20px;
+      }
+
+      #links-menu {
+        margin-top: 10px;
+      }
+
+      .menu-lateral {
+        font-size: 20px;
+      }
+    }
+
+    @media only screen and (max-width: 468px) {
+      .main {
+        margin-left: 5px;
+        font-size: 18px;
+        margin-top: 0px;
+      }
+
+      #menu_lateral {
+        display: none;
+      }
+
+      /* dashboard */
+      .dashboard {
+        padding: 0;
+        width: 100%;
+        display: flex;
+      }
+
+      .dashboard h4 {
+        font-size: 14px;
+      }
+
+      .dashboard span {
+        font-size: 24px;
+        display: block;
+        width: 100%;
+      }
+
+      #links-menu {
+        margin-top: 10px;
+      }
+
+      #h2_texto {
+        display: none;
+      }
+    }
+  </style>
+
+</head>
+
+<body style="background-image: url(/static/image/a10.jpg)">
+
+  <div class="main">
+    <!--
+  {% if perms.global_permissions.pode_acessar_armas_espaco %}
+  <div id="permissao"><h1>.</h1></div>   
+  {% endif %}  
+-->
+
+    <h2 class="h2_main">CAUTELA DE MATERIAL</h2>
+    <hr>
+    <div>
+      <form method="post" enctype="multipart/form-data">
+
+        {% csrf_token %}
+        <div class="form-group col-md-12">
+          <div class="form-group col-md-2">
+            <label>{{ form.data_cautela.label }} Data</label>
+            <input class="form-control" id="datacautela" name="datacautela" type="date" required>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label>{{ form.sgpe.label }}</label>
+            <input class="form-control" id="sgpe" name="sgpe" type="text" required>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>{{ form.unidade.label }}</label>
+            <select class="form-control" id="{{ form.unidade.id_for_label }}" name="{{ form.unidade.html_name }}"
+              required>
+              {% for unidade in form.fields.unidade.queryset %}
+              <option value="{{ unidade.pk }}" {% if unidade.pk == form.unidade.value %} selected {% endif %}>
+                {{ unidade }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group col-md-10">
+            <label>{{ form.responsavel.label }}</label>
+            <input class="form-control" id="responsavel" name="responsavel" type="text">
+          </div>
+
+          <div class="form-group col-md-10">
+            <label>{{ form.matricula.label }}</label>
+            <input class="form-control" id="matricula" name="matricula" type="text">
+          </div>
+        </div>
+        <div class="form-group col-md-12">
+          <hr>
+        </div>
+        <div class="form-group col-md-12">
+          <div class="form-group col-md-2">
+            <label>{{ form.material_geral.label }}</label>
+            <select class="form-control" id="{{ form.material_geral.id_for_label }}"
+              name="{{ form.material_geral.html_name }}" required>
+              {% for material in form.fields.material_geral.queryset %}
+              <option value="{{ material.pk }}" {% if material.pk == form.material_geral.value %} selected {% endif %}>
+                {{ material }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+
+          <div class="form-group col-md-2">
+            <label>{{ form.serie.label }}</label>
+            <input class="form-control" id="serie" name="serie" type="text">
+          </div>
+
+          <div class="form-group col-md-3">
+            <label>{{ form.especie.label }}</label>
+            <input class="form-control" id="especie" name="especie" type="text">
+          </div>
+
+          <div class="form-group col-md-3">
+            <label>{{ form.modelo.label }}</label>
+            <input class="form-control" id="modelo" name="modelo" type="text">
+          </div>
+
+          <div class="form-group col-md-3">
+            <label>{{ form.fabricante.label }}</label>
+            <input class="form-control" id="fabricante" name="fabricante" type="text">
+          </div>
+
+          <div class="form-group col-md-2">
+            <label>{{ form.quantidade.label }}</label>
+            <input class="form-control" id="quantidade" name="quantidade" type="number" min="0" required>
+          </div>
+
+          <div class="form-group col-md-5">
+            <label>{{ form.observacao.label }}</label>
+            <input class="form-control" id="observacao" name="observacao" type="text">
+          </div>
+
+          <div class="form-group col-md-12">
+            <button type="submit" style="color: #111; font-weight: bolder;">Salvar</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <script type="text/javascript">
+      /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+      var dropdown = document.getElementsByClassName("dropdown-btn");
+      var i;
+
+      for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var dropdownContent = this.nextElementSibling;
+          if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+          } else {
+            dropdownContent.style.display = "block";
+          }
+        });
+      }
+
+
+      $(document).ready(function () {
+        $('#{{ form.material_geral.id_for_label }}').select2();
+      });
+
+      $(document).ready(function () {
+        $('#{{ form.unidade.id_for_label }}').select2();
+      });
+
+      var materialInfoURL = "{% url 'material_info' %}";
+
+      $(document).ready(function () {
+        $('#{{ form.material_geral.id_for_label }}').select2().on('change', function () {
+          var materialId = $(this).val();
+          if (materialId) {
+            $.ajax({
+              url: materialInfoURL,
+              data: {
+                'material_id': materialId
+              },
+              dataType: 'json',
+              success: function (data) {
+                $('#serie').val(data.serie);
+                $('#especie').val(data.especie);
+                $('#modelo').val(data.modelo);
+                $('#fabricante').val(data.fabricante);
+              }
+            });
+          } else {
+            $('#serie').val('');
+            $('#especie').val('');
+            $('#modelo').val('');
+            $('#fabricante').val('');
+          }
+        });
+      });
+      
+
+
+    </script>
+
+</body>
+
+{% endblock %}

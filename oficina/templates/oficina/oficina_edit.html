@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+<legend>OFICINA MANUTENÇÃO - REGISTRO DE AVALIAÇAO E CONCERTO</legend>
+    <div class="form-group col-md-6">
+        <label>ARMEIRO</label>
+        <input class="form-control" readonly id="armeiro" name="armeiro" value="{{ user.servidor }}" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-6">
+        <label>DATA</label>
+        <input class="form-control" id="dataconcerto" name="dataconcerto" type="date" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-12">
+        <label>SERVIÇO</label>
+    </div>
+
+    <div class="form-group col-md-12">
+        <textarea id="servico" name="servico"  rows="12" cols="155">{{ oficina.servico }}</textarea>
+    </div>
+
+
+  <div class="form-group col-md-12">
+
+    <button type="submit">Salvar</button>
+
+     <!--    <button>Salvar</button> -->
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+</br>
+</br>
+
+
+{% endblock %}

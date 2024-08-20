@@ -1,0 +1,88 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h2 class="display-4">ARMAS</h2>
+		    <p class="lead"></p>
+		  </div>
+		  <div>
+
+			  <form method="get" action="/arma/novo"><button type="submit">Cadastrar</button></form>
+				</br>
+			  <!--
+			  <form method="get" action="/arma/tabela"><button type="submit">Tabela</button></form>
+				-->
+		  </div>
+		  <div>
+          	<form method="GET" enctype="multipart/form-data">
+            	<input name="busca" class="form-inline" style="margin-top: 10px;" type="text" placeholder="Insira sua busca" >
+           		 <button type="submit" class="btn-btn-primary">Buscar</button>
+         	 </form>
+        </div>
+		</div>
+		<div class="row">
+
+		    <div class="col">
+		      <div class="card" style="width: auto;">
+		        <div class="card-body">
+				<table class="table table-hover" id="tabela-listar">
+					<thead>
+									<tr>
+										<td style="width:200px">Nº DE SÉRIE</td>
+										<td style="width:200px">CNPJ</td>
+										<td style="width:200px">Nº DE PATRIMÔNIO</td>
+										<td style="width:200px">Nº SINARM</td>
+										<td style="width:200px">ESPÉCIE</td>
+										<td style="width:200px">MARCA</td>
+										<td>CALIBRE</td>
+                                        <td>TIPO MUNIÇÃO</td>
+										<td>UNIDADE</td>
+										<td>SERVIDOR</td>
+                                    </tr>
+
+					</thead>
+
+					<tbody>
+				{% for arma in armas %}
+									<tr>
+										<td style="width:200px">{{ arma.numeroserie }}</td>
+										<td style="width:200px">{{ arma.cnpj }}</td>
+										<td style="width:200px">{{ arma.numeropatri }}</td>
+										<td style="width:200px">{{ arma.numerosinarm }}</td>
+										<td style="width:200px">{{ arma.especie }}</td>
+										<td style="width:200px">{{ arma.marca }}</td>
+										<td>{{ arma.calibre }}</td>
+                                        <td>{{ arma.tipomunicao }}</td>
+										<td>{{ arma.unidade }}</td>
+										<td>{{ arma.servidor }}</td>
+									</tr>
+				{% endfor %}
+					</tbody>
+			    </table>
+				</div>
+		      </div>
+				</div>
+
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if armas.has_previous %}
+							<a href="?page={{ armas.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ armas.number }} de {{ armas.paginator.num_pages }}
+					</span>
+
+					{% if armas.has_next %}
+							<a href="?page={{ armas.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+{% endblock %}

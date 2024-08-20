@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<div class="main">
+    <div>
+        <form method="post" style="color: white;">
+            {% csrf_token %}
+            <div>
+                {{ form.sgpe.label }}: {{ form.sgpe }}
+                {{ form.data_cautela.label }}: {{ form.data_cautela }}
+                {{ form.unidade.label }}: {{ form.unidade }}
+                {{ form.responsavel.label }}: {{ form.responsavel }}
+                {{ form.matricula.label }}: {{ form.matricula }}
+            </div>
+            <div>
+                {{ form.material_geral.label }}: {{ form.material_geral }}
+                {{ form.serie.label }}: {{ form.serie }}
+                {{ form.especie.label }}: {{ form.especie }}
+                {{ form.modelo.label }}: {{ form.modelo }}
+                {{ form.fabricante.label }}: {{ form.fabricante }}
+                {{ form.quantidade.label }}: {{ form.quantidade }}
+                {{ form.observacao.label }}: {{ form.observacao }}
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</div>
+
+{% endblock %}

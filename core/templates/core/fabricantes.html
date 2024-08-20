@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<p id="p-usuario"> Ola {{ usuario }}. </p>
+
+<body>
+    <div class="container">
+        <div class="row" id="row-index">
+            <div class="col-md-4" id="menu_lateral">
+                <img id="img-index" src="/static/image/gmb.jpeg">
+			</div>
+            <div class="col-md-8" style="border: solid 5px #29AB87" id="menu_direita">
+                <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="/marca_arma/tabela">ARMA</a>
+                </div>
+                <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="/marca_municao/tabela">MUNIÇÃO</a>
+                </div>
+                <div class="col-md-4 text-center mb-5 buttons">
+                    <a class="ancora" href="/marca_epi/tabela">EPI´s</a>
+                </div>
+                <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="{% url 'logout' %}">SAIR</a>
+                </div>
+			</div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

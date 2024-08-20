@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<form method="post">
+
+    {% csrf_token %}
+
+    {{ bootstrap }}
+
+<legend>ALTERAR ARMA</legend>
+
+    {{ form }}
+
+    <button type="submit">Salvar</button>
+
+</form>
+</br>
+</br>
+
+
+{% endblock %}

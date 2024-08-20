@@ -1,0 +1,75 @@
+{% extends 'base.html'%}
+
+
+{% block main %}
+
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h2 class="display-4">CONTROLE DE MATERIAL</h2>
+		    <p class="lead"></p>
+		  </div>
+		  <div>
+
+			  <form method="get" action="/material/novo"><button type="submit">Cadastrar</button></form>
+				</br>
+			  <form method="get" action="/material/tabela"><button type="submit">Tabela</button></form>
+
+		  </div>
+		  <div>
+          	<form method="GET" enctype="multipart/form-data">
+            	<input name="busca" class="form-inline" style="margin-top: 10px;" type="text" placeholder="Insira sua busca" >
+           		 <button type="submit" class="btn-btn-primary">Buscar</button>
+         	 </form>
+        </div>
+		</div>
+		<div class="row">
+				{% for material in materials %}
+		    <div class="col">
+		      <div class="card" style="width: auto;">
+		        <div class="card-body">
+					<h4 class="card-title"><b><font color="blue"> {{ material.iis }}</font></b></h4>
+							<div align="justify">
+                                <p class="card-text"> Nº DE SÉRIE...:  {{ material.serie }}</p>
+                                <p class="card-text"> ESPÉCIE...:  {{ material.especie }}</p>
+                                <p class="card-text"> MODELO...:  {{ material.modelo }}</p>
+								<p class="card-text"> FABRICANTE...:  {{ material.fabricante }}</p>
+								<p class="card-text"> MATERIAL...:  {{ material.material }}</p>
+								<p class="card-text"> COR...:  {{ material.cor }}</p>
+								<p class="card-text"> ALTURA...:  {{ material.altura }}</p>
+								<p class="card-text"> LARGURA...:  {{ material.largura }}</p>
+								<p class="card-text"> PESO LÍQUIDO...:  {{ material.pesoliquido }}</p>
+								<p class="card-text"> PESO BRUTO...:  {{ material.pesobruto }}</p>
+								<p class="card-text"> RETARDO...:  {{ material.retardo }}</p>
+								<p class="card-text"> DUPLO ESTÁGIO...:  {{ material.duploestagio }}</p>
+								<p class="card-text"> UNIDADE...:  {{ material.unidade }}</p>
+							</div>
+
+							<br>
+							<p><a href="{% url 'material_edit' material.id %}">Editar</a></p>
+							<hr />
+
+							<br>
+		        </div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if materials.has_previous %}
+							<a href="?page={{ materials.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ materials.number }} de {{ materials.paginator.num_pages }}
+					</span>
+
+					{% if materials.has_next %}
+							<a href="?page={{ materials.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+{% endblock %}

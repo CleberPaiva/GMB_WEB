@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colete</title>
+    <style>
+        #container{
+            align-items: center;
+            text-align: center;
+            margin-top: 0px;
+            margin-left: 5px;
+            margin-right: 5px;
+            height: 98%;
+        }
+        #cabecalho {
+            display: flex;
+            flex-direction: row;
+            align-items:flex-start;
+            justify-content:space-around;
+            text-align: center;
+            margin-top: 0px;
+            margin-bottom: 15px;
+        }
+
+        #corpo {
+            align-items: center;
+            text-align: center;
+            margin-top: 5px;
+            margin-left: 5px;
+            margin-right: 5px;
+            height: 98%;
+            border-top: 2px solid black;
+        }
+
+        .paragrafo{
+            text-align:justify;
+            margin-top: 5px;
+            margin-left: 10px;
+            margin-right: 10px;
+            padding: 10px;
+        }
+
+        .itens{
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        #detalhes{
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        #assinatura{
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+            width: 300px;
+            margin-top: 60px;
+            border-top: 2px solid black;
+        }
+
+        .assinatura{
+            margin-top: 2px;
+            padding: 2px;
+        }
+
+        #rodape {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            border-top: 2px solid black;
+            margin-left: 15px;
+            margin-right: 15px;
+            position: absolute;
+            bottom: 0;
+
+        }
+
+        #rodape1 {
+            display: flex;
+            flex-direction: row;
+            align-items:flex-start;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 6px;
+        }
+
+        #rodape2 {
+            display: flex;
+            flex-direction: row;
+            align-items:flex-start;
+            justify-content:space-around;
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        #rodape3 {
+            margin-top: 10px;
+        }
+
+        #gmb1 {
+            border: 2px solid rgb(0, 5, 10);
+            text-align: center;
+            height: 100px;
+            width: 290px;
+            margin: 5px;
+        }
+
+        #gmb2 {
+            border: 2px solid rgb(0, 4, 9);
+            text-align: center;
+            height: 80px;
+            width: 120px;
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        #gmb3 {
+            border: 2px solid rgb(0, 7, 15);
+            text-align: center;
+            height: 100px;
+            width: 290px;
+            margin: 5px;
+        }
+
+        .h3 {
+            text-align: center;
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+
+        .h4 {
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        .h5 {
+            text-align: center;
+            font-size: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 0.5;
+        }
+
+        .h6 {
+            line-height: 0.5;
+        }
+
+        .texto {
+            font-size: 14px;
+            font-family: Arial;
+            margin-top: 0px;
+        }
+
+        .texto3 {
+            font-size: 8px;
+            font-family: Arial;
+        }
+
+        .texto4 {
+            font-size: 18px;
+            font-weight: bold;
+            font-family: Arial;
+            margin-top: 15px;
+        }
+
+        .brasao{
+            text-align: center;
+            height: 80px;
+            width: 120px;
+            margin-top: 2px;
+        }
+
+        #logo2{
+            line-height: 1.5;
+        }
+        </style>
+</head>
+<body>
+    <div id="container">
+        <div id="cabecalho">
+            <div id="logo1">
+                <div class="brasao">
+                    <img id="img-index2" style="height: 80px; width: 80px;" src="/static/image/estado.png">
+                </div>
+            </div>
+            <div id="logo2">
+                <h5 class="h5">ESTADO DE SANTA CATARINA</h5>
+                <h5 class="h5">SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">GERÊNCIA DE MATERIAL BÉLICO – GMB</h5>
+            </div>
+            <div id="logo3">
+                <div class="brasao">
+                    <img id="img-index" style="height: 80px; width: 80px;" src="/static/image/gmb.jpeg">
+                </div>
+            </div>
+        </div>
+        <div class="corpo">
+            <p class="texto4"><span>TERMO DE CAUTELA DE MUNIÇÃO</span></p>
+            <p class="paragrafo texto">
+                Eu, {{ municao.nome }}, matricula {{ municao.matricula }}, lotado na(o) {{ municao.unidade }},
+                declaro que recebi, sob regime de acautelamento, conforme processo SGPE de número {{ municao.sgpe }}, o seguinte:
+            </p>
+            <p class="itens texto">- {{ municao.quantidade }} munições, calibre {{ municao.calibre }} da  marca {{ municao.marca }}. </p>
+            <p class="itens texto">- GENS nº {{ municao.gens }}, tipo {{ municao.tipo }}.</p>
+            <p class="itens texto">Observações: -  {{ municao.observacoes }}</p>
+            <p class="paragrafo texto">
+                Declaro pelo presente documento que recebi o bem patrimonial acima relacionado,
+            ficando totalmente responsável pela guarda do mesmo, até uma nova transferência
+            ou baixa definitiva do mesmo ou ainda a devolução quando solicitado pela Gerência
+            de Material Bélico ou pela Corregedoria.
+            </p>
+            <div id="detalhes">
+                <div>
+                    <p></p></br>
+                    <h4 class="texto">São Pedro de Alcântara, {{ municao.data }}.</h4></br>
+                </div>
+                <div id="assinatura">
+                    <h5 class="assinatura texto" style="width: 500px">{{ municao.nome }}</h5>
+                    <h5 class="assinatura texto"> Policial Penal</h5>
+                    <h5 class="assinatura texto">{{ municao.matricula }}</h5>
+                </div>
+            </div>
+            <div id="rodape">
+                <div id="rodape1">
+                    <h5 class="h4 texto">GERÊNCIA DE MATERIAL BÉLICO - GMB </h5>
+                </div>
+                <div id="rodape2">
+                    <div id="gmb1">
+                        <h5 class="h4 texto">Cautelado por:</h5>
+                        <p> {{ user.username}} </p>
+                        <p> {{ user.servidor }} </p>
+                    </div>
+                    <!--
+                    <div id="gmb2">
+                        <h5 class="h4 texto"></h5>
+                    </div>
+                    -->
+                    <div id="gmb3">
+                        <h5 class="h4 texto">Conferido por:</h5>
+                    </div>
+                </div>
+                <div id="rodape3">
+                    <h6 class="texto3 h6">Rua Adriano Enning, s/n, Santa Tereza, São Pedro de Alcântara – CEP: 88125-000. Casa 4.</h6>
+                    <h6 class="texto3 h6">Telefone: (48) 3244-2845 / 3249-1725 – E-mail: gmb@acaps.sc.gov.br</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

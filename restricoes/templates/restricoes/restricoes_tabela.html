@@ -1,0 +1,204 @@
+{% extends 'base.html'%}
+
+{% block main %}
+
+<style>
+  body {
+    font-family: "Lato", sans-serif;
+  }
+
+  /* Fixed sidenav, full height */
+  .sidenav {
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+  }
+
+  /* Style the sidenav links and the dropdown button */
+  .sidenav a,
+  .dropdown-btn {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+  }
+
+  /* On mouse-over */
+  .sidenav a:hover,
+  .dropdown-btn:hover {
+    color: #f1f1f1;
+  }
+
+  .table-hover-2:hover {
+    color: #1a1c19;
+  }
+
+  #table-hover-2 a:hover {
+    color: #1a1c19;
+  }
+
+  /* Main content */
+  .main {
+    margin-left: 240px;
+    /* Same as the width of the sidenav */
+    margin-right: 20px;
+    font-size: 20px;
+    /* Increased text to enable scrolling */
+    padding: 0px 10px;
+    color: white;
+    margin-top: -220px;
+  }
+
+  .h2_main {
+    margin-bottom: 20px;
+  }
+
+  /* Add an active class to the active dropdown button */
+  .active {
+    background-color: green;
+    color: white;
+  }
+
+  /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+  .dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+  }
+
+  /* Optional: Style the caret down icon */
+  .fa-caret-down {
+    float: right;
+    padding-right: 8px;
+  }
+
+  .fa {
+    margin-right: 5px;
+  }
+
+  /* Some media queries for responsiveness */
+  @media screen and (max-height: 450px) {
+    .sidenav {
+      padding-top: 15px;
+    }
+
+    .sidenav a {
+      font-size: 18px;
+    }
+  }
+</style>
+<script>
+
+  $(document).ready(function () {
+    $("#tabela-listar").DataTable({
+      responsive: true,
+      // "bSort": false,
+      "aaSorting": [],
+      "pageLength": 8,
+      "language": {
+        "decimal": "",
+        "emptyTable": "Sem dados disponíveis",
+        "info": "Mostrando de _START_ até _END_ de _TOTAL_ registos",
+        "infoEmpty": "Mostrando de 0 até 0 de 0 registos",
+        "infoFiltered": "(filtrado de _MAX_ registos no total)",
+        "infoPostFix": "",
+        "thousands": ",",
+        "lengthMenu": "Mostrar _MENU_ registos",
+        "loadingRecords": "A carregar dados...",
+        "processing": "A processar...",
+        "search": "Procurar:",
+        "zeroRecords": "Não foram encontrados resultados",
+        "paginate": {
+          "first": "Primeiro",
+          "last": "Último",
+          "next": "Seguinte",
+          "previous": "Anterior"
+        },
+        "aria": {
+          "sortAscending": ": ordem crescente",
+          "sortDescending": ": ordem decrescente"
+        }
+      }
+    });
+  });
+
+</script>
+
+
+<div class="main">
+  <div class="area">
+    <header>
+      <h1>SERVIDORES COM RESTRIÇÃO</h1>
+      <p></p>
+    </header>
+  </div>
+  <div>
+    <a href="{% url 'restricoes_create' %}" class="btn btn-dark"
+    style="color: #fcfcfc; 
+            background-color: #0d0e0d; 
+            font-weight: bolder; 
+            margin-bottom: 20px;
+            border: 2px solid white;">ADD NOVA</a>
+    <a href="{% url 'restricoes_aula' %}" class="btn btn-dark"
+    style="color: #fcfcfc;
+            background-color: #0d0e0d;
+            font-weight: bolder;
+            margin-bottom: 20px;
+            border: 2px solid white;">VÍDEO AULA</a>        
+  </div>
+  <div class="table-responsive">
+    <table class="table table-hover" id="tabela-listar">
+      <thead>
+        <tr>
+          <td style="width:200px">SERVIDOR</td>
+          <td style="width:60px">MATRÍCULA</td>
+          <td style="width:50px">MOTIVO</td>
+          <td style="width:50px">Nº DE SÉRIE</td>
+          <td style="width:60px">CADASTRAMENTO</td>
+          <td style="width:60px">DEVOLVIDO</td>
+          <td style="width:300px">OBSERVAÇÕES</td>
+          <td>EXIBIR </td>
+        </tr>
+
+      </thead>
+
+      <tbody>
+        {% for restricoes in restricoess %}
+        <tr class="table-hover-2" id="table-hover-2">
+          <td style="width:200px">{{ restricoes.servidor }}</td>
+          <td style="width:60px">{{ restricoes.matricula }}</td>
+          <td style="width:50px">{{ restricoes.motivo }}</td>
+          <td style="width:50px">{{ restricoes.serie }}</td>
+          <td style="width:60px">{{ restricoes.datacadastramento|date:"d/m/y" }}</td>
+          <td style="width:60px">{{ restricoes.datadevolucao|date:"d/m/y" }}</td>
+          <td style="width:300px">{{ restricoes.obsevacoes }}</td>
+          <td>
+            <p><a href="{% url 'restricoes_cautela' restricoes.id %}" style="color: rgb(5, 5, 5);"><i class="fa fa-eye"
+                  aria-hidden="true"></i>Ver</a></p>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <br>
+    <br>
+    <br>
+  </div>
+</div>
+
+{% endblock %}

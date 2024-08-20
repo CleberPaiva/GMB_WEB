@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 210px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0%;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+#menu_lateral {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 0px;
+}
+
+.h2_main {
+  margin-bottom: 0px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #225fc0;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #330c95;
+}
+.box-display-1{
+    margin-top: 20px;
+  }
+  .box-display-2{
+    margin-top: 20px;
+  }
+
+.img-index {
+    border-radius: 50%; 
+    width: 150px; 
+    margin-top: 30px; 
+    margin-bottom:30px;
+  }
+  #links-menu {
+    margin-top: -200px;
+
+  }
+
+/* Some media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  .main {
+    margin-left: 5px;
+    font-size: 20px;
+    margin-top: 0px;
+  }
+  #menu_lateral {
+    display: none;
+  }
+  /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+      display: block;
+  }
+
+  .dashboard h4 {
+      font-size: 16px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      float: left;
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 32%;
+      text-align: center;
+  }
+
+  .dashboard-box:nth-child(2) {
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+  }
+
+  #dashboard-lastdays {
+      background-color: #225fc0;
+  }
+
+  #dashboard-done {
+      background-color: #13c43f;
+  }
+
+  #dashboard-doing {
+      background-color: #330c95;
+  }
+.box-display-1{
+    margin-top: 20px;
+  }
+  .box-display-2{
+    margin-top: 20px;
+  }
+  #links-menu {
+    margin-top: 10px;
+  }
+  .menu-lateral{
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 468px) {
+  .main {
+    margin-left: 5px;
+    font-size: 18px;
+    margin-top: 0px;
+  }
+  #menu_lateral {
+    display: none;
+  }
+  /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+      display:flex;
+  }
+
+  .dashboard h4 {
+      font-size: 14px;
+  }
+
+  .dashboard span {
+      font-size: 24px;
+      display: block;
+      width: 100%;
+  }
+
+  #links-menu {
+    margin-top: 10px;
+  }
+  #h2_texto{
+    display: none;
+  }
+}
+
+
+</style>
+
+</head>
+    <div class="container" style="margin-top: 50px;">
+        <h2 style="color: #FFF; margin-bottom: 30px;">Cadastros</h2>
+        <div class="row" id="row-index">
+            <div class="col-md-4" id="menu_lateral">
+                <img id="img-index" src="/static/image/gmb.jpeg">
+			</div>
+            <div class="col-md-8" style="border: solid 5px #29AB87" id="menu_direita">
+                <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="/fabricantes">FABRICANTE</a>
+                </div>
+                <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="/material/list">MATERIAIS</a>
+                </div>
+		        <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="/pessoa/list">SERVIDORES</a>
+                </div>
+                <div class="col-md-4 text-center mb-5 buttons">
+                    <a class="ancora" href="/unidade/list">UNIDADES</a>
+                </div>
+                <div class="col-md-4 text-center mb-5 buttons">
+                   <a class="ancora" href="{% url 'logout' %}">SAIR</a>
+                </div>
+			</div>
+        </div>
+    </div>
+
+</body>
+
+{% endblock %}

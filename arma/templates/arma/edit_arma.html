@@ -1,0 +1,218 @@
+{% csrf_token %}
+
+<h2>EDIÇÃO DO CADASTRO DE ARMA</h2>
+
+<div class="form-group col-md-4">
+  <label for="modal-numeroserie">Nº DE SÉRIE</label>
+  <input
+    class="form-control"
+    id="modal-numeroserie"
+    name="numeroserie"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="modal-numerosinarm">Nº DO SINARM</label>
+  <input
+    class="form-control"
+    id="modal-numerosinarm"
+    name="numerosinarm"
+    type="text"
+    required
+  />
+</div>
+
+<!-- Empresa -->
+<div class="form-group col-md-4">
+  <label for="modal-numeropatri">Nº DE PATRIMÔNIO</label>
+  <input
+    class="form-control"
+    id="modal-numeropatri"
+    name="numeropatri"
+    type="text"
+  />
+</div>
+
+<!-- Setor Visitado -->
+<div class="form-group col-md-4">
+  <label for="modal-marca">MARCA</label>
+  <input
+    class="form-control"
+    id="modal-marca"
+    name="marca"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="modal-modelo">MODELO</label>
+  <input
+    class="form-control"
+    id="modal-modelo"
+    name="modelo"
+    type="text"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="modal-calibre">CALIBRE</label>
+  <input
+    class="form-control"
+    id="modal-calibre"
+    name="calibre"
+    type="text"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="modal-capacidade">CAPACIDADE</label>
+  <input
+    class="form-control"
+    id="modal-capacidade"
+    name="capacidade"
+    type="text"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-4">
+  <label for="modal-qtcarregador">QUANTIDADE DE CARREGADOR</label>
+  <input
+    class="form-control"
+    id="modal-qtcarregador"
+    name="qtcarregador"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="modal-qtmunicao">QUANTIDADE DE MUNIÇÃO</label>
+  <input
+    class="form-control"
+    id="modal-qtmunicao"
+    name="qtmunicao"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-12">
+  <label for="modal-acessorios">ACESSÓRIOS</label>
+  <input
+    class="form-control"
+    id="modal-acessorios"
+    name="acessorios"
+    type="text"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-6">
+  <label for="modal-tipomunicao">TIPO DE MUNIÇÃO</label>
+  <input
+    class="form-control"
+    id="modal-tipomunicao"
+    name="tipomunicao"
+    type="text"
+  />
+</div>
+
+<!-- Portaria -->
+<div class="form-group col-md-6">
+  <label for="modal-gensmunicao">GENS DA MUNIÇÃO</label>
+  <input
+    class="form-control"
+    id="modal-gensmunicao"
+    name="gensmunicao"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-12">
+  <label for="modal-unidade">UNIDADE</label>
+  <select
+    class="form-control"
+    id="modal-unidade"
+    name="unidade"
+  >
+    <option value="{{ arma.unidade }}">{{ arma.unidade }}</option>
+    {% for unidade in unidades|dictsort:"nome" %}
+    <option value="{{ unidade.nome }}">{{ unidade.nome }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<div class="form-group col-md-12">
+  <label for="modal-servidor">SERVIDOR</label>
+  <input
+    class="form-control"
+    id="modal-servidor"
+    name="servidor"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-6">
+  <label for="modal-matricula">MATRICULA</label>
+  <input
+    class="form-control"
+    id="modal-matricula"
+    name="matricula"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-6">
+  <label for="modal-telefone">TELEFONE </label>
+  <input
+    class="form-control"
+    id="modal-telefone"
+    name="telefone"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="modal-datacautela">DATA DA CAUTELA</label>
+  <input
+    class="form-control"
+    id="modal-datacautela"
+    name="datacautela"
+    type="date"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="modal-numerosgpe">Nº DE SGPE</label>
+  <input
+    class="form-control"
+    id="modal-numerosgpe"
+    name="numerosgpe"
+    type="text"
+  />
+</div>
+
+<div class="form-group col-md-4">
+  <label for="modal-responsavel">RESPONSÁVEL</label>
+  <input
+    class="form-control"
+    id="modal-responsavel"
+    name="responsavel"
+    type="text"
+    value="{{ user.servidor }} - {{ user.username}}"
+  />
+</div>
+
+<div class="form-group col-md-12">
+  <label for="modal-observacoes">OBSERVAÇÕES:</label>
+  <textarea
+    class="form-control"
+    id="modal-observacoes"
+    name="observacoes"
+    type="textarea">    
+  </textarea>  
+</div>
+
+

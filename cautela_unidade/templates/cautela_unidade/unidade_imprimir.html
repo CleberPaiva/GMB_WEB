@@ -1,0 +1,327 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv=”content-type” content="text/html;" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>UNIDADE</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+    <!-- ESTILOS PARA ESTA PÁGINA -->
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+
+    <!-- JAVASCRIPT E JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+#container{
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 98%;
+}
+#cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content:space-around;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+#corpo {
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 98%;
+    border-top: 2px solid black;
+}
+
+.paragrafo{
+    text-align:justify;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.itens{
+    text-align: left;
+    padding-left: 20px;
+}
+
+#detalhes{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#assinatura{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 300px;
+    margin-top: 60px;
+    border-top: 2px solid black;
+}
+
+.assinatura{
+    margin-top: 2px;
+    padding: 2px;
+}
+
+#rodape {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-top: 2px solid black;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: absolute;
+    bottom: 0;
+
+}
+
+#rodape1 {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 6px;
+}
+
+#rodape2 {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content:space-around;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#rodape3 {
+    margin-top: 10px;
+}
+
+#gmb1 {
+    border: 2px solid rgb(0, 5, 10);
+    text-align: center;
+    height: 100px;
+    width: 230px;
+    margin: 5px;
+}
+
+#gmb2 {
+    border: 2px solid rgb(0, 4, 9);
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#gmb3 {
+    border: 2px solid rgb(0, 7, 15);
+    text-align: center;
+    height: 100px;
+    width: 230px;
+    margin: 5px;
+}
+
+.h3 {
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.h4 {
+    text-align: center;
+    margin-top: 2px;
+}
+
+.h5 {
+    text-align: center;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0.5;
+}
+
+.h6 {
+    line-height: 0.5;
+}
+
+.texto {
+    font-size: 14px;
+    font-family: Arial;
+    margin-top: 0px;
+}
+
+.texto3 {
+    font-size: 8px;
+    font-family: Arial;
+}
+
+.texto4 {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial;
+    margin-top: 15px;
+}
+
+.brasao{
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin-top: 2px;
+}
+
+#logo2{
+    line-height: 1.5;
+}
+</style>
+
+</head>
+
+<body>
+
+    <div id="container">
+        <div id="cabecalho">
+            <div id="logo1">
+                <div class="brasao">
+                    <img id="img-index2" style="height: 80px; width: 80px;" src="/static/image/estado.png">
+                </div>
+            </div>
+            <div id="logo2">
+                <h5 class="h5">ESTADO DE SANTA CATARINA</h5>
+                <h5 class="h5">SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">GERÊNCIA DE MATERIAL BÉLICO – GMB</h5>
+            </div>
+            <div id="logo3">
+                <div class="brasao">
+                    <img id="img-index" style="height: 80px; width: 80px;" src="/static/image/gmb.jpeg">
+                </div>
+            </div>
+        </div>
+        <div class="corpo">
+            <p class="texto4"><span>RELATÓRIO DE CAUTELAS DA UNIDADE</span></p>         
+                <p class="itens texto" 
+                    style="border-top: 2px solid black; border-bottom: 2px solid black; margin-top: 30px; font-weight: bold;">
+                    DADOS DA UNIDADE
+                </p>
+                <p class="itens texto">
+                Nome: {{ unidade.nome  }} </br>
+                Gestor: {{ unidade.gestor }} </br>
+                Regional: {{ regional }}
+                </p>
+                <p class="itens texto" 
+                    style="border-top: 2px solid black; border-bottom: 2px solid black; margin-top: 30px; font-weight: bold;">
+                    CAUTELAS DDA UNIDADE
+                </p>
+                <h4 class="itens texto" style="margin-top: 25px; font-weight: bold;">ARMA</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th style="text-align: center;" scope="col">Nº SÉRIE</th>
+                        <th style="text-align: center;" scope="col">ESPÉCIE</th>
+                        <th style="text-align: center;" scope="col">MARCA</th>
+                        <th style="text-align: center;" scope="col">MODELO</th>
+                        <th style="text-align: center;" scope="col">CALIBRE</th>
+                        <th style="text-align: center;" scope="col">DT CAUTELA</th>
+                        <th style="text-align: center;" scope="col">DT DEVOLUÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for arma in armas %}
+                        <tr>
+                            <td>{{ arma.numeroserie }}</td>
+                            <td>{{ arma.especie }}</td>
+                            <td>{{ arma.marca }}</td>
+                            <td>{{ arma.modelo }}</td>
+                            <td>{{ arma.calibre }}</td>
+                            <td>{{ arma.datacautela }}</td>  
+                            <td>{{ arma.datadevolucao }}</td>                                                     
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+      <div class="table-responsive">
+      <h4 class="itens texto" style="margin-top: 25px; font-weight: bold;">MUNIÇÃO</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th style="text-align: center;" scope="col">TIPO</th>
+                        <th style="text-align: center;" scope="col">GENS</th>
+                        <th style="text-align: center;" scope="col">QUANTIDADE</th>
+                        <th style="text-align: center;" scope="col">DT CAUTELA</th>
+                        <th style="text-align: center;" scope="col">DT DEVOLUÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for arma in armas %}
+                        <tr>
+                            <td>{{ arma.tipomunicao }}</td>
+                            <td>{{ arma.gensmunicao }}</td>
+                            <td>{{ arma.qtmunicao }}</td>
+                            <td>{{ arma.datacautela }}</td>  
+                            <td>{{ arma.datadevolucao }}</td>                                                      
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+
+      <h4 class="itens texto" style="margin-top: 25px; font-weight: bold;">COLETE</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                        <th style="text-align: center;" scope="col">Nº SÉRIE</th>
+                        <th style="text-align: center;" scope="col">ESPÉCIE</th>
+                        <th style="text-align: center;" scope="col">MARCA</th>
+                        <th style="text-align: center;" scope="col">DT CAUTELA</th>
+                        <th style="text-align: center;" scope="col">DT DEVOLUÇÃO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for colete in coletes %}
+                        <tr>
+                            <td>{{ colete.numeroserie }}</td>
+                            <td>{{ colete.especie }}</td>
+                            <td>{{ colete.marca }}</td>
+                            <td>{{ colete.datacautela }}</td>  
+                            <td>{{ colete.datadevolucao }}</td>                                                      
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>      
+	</div>                
+    </div>
+</div>
+
+</body>
+</html>

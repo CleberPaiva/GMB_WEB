@@ -1,0 +1,199 @@
+{% extends 'base.html'%}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.table-hover-2:hover {
+  color: #1a1c19;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  margin-right: 20px;
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 30px;
+}
+
+.h2_main {
+  margin-bottom: 20px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<div class="main">
+	<!-- <div class="container"> -->
+		<!-- <div class="jumbotron jumbotron-fluid">
+	    <p class="lead"></p> -->
+
+	<div style="margin-left: 20px;">
+		<h2>OFICINA</h2>
+	</div>
+
+	<div style="margin-left: 20px;">
+       	<form method="GET" enctype="multipart/form-data" style="margin-bottom: 20px;">
+       		<input name="busca" class="form-inline" style="margin-top: 10px; color: #111; border-radius: 5px;" type="text" placeholder="Insira sua busca" >
+    		<button type="submit" class="btn-btn-primary" style="color: #111; font-weight: bolder; border-radius: 5px;">Buscar</button>
+		</form>
+    </div>
+
+	<div style="display:flex; margin-left: 20px;">
+		<div>
+			<form method="get" action="/oficina/novo"><button type="submit" style="color: #111; font-weight: bolder; border-radius: 5px; margin-right: 10px; width: 120px;">Cadastrar</button></form>
+		</div>
+		<div>
+			<form method="get" action="/oficina/tabela"><button type="submit" style="color: #111; font-weight: bolder; border-radius: 5px; width: 120px;">Tabela</button></form>
+		</div>
+	</div>
+
+	<div>
+		<div class="row" style="margin-top: 30px;">
+				{% for oficina in oficinas %}
+				<div class="col-md-12" style="margin-top: 30px; margin-bottom: 30px;">
+					<div class="card" style="width: auto;">
+					  <div style="margin-bottom: 30px;">
+						  <div class="form-group col-md-1">
+							  <label>Nº SÉRIE</label>
+							  <input class="form-control" id="servidor" name="servidor" type="text" value="{{ oficina.numeroseria }}" readonly>
+						  </div>
+						  <div class="form-group col-md-1">
+							  <label>ESPÉCIE</label>
+							  <input class="form-control" id="numeroserie" name="numeroserie" type="text" value="{{ oficina.especie }}" readonly>
+						  </div>
+						  <div class="form-group col-md-2">
+							  <label>UNIDADE</label>
+							  <input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.unidade }}" readonly>
+						  </div>
+						  <div class="form-group col-md-1">
+							<label>MODELO</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.modelo }}" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label>CARGA PARA</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.cargapara }}" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label>HISTÓRICO</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.historico }}" readonly>
+						</div>
+						<div class="form-group col-md-1">
+							<label>ENTRADA</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.dataentrada }}" readonly>
+						</div>
+						<div class="form-group col-md-1">
+							<label>SAÍDA</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.datasaida }}" readonly>
+						</div>
+						<div class="form-group col-md-1">
+							<label>RESPONSÁVEL</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.usuario }}" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label>ARMEIRO</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.armeiro }}" readonly>
+						</div>
+						<div class="form-group col-md-2">
+							<label>DATA DA INSPEÇÃO</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.dataconcerto }}" readonly>
+						</div>
+						<div class="form-group col-md-4">
+							<label>SERVIÇO</label>
+							<input class="form-control" id="unidade" name="unidade" type="text" value="{{ oficina.servico }}" readonly>
+						</div>
+						  <div class="form-group col-md-12">
+							<label></label>
+							{% if perms.global_permissions.editar_oficina %}
+							<p><a href="{% url 'oficina_edit' oficina.id %}" style="color: #f1f1f1;"><i class="fa fa-fw fa-wrench"></i>Editar</a></p>
+							{% endif %}
+						  </div>
+					  </div>
+					</div>
+		        <div class="col">
+     			{% endfor %}
+		</div>
+
+	<div class="pagination col-md-12" style="margin-top: 20px;">
+			<span class="step-links">
+					{% if oficinas.has_previous %}
+							<a href="?page={{ oficinas.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ oficinas.number }} de {{ oficinas.paginator.num_pages }}
+					</span>
+
+					{% if oficinas.has_next %}
+							<a href="?page={{ oficinas.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+{% endblock %}
+

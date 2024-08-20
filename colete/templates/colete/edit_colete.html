@@ -1,0 +1,204 @@
+    {% csrf_token %}
+
+
+    <h3 style="margin-left: 15px;
+                font-weight: bold;
+                font-size: 26px;
+                margin-bottom: 30px;">
+        EDIÇÃO DO CADASTRO DE COLETE
+    </h3>
+
+    <div class="form-group col-md-4">
+        <label for="modal-numeroserie">Nº DE SÉRIE</label>
+        <input
+                class="form-control"
+                id="modal-numeroserie"
+                name="numeroserie"
+                type="text"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-numeropatri">Nº DE PATRIMÔNIO</label>
+        <input
+                class="form-control"
+                id="modal-numeropatri"
+                name="numeropatri"
+                type="text"
+                >
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-marca">MARCA</label>
+        <input
+                class="form-control"
+                id="modal-marca"
+                name="marca"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label for="modal-especie">ESPÉCIE</label>
+        <input
+                class="form-control"
+                id="modal-especie"
+                name="especie"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label for="modal-nivel">NÍVEL</label>
+        <input
+                class="form-control"
+                id="modal-nivel"
+                name="nivel"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label for="modal-modelo">MODELO</label>
+        <input
+                class="form-control"
+                id="modal-modelo"
+                name="modelo"
+                type="text"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-3">
+        <label for="modal-modelo">TAMANHO</label>
+        <input
+                class="form-control"
+                id="modal-tamanho"
+                name="tamanho"
+                type="text"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-unidade">UNIDADE</label>
+        <input
+                class="form-control"
+                id="modal-unidade"
+                name="unidade"
+                required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-servidor">SERVIDOR</label>
+        <input
+                class="form-control"
+                id="modal-servidor"
+                name="servidor"
+                type="text"
+                required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-matricula">MATRICULA</label>
+        <input
+                class="form-control"
+                id="modal-matricula"
+                name="matricula"
+                type="text"
+                required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-cargo">CARGO</label>
+        <select class="form-control" id="modal-cargo" name="cargo" value="modal-cargo" required>
+            <option value="Policial Penal">Policial Penal</option>
+            <option value="Agente Socioeducativo">Agente Socioeducativo</option>
+            <option value="Outros">Outros</option>
+        </select>
+    </div>    
+
+    <div class="form-group col-md-4">
+        <label for="modal-datafabricacao">DATA FABRICAÇÃO</label>
+        <input
+                class="form-control"
+                id="modal-datafabricacao"
+                name="datafabricacao"
+                type="date"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-garantia">GARANTIA</label>
+        <input
+                class="form-control"
+                id="modal-garantia"
+                name="garantia"
+                type="date"
+                readonly>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-capa">CAPA</label>
+        <input
+                class="form-control"
+                id="modal-capa"
+                name="capa"
+                type="text"
+                required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-sgpe">Nº DE SGPE</label>
+        <input
+                class="form-control"
+                id="modal-sgpe"
+                name="sgpe"
+                type="text"
+                required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label for="modal-datacautela">DATA DA CAUTELA</label>
+        <input
+                class="form-control"
+                id="modal-datacautela"
+                name="datacautela"
+                type="date"
+                required>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="modal-tipo">TIPO</label>
+        <input
+                class="form-control"
+                id="modal-tipo"
+                name="tipo"
+                type="text"
+                required>
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="-modal-responsavel">RESPONSÁVEL</label>
+        <input
+                class="form-control"
+                id="-modal-responsavel"
+                ame="responsavel"
+                type="text"
+                value="{{ user.servidor }} - {{ user.username}}" readonly>
+    </div>
+
+    <div class="form-group col-md-12">
+      <label for="modal-observacoes">OBSERVAÇÕES:</label>
+      <textarea
+        class="form-control"
+        id="modal-observacoes"
+        name="observacoes"
+        type="textarea">
+      </textarea>
+    </div>
+        <!-- Observações
+    <div class="form-group col-md-4">
+        <label>OBSERVAÇÕES:</label>
+        <textarea class="form-control" id="observacoes" name="observacoes" type="textarea">{{ colete.observacoes }}</textarea>
+    </div>-->
+
+  <div class="form-group col-md-12">
+
+         <!-- <button style="color: #111; font-weight: bolder;">Salvar</button> -->
+
+  </div>

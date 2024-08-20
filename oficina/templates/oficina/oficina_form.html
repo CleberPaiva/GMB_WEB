@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CADASTRO DE MANUTENÇÃO</h4>
+
+       <!-- DATA ENTRADA-->
+    <div class="form-group col-md-3">
+        <label class="control-label">DATA DE ENTRADA</label>
+        <input id="dataentrada" name="dataentrada" type="date" class="form-control" required>
+    </div>
+
+        <!-- DATA SAÍDA-->
+    <div class="form-group col-md-3">
+        <label class="control-label">DATA DE SAÍDA</label>
+        <input id="datasaida" name="datasaida" type="date" class="form-control">
+    </div>
+
+        <!-- NUMERO DE SÉRIE -->
+    <div class="form-group col-md-12">
+        <label>NUMERO DE SÉRIE</label>
+        <input class="form-control" id="numeroseria" name="numeroseria" type="text" required>
+    </div>
+
+        <!-- ESPÉCIE -->
+    <div class="form-group col-md-6">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie" type="text" required>
+    </div>
+
+        <!-- MODELO -->
+    <div class="form-group col-md-6">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" required>
+    </div>
+
+        <!-- CARGA PARA -->
+    <div class="form-group col-md-6">
+        <label>CARGA PARA</label>
+        <input class="form-control" id="cargapara" name="cargapara" type="text" required>
+    </div>
+
+        <!-- UNIDADE -->
+    <div class="form-group col-md-6">
+        <label>UNIDADE</label>
+        <select class="form-control" id="unidade" name="unidade"  required>
+            <option value={{ form.unidade }}</option>
+        </select>
+    </div>
+
+        <!-- HISTÓRICO -->
+    <div class="form-group col-md-6">
+        <label>HISTÓRICO</label>
+        <input class="form-control" id="historico" name="historico" type="text" required>
+    </div>
+
+        <!-- SERVIÇO
+    <div class="form-group col-md-6">
+        <label>SERVIÇO</label>
+        <input class="form-control" id="servico" name="servico" type="text" required>
+    </div>
+        -->
+
+        <!-- USUÁRIO -->
+    <div class="form-group col-md-6">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" readonly id="usuario" name="usuario" value="{{ user }}" type="text" required>
+    </div>
+
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

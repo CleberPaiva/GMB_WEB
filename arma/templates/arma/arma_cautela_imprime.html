@@ -1,0 +1,263 @@
+
+<style>
+#container{
+    align-items: center;
+    text-align: center;
+    margin-top: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 98%;
+}
+#cabecalho {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content:space-around;
+    text-align: center;
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+#corpo {
+    align-items: center;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    height: 98%;
+    border-top: 2px solid black;
+}
+
+.paragrafo{
+    text-align:justify;
+    margin-top: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+}
+
+.itens{
+    text-align: left;
+    padding-left: 20px;
+}
+
+#detalhes{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#assinatura{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+    width: 300px;
+    margin-top: 60px;
+    border-top: 2px solid black;
+}
+
+.assinatura{
+    margin-top: 2px;
+    padding: 2px;
+}
+
+#rodape {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    border-top: 2px solid black;
+    margin-left: 15px;
+    margin-right: 15px;
+    position: absolute;
+    bottom: 0;
+
+}
+
+#rodape1 {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 6px;
+}
+
+#rodape2 {
+    display: flex;
+    flex-direction: row;
+    align-items:flex-start;
+    justify-content:space-around;
+    text-align: center;
+    margin-top: 0px;
+}
+
+#rodape3 {
+    margin-top: 10px;
+}
+
+#gmb1 {
+    border: 2px solid rgb(0, 5, 10);
+    text-align: center;
+    height: 100px;
+    width: 230px;
+    margin: 5px;
+}
+
+#gmb2 {
+    border: 2px solid rgb(0, 4, 9);
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+#gmb3 {
+    border: 2px solid rgb(0, 7, 15);
+    text-align: center;
+    height: 100px;
+    width: 230px;
+    margin: 5px;
+}
+
+.h3 {
+    text-align: center;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+.h4 {
+    text-align: center;
+    margin-top: 2px;
+}
+
+.h5 {
+    text-align: center;
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0.5;
+}
+
+.h6 {
+    line-height: 0.5;
+}
+
+.texto {
+    font-size: 14px;
+    font-family: Arial;
+    margin: 0px;
+}
+
+.texto3 {
+    font-size: 8px;
+    font-family: Arial;
+}
+
+.texto4 {
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Arial;
+    margin-top: 15px;
+}
+
+.cidade {
+    margin-top: 25px;
+}
+
+.brasao{
+    text-align: center;
+    height: 80px;
+    width: 120px;
+    margin-top: 2px;
+}
+
+#logo2{
+    line-height: 1.5;
+}
+</style>
+
+    <div id="container">
+        <div id="cabecalho">
+            <div id="logo1">
+                <div class="brasao">
+                    <img id="img-index2" style="height: 80px; width: 80px;" src="/static/image/estado.png">
+                </div>
+            </div>
+            <div id="logo2">
+                <h5 class="h5">ESTADO DE SANTA CATARINA</h5>
+                <h5 class="h5">SECRETARIA DE ESTADO DA ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">ACADEMIA DE ADMINISTRAÇÃO PRISIONAL E SOCIOEDUCATIVA</h5>
+                <h5 class="h5">GERÊNCIA DE MATERIAL BÉLICO – GMB</h5>
+            </div>
+            <div id="logo3">
+                <div class="brasao">
+                    <img id="img-index" style="height: 80px; width: 80px;" src="/static/image/gmb.jpeg">
+                </div>
+            </div>
+        </div>
+        <div class="corpo">
+            <p class="texto4"><span>TERMO DE CAUTELA DE ARMA</span></p>
+            <p class="paragrafo texto">
+                Eu, {{ arma.servidor|upper }}, Policial Penal, matricula {{ arma.matricula }}, lotado na(o) {{ arma.unidade|upper }}, telefone {{ arma.telefone }},
+                declaro que recebi, sob regime de acautelamento, conforme processo SGPE de número {{ arma.numerosgpe }}, os seguintes itens:
+            </p>
+            <p class="itens texto">- 01 arma de fogo, marca {{ arma.marca|upper }}, calibre {{ arma.calibre }}, modelo {{ arma.modelo|upper }};</p>
+            <p class="itens texto">- Número de série: {{ arma.numeroserie|upper }}" e patrimônio: {{ arma.numeropatri|upper }} e nº Sinarm: {{ arma.numerosinarm|upper }};</p>
+            <p class="itens texto">- {{ arma.qtcarregador }} carregadores de capacidade de {{ arma.capacidade }} munições; </p>
+            <p class="itens texto">- {{ arma.qtmunicao }} de munições {{ arma.tipomunicao|upper }} de gens {{ arma.gensmunicao|upper }};</p>
+            <p class="itens texto">Observações: {{ arma.acessorios }} </p>
+            <p class="paragrafo texto">
+                    Declaro pelo presente documento que recebi o bem patrimonial acima relacionado,
+                ficando totalmente responsável pela guarda do mesmo, até uma nova transferência
+                ou baixa definitiva do mesmo ou ainda a devolução quando solicitado pela Gerência
+                de Material Bélico ou pela Corregedoria. Nos termos da Lei nº 10.826/2003 e suas
+                regulamentações, Lei Complementar nº774/2021, e ainda as Portarias 145/GABS/SAP/2020 e
+                845/GABS/SAP/2020.
+            </p>
+            <p class="paragrafo texto">
+                    Declaro, ainda, que estou ciente das responsabilidades legais relacionadas à posse e ao porte de
+                armas de fogo, bem como dos riscos que o uso indevido pode representar para mim e para terceiros.
+                Comprometo-me a utilizar a arma de fogo, observando todas as normas e procedimentos de segurança
+                previstos em leis e regulamentos.
+                    Afirmo, também, que não estou sob atestado médico CID F, restrição judicial ou Correcional ou
+                qualquer outro impedimento legal que me impeça de receber a arma de fogo ora entregue. E que estou
+                ciente das penalidades aplicáveis em caso de prestar informação falsa neste termo.
+            </p>
+            <div id="detalhes">
+                <div class="cidade">
+                    <h4 class="texto">São Pedro de Alcântara, {{ arma.datacautela }}.</h4>
+                </div>
+                <div id="assinatura">
+                    <h5 class="assinatura texto" style="width: 500px;">{{ arma.servidor|upper }}</h5>
+                    <h6 class="texto">POLICIAL PENAL</h6>
+                    <h6 class="texto">{{ arma.matricula }}</h6>
+                </div>
+            </div>
+            <div id="rodape">
+                <div id="rodape1">
+                    <h5 class="h4 texto">GERÊNCIA DE MATERIAL BÉLICO - GMB </h5>
+                </div>
+                <div id="rodape2">
+                    <div id="gmb1">
+                        <h5 class="h4 texto">Cautelado por:</h5>
+                        <!--<p> {{ user.servidor }} </p>
+                        <p> {{ user.username}} </p> -->
+                    </div>
+                    <div id="gmb2">
+                        <h5 class="h4 texto">DECALQUE</h5>
+                    </div>
+                    <div id="gmb3">
+                        <h5 class="h4 texto">Conferido por:</h5>
+                    </div>
+                </div>
+                <div id="rodape3">
+                    <h6 class="texto3 h6">Rua Adriano Enning, s/n, Santa Tereza, São Pedro de Alcântara – CEP: 88125-000. Casa 4.</h6>
+                    <h6 class="texto3 h6">Telefone: (48) 3244-2845 / 3249-1725 – E-mail: gmb@acaps.sc.gov.br </h6>
+                </div>
+            </div>
+        </div>
+    </div>

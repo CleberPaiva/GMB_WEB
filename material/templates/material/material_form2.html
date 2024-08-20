@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CADASTRO DE ARMA</h4>
+
+   <!-- Nome -->
+    <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="numeroserie" name="numeroserie" type="text" required>
+    </div>
+
+    <!-- Documento -->
+    <div class="form-group col-md-4">
+        <label>CNPJ</label>
+        <input class="form-control" id="cnpj" name="cnpj" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>Nº DE PATRIMÔNIO</label>
+        <input class="form-control" id="numeropatri" name="numeropatri" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>Nº DO SINARM</label>
+        <input class="form-control" id="numerosinarm" name="numerosinarm" type="text" required>
+    </div>
+
+       <!-- Empresa -->
+    <div class="form-group col-md-4">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie" type="text" required>
+    </div>
+
+<!-- Setor Visitado -->
+    <div class="form-group col-md-4">
+        <label>MARCA</label>
+        <input class="form-control" id="marca" name="marca" type="text" required>
+    </div>
+
+ <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>CALIBRE</label>
+        <input class="form-control" id="calibre" name="calibre" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>CAPACIDADE</label>
+        <input class="form-control" id="capacidade" name="capacidade" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE CARREGADOR</label>
+        <input class="form-control" id="qtcarregador" name="qtcarregador" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>FUNCIONAMENTO</label>
+        <input class="form-control" id="funcionamento" name="funcionamento" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>ACABAMENTO</label>
+        <input class="form-control" id="acabamento" name="acabamento" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE CANOS</label>
+        <input class="form-control" id="qtcanos" name="qtcanos" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>COMPRIMENTO</label>
+        <input class="form-control" id="compricanos" name="compricanos" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>TIPO DE ALMA</label>
+        <input class="form-control" id="tipoalma" name="tipoalma" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>QUANTIDADE DE RAIAS</label>
+        <input class="form-control" id="qtraias" name="qtraias" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>SENTIDO DAS RAIAS</label>
+        <input class="form-control" id="sentidorais" name="sentidorais" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>PAIS DA FABRICAÇÃO</label>
+        <input class="form-control" id="paisfabricacao" name="paisfabricacao" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>ACESSÓRIOS</label>
+        <input class="form-control" id="acessorios" name="acessorios" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>DOCUMENTO DE REGISTRO</label>
+        <input class="form-control" id="docregistro" name="docregistro" type="text" required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>TIPO DE MUNIÇÃO</label>
+        <input class="form-control" id="tipomunicao" name="tipomunicao" type="text"  required>
+    </div>
+
+     <!-- Portaria -->
+    <div class="form-group col-md-4">
+        <label>DATA DA COMPRA</label>
+        <input class="form-control" id="datacompra" name="datacompra" type="date" required>
+    </div>
+
+         <!-- Unidade -->
+    <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+        <!-- <input class="form-control" id="unidade" name="unidade" type="text" value="{{ unidade.id }}" required> -->
+        <!-- <select class="form-control" id="unidade" name="unidade"  required>
+            <option value="" > Selecione... </option>
+                {% for unidade in unidades %}
+                <option value="{{ unidade.id }}">{{ unidade.nome }}</option>
+                {% endfor %}
+        </select> -->
+        <select class="form-control" id="unidade" name="unidade"  required>
+        {% for unidade in unidades %}
+            <option value="{{ unidade.id }}"> {{ unidade.nome }} </option>
+        {% endfor %}
+        </select>
+    </div>
+
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

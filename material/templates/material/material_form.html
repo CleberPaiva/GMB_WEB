@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h4>CADASTRO DE MATERIAL</h4>
+
+    <!-- IIS -->
+    <div class="form-group col-md-4">
+        <label>Nº IIS</label>
+        <input class="form-control" id="iis" name="iis" type="text" required>
+    </div>
+
+   <!-- Série -->
+    <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="serie" name="serie" type="text" required>
+    </div>
+
+    <!-- Espécie -->
+    <div class="form-group col-md-4">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie" type="text" required>
+    </div>
+
+       <!-- Modelo -->
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" required>
+    </div>
+
+       <!-- Fabricante -->
+    <div class="form-group col-md-4">
+        <label>FABRICANTE</label>
+        <input class="form-control" id="fabricante" name="fabricante" type="text" required>
+    </div>
+
+       <!-- Material -->
+    <div class="form-group col-md-4">
+        <label>MATERIAL</label>
+        <input class="form-control" id="material" name="material" type="text" required>
+    </div>
+
+<!-- Cor -->
+    <div class="form-group col-md-4">
+        <label>COR</label>
+        <input class="form-control" id="cor" name="cor" type="text" required>
+    </div>
+
+ <!-- Altura -->
+    <div class="form-group col-md-4">
+        <label>ALTURA</label>
+        <input class="form-control" id="altura" name="altura" type="text" required>
+    </div>
+
+     <!-- Largura -->
+    <div class="form-group col-md-4">
+        <label>LARGURA</label>
+        <input class="form-control" id="largura" name="largura" type="text" required>
+    </div>
+
+     <!-- Peso Liquido -->
+    <div class="form-group col-md-4">
+        <label>PESO LÍQUIDO</label>
+        <input class="form-control" id="pesoliquido" name="pesoliquido" type="text" required>
+    </div>
+
+     <!-- Peso Bruto -->
+    <div class="form-group col-md-4">
+        <label>PESO BRUTO</label>
+        <input class="form-control" id="pesobruto" name="pesobruto" type="text" required>
+    </div>
+
+     <!-- Retardo -->
+    <div class="form-group col-md-4">
+        <label>RETARDO</label>
+        <input class="form-control" id="retardo" name="retardo" type="text" required>
+    </div>
+
+     <!-- Duplo Estágio -->
+    <div class="form-group col-md-4">
+        <label>DUPLO ESTÁGIO</label>
+        <input class="form-control" id="duploestagio" name="duploestagio" type="text" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+        <input class="form-control" id="unidade" name="unidade" type="text" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>SITUAÇÃO</label>
+        <input class="form-control" id="situacao" name="situacao" type="text" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>SGPE CAUTELA</label>
+        <input class="form-control" id="sgpecautela" name="sgpecautela" type="text" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>DATA DA CAUTELA</label>
+        <input class="form-control" id="datacautela" name="datacautela" type="date" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>SGPE TROCA</label>
+        <input class="form-control" id="sgpetroca" name="sgpetroca" type="text" required>
+    </div>
+
+    <div class="form-group col-md-4">
+        <label>DATA TROCA</label>
+        <input class="form-control" id="datatroca" name="datatroca" type="date" required>
+    </div>
+
+  <div class="form-group col-md-12">
+
+         <button>Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,455 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<head>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 210px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0%;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+#menu_lateral {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 0px;
+}
+
+.h2_main {
+  margin-bottom: 0px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #225fc0;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #330c95;
+}
+.box-display-1{
+    margin-top: 20px;
+  }
+  .box-display-2{
+    margin-top: 20px;
+  }
+
+.img-index {
+    border-radius: 50%; 
+    width: 150px; 
+    margin-top: 30px; 
+    margin-bottom:30px;
+  }
+  #links-menu {
+    margin-top: -200px;
+
+  }
+  #permissao {
+  margin-top: 100px;
+  }  
+
+
+/* Some media queries for responsiveness */
+@media only screen and (max-width: 768px) {
+  .main {
+    margin-left: 2px;
+    margin-right: 2px;
+    font-size: 14px;
+    margin-top: 0px;
+  }
+  .h1, h1 {
+    font-size: 26px;
+  }
+  .h2, h2 {
+    font-size: 26px;
+  }
+  .h3, h3 {
+    font-size: 18px;
+  }
+  #menu_direita {
+    width: 98%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  #menu_lateral {
+    display: none;
+  }
+  .buttons {
+    padding-bottom: 10px;
+    padding-top: 10px;
+    height: 120px;
+  }
+  .ancora{
+    height: 118px;
+    font-size: 17px;
+  }
+  #links-menu {
+    margin-top: 10px;
+  }
+  .menu-lateral{
+    font-size: 20px;
+  }
+  #h2_texto{
+    font-size: 24px;
+    margin-left: 0%;
+    text-align: center;
+  }
+  #menu_direita{
+    width: 100%;
+    align-items: center;
+  }
+}
+</style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<body style="background-image: url(/static/image/a10.jpg)">
+
+
+<div class="main">
+  
+  {% if perms.global_permissions.pode_acessar_armas_espaco %}
+  <div id="permissao"><h1>.</h1></div>   
+  {% endif %}   
+   
+	<div>
+		<h2>LISTAGEM CAUTELA DE ARMAMENTO</h2>
+	</div>	
+	<div class="form-group col-md-5">
+        <form method="GET" enctype="multipart/form-data" style="margin-bottom: 30px;">
+            <input name="busca" class="form-inline" style="margin-top: 10px; color: #111;" type="text" placeholder="Insira sua busca" >
+           	<button type="submit" class="btn btn-dark" style="color: #111; font-weight: bolder;">BUSCAR</button>
+        </form>
+    </div>
+    <!-- Button ADD -->
+    <div class="form-group col-md-3"><p>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#myModal" style="color: #111; font-weight: bolder;">ADICIONAR ARMA</button>
+        </p>
+    </div>
+	<div class="row">
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		      <div class="card" style="width: auto;">
+				<div>
+					<div class="form-group col-md-3">
+						<label>SERVIDOR</label>
+					</div>
+					<div class="form-group col-md-2">
+						<label>Nº SÉRIE</label>
+					</div>
+					<div class="form-group col-md-3">
+						<label>UNIDADE</label>
+					</div>
+				</div>
+		      </div>
+			</div>
+		</div>
+		<!-- </div> -->
+		<div class="row">
+				{% for arma in armas %}
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		      <div class="card" style="width: auto;">
+				<div>
+					<div class="form-group col-md-3">
+						<input class="form-control" name="servidor" type="text" value="{{ arma.servidor|upper }}" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<input class="form-control" name="numeroserie" type="text" value="{{ arma.numeroserie|upper }}" readonly>
+					</div>
+					<div class="form-group col-md-3">
+						<input class="form-control" name="unidade" type="text" value="{{ arma.unidade|upper }}" readonly>
+					</div>
+				<!--	<div class="form-group col-md-4">
+
+						<div class="form-group col-md-3"><p ><a href="{% url 'arma_cautela' arma.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-desktop"></i>Editar</a></p></div>
+              -->
+
+                    <!-- Button EDIT 
+                    <div class="form-group col-md-1"><p>
+                          <button
+                          type="button"
+                          class="btn btn-primary btn-lg"
+                          data-toggle="modal"
+                          data-target="#myModalEdit"
+                          data-arma-id="{{ arma.pk }}"
+                          style="border:1px solid transparent; background-color: transparent;"
+                        ><i class="fa fa-fw fa fa-desktop"></i>
+                          Editar
+                        </button>
+                    </div>
+                    -->
+                    <div class="form-group col-md-1">
+                      <button onclick="window.open('{% url 'arma_cautela' arma.id %}', '_blank')"
+                              style="border:1px solid transparent; background-color: transparent;">
+                          <i class="fa fa-fw fa fa-print">_Editar</i>
+                      </button>
+                    </div>    
+
+                    <!-- Button Imprime -->
+                    <div class="form-group col-md-1">
+                        <button onclick="window.open('{% url 'arma_cautela_imprime' arma.id %}', '_blank')"
+                                style="border:1px solid transparent; background-color: transparent;">
+                            <i class="fa fa-fw fa fa-print">_Cautela</i>
+                        </button>
+                    </div>
+
+                    <!-- Button Devolução -->
+                    <div class="form-group col-md-1">
+                        <button onclick="window.open('{% url 'arma_devolucao' arma.id %}', '_blank')"
+                                style="border:1px solid transparent; background-color: transparent;">
+                            <i class="fa fa-fw fa fa-print">_Devolução</i>
+                        </button>
+                    </div>
+
+                    <!-- Button Devolução -->
+                
+                    <!--
+						<div class="form-group col-md-4"><p ><a href="{% url 'arma_cautela_imprime' arma.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-print"></i>Cautela</a></p></div>
+						<div class="form-group col-md-4"><p ><a href="{% url 'arma_devolucao' arma.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-file-o"></i>Devolução</a></p></div>
+
+					</div> -->
+				</div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if armas.has_previous %}
+							<a href="?page={{ armas.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ armas.number }} de {{ armas.paginator.num_pages }}
+					</span>
+
+					{% if armas.has_next %}
+							<a href="?page={{ armas.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+
+  <form id="addArmaForm" method="post" action="{% url 'add_arma' %}" enctype="multipart/form-data">
+    <div class="modal fade" id="myModal" role="dialog" style="background-color: #DFDFDF;
+                                                              width: 60%;
+                                                              margin-left: 300px;
+                                                              margin-top: 5%;
+                                                              margin-bottom: 5%;">
+      ...
+      <div class="modal-body">
+        {% include 'arma/add_arma.html' %}
+      </div>
+      ...
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-default closeModalButton" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </form>
+
+  <form id="editArmaForm" method="post" action="{% url 'edit_arma' 10 %}" enctype="multipart/form-data">
+    <div class="modal fade" id="myModalEdit" role="dialog" style="background-color: #f6e4e4;
+                                                              width: 60%;
+                                                              margin-left: 300px;
+                                                              margin-top: 5%;
+                                                              margin-bottom: 5%;">
+      ...
+      <div class="modal-body">
+        {% include 'arma/edit_arma.html' %}
+      </div>
+      ...
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-default closeModalButton" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+$(document).ready(function () {
+  // Variável para armazenar a URL da página antes de abrir o modal
+  var currentPageUrl;
+
+  $("#myModal").on("show.bs.modal", function (event) {
+    // Armazene a URL da página antes de abrir o modal
+    currentPageUrl = window.location.href;
+    console.log(currentPageUrl);
+
+    var button = $(event.relatedTarget); // Botão que acionou o modal
+    var armaId = button.data("arma-id"); // Extrai o ID da arma do atributo data-arma-id
+  });
+
+  $("#myModalEdit").on("show.bs.modal", function (event) {
+    // Armazene a URL da página antes de abrir o modal
+    currentPageUrl = window.location.href;
+    console.log(currentPageUrl);
+
+    var button = $(event.relatedTarget); // Botão que acionou o modal
+    var armaId = button.data("arma-id"); // Extrai o ID da arma do atributo data-arma-id
+
+    // Faça uma requisição AJAX para buscar os dados da arma
+    $.ajax({
+      url: "/arma/get_arma_details/",
+      data: {
+        "arma_id": armaId,
+      },
+      success: function (data) {
+        console.log(data);
+        console.log(data.numeroserie);
+        console.log(data.numerosinarm);
+        // Atualiza o conteúdo do modal com os dados retornados
+        $("#editArmaForm").attr("action", "{% url 'edit_arma' 0 %}".replace("0", armaId));
+        $("#modal-numeroserie").val(data.numeroserie);
+        $("#modal-numerosinarm").val(data.numerosinarm);
+        $("#modal-numeropatri").val(data.numeropatri);
+        $("#modal-marca").val(data.marca);
+        $("#modal-modelo").val(data.modelo);
+        $("#modal-calibre").val(data.calibre);
+        $("#modal-capacidade").val(data.capacidade);
+        $("#modal-qtcarregador").val(data.qtcarregador);
+        $("#modal-qtmunicao").val(data.qtmunicao);
+        $("#modal-acessorios").val(data.acessorios);
+        $("#modal-tipomunicao").val(data.tipomunicao);
+        $("#modal-gensmunicao").val(data.gensmunicao);
+        $("#modal-unidade").val(data.unidade);
+        $("#modal-servidor").val(data.servidor);
+        $("#modal-matricula").val(data.matricula);
+        $("#modal-telefone").val(data.telefone);
+        $("#modal-datacautela").val(data.datacautela);
+        $("#modal-numerosgpe").val(data.numerosgpe);
+        $("#modal-observacoes").val(data.observacoes);
+        // Adicione outras informações, conforme necessário
+      },
+    });
+  });
+
+  // Adicione esta parte para adicionar um evento de clique no botão "Fechar"
+  $(".closeModalButton").on("click", function () {
+    console.log("botão Fechar clicado");
+    $("#editArmaForm").trigger("reset");
+
+    // Remova as classes "disabled" dos botões
+    $(".closeModalButton, #id_salvar_arma, #id_cancelar_edicao").removeClass("disabled");
+
+    // Feche o modal
+    $("#myModalEdit").modal("hide");
+
+    // Redirecione para a URL armazenada
+    window.location.href = currentPageUrl;
+  });
+});
+
+
+    </script>
+ 
+</body>
+
+{% endblock %}

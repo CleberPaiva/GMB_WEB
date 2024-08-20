@@ -1,0 +1,95 @@
+<head>
+
+  <style>
+    body {
+      color: white;
+      letter-spacing: 2px;
+      align-items: center;
+      text-align: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+
+    #video {
+        width: 350px;
+        height: 200px;
+      }
+
+    h2 {
+      margin-top: 30px;
+    }
+
+    @media screen and (min-width: 401px) {
+      #caixa {
+        margin: 10px;
+      }
+
+      #video {
+        width: 360px;
+        height: 220px;
+      }
+    }  
+
+    @media screen and (min-width: 501px) {
+      #video {
+        width: 400px;
+        height: 250px;
+      }  
+    }
+
+    @media screen and (min-width: 701px) {
+      #video {
+        width: 620px;
+        height: 360px;
+      }  
+    }    
+
+
+    @media screen and (min-width: 901px) {
+      #video {
+        width: 820px;
+        height: 460px;
+      }  
+    }      
+
+    @media screen and (min-width: 1101px) {
+      #video {
+        width: 1000px;
+        height: 570px;
+      }  
+    }   
+    
+
+    @media screen and (min-width: 1401px) {
+      #video {
+        width: 1300px;
+        height: 740px;
+      }  
+    }     
+
+  </style>
+
+</head>
+
+<body style="background-image: url(/static/image/a10.jpg)">
+
+  <div id="caixa" style="width: 100%; margin: 10px; margin-bottom: 30px;">
+    <h2 >VÍDEO AULA - CADASTRAMENTO DE UMA NOVA RESTRIÇÃO</h2>
+    <iframe id="video" src="https://www.youtube.com/embed/qmvuSUSk7oo"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+            clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="col-md-12">
+    <a class="form-group col-md-12" href="{% url 'restricoes_tabela' %}" class="btn btn-dark"
+    style="color: #fcfcfc;
+            background-color: #0d0e0d;
+            font-weight: bolder;
+            margin-top: 20px;
+            border: 2px solid white;
+            padding: 10px;
+            text-decoration: none;">VOLTAR</a>
+  </div>
+
+

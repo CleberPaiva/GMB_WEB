@@ -1,0 +1,177 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.table-hover-2:hover {
+  color: #1a1c19;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  margin-right: 20px;
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 30px;
+}
+
+.h2_main {
+  margin-bottom: 20px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<body style="background-image: url(/static/image/a10.jpg)"></body>
+
+<div class="main">
+
+<form method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+
+     {{ bootstrap }}
+
+    <h3 style="margin-left: 15px; 
+                font-weight: bold; 
+                font-size: 26px; 
+                margin-bottom: 30px;">
+        EDIÇÃO DO CADASTRO DE RESTRIÇÕES
+    </h3>
+
+    <div class="form-group col-md-4">
+        <label>Nº DE SÉRIE</label>
+        <input class="form-control" id="serie" name="serie" type="text" value="{{ restricoes.serie }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>Nº DE PATRIMÔNIO</label>
+        <input class="form-control" id="patrimonio" name="patrimonio" type="text" value="{{ restricoes.patrimonio }}"  readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>MARCA</label>
+        <input class="form-control" id="marca" name="marca"  value="{{ restricoes.marca }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>ESPÉCIE</label>
+        <input class="form-control" id="especie" name="especie"  value="{{ restricoes.especie }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>MODELO</label>
+        <input class="form-control" id="modelo" name="modelo" type="text" value="{{ restricoes.modelo }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>UNIDADE</label>
+        <input class="form-control" id="unidade" name="unidade" value="{{ restricoes.unidade }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>SERVIDOR</label>
+        <input class="form-control" id="servidor" name="servidor" type="text"  value="{{ restricoes.servidor }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>MATRICULA</label>
+        <input class="form-control" id="matricula" name="matricula" type="text" value="{{ restricoes.matricula }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>DATA RECEBIMENTO</label>
+        <input class="form-control" id="datarecebimento" name="datarecebimento" type="text" value="{{ restricoes.datarecebimento }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL RECEBIMENTO</label>
+        <input class="form-control" id="responsavelrecebimento" name="responsavelrecebimento" type="text" value="{{ restricoes.responsavelrecebimento }}" readonly>
+    </div>
+    <div class="form-group col-md-4">
+        <label>OBSERVAÇÕES</label>
+        <input class="form-control" id="observaoes" name="observaoes" type="text" value="{{ restricoes.observaoes }}" required>
+    </div>
+    <div class="form-group col-md-4">
+        <label>RESPONSÁVEL</label>
+        <input class="form-control" id="responsavel" name="responsavel" type="text" value="{{ user.servidor }} - {{ user.username}}" readonly>
+    </div>
+
+        <!-- Observações
+    <div class="form-group col-md-4">
+        <label>OBSERVAÇÕES:</label>
+        <textarea class="form-control" id="observacoes" name="observacoes" type="textarea">{{ restricoes.observacoes }}</textarea>
+    </div>-->
+
+  <div class="form-group col-md-12">
+
+         <button style="color: #111; font-weight: bolder;">Salvar</button>
+
+  </div>
+      <div class="preview">
+      <p>.</p>
+      </div>
+        <p>.</p>
+</form>
+
+
+{% endblock %}

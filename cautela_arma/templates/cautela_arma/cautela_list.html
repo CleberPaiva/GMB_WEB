@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+.table-hover-2:hover {
+  color: #1a1c19;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  margin-right: 20px;
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 30px;
+}
+
+.h2_main {
+  margin-bottom: 20px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+
+<body style="background-image: url(/static/image/a10.jpg)"></body>
+
+<div class="sidenav" style="margin-left: 15px; padding-left: 10px; ">
+    <img id="img-index" style="border-radius: 50%; width: 150px; margin-top: 30px; margin-bottom:30px" src="/static/image/gmb.jpeg">
+    <a href="/"><i class="fa fa-fw fa-home"></i>Início</a>
+    <a href="/arma/tabela"><i class="fa fa-fw fa-table"></i>Armas</a>
+    <a href="/arma/list"><i class="fa fa-fw fa-list"></i>Armas Lista</a>
+    <a href="/colete/tabela"><i class="fa fa-fw fa-shield"></i>Colete</a>
+    <a href="/estoque/"><i class="fa fa-fw fa-cube"></i>Estoque</a>
+    <a href="/pessoa/list"><i class="fa fa-fw fa-user"></i>Servidores</a>
+    <a href="/fornecedor/list"><i class="fa fa-fw fa-truck"></i>Fornecedores</a>
+    <a href="/oficina/list"><i class="fa fa-fw fa-wrench"></i>Oficina</a>
+    <a href="/mural/list"><i class="fa fa-fw fa-newspaper-o"></i>Mural</a>
+    <a href="/cadastros"><i class="fa fa-fw fa-floppy-o"></i>Cadastros</a>
+    <a href="{% url 'logout' %}"><i class="fa fa-fw fa-home"></i>Sair</a>
+</div>
+
+<div class="main">
+	<div>
+		<h2>LISTAGEM CAUTELA DE ARMAMENTO</h2>
+	</div>	
+	<div>
+        <form method="GET" enctype="multipart/form-data" style="margin-bottom: 30px;">
+            <input name="busca" class="form-inline" style="margin-top: 10px; color: #111;" type="text" placeholder="Insira sua busca" >
+           	<button type="submit" class="btn btn-dark" style="color: #111; font-weight: bolder;">Buscar</button>
+        </form>
+    </div>
+		<!-- </div> -->
+		<div class="row">
+				{% for cautela in cautelas %}
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		      <div class="card" style="width: auto;">
+				<div>
+					<div class="form-group col-md-3">
+						<label>SERVIDOR</label>
+						<input class="form-control" id="servidor" name="servidor" type="text" value="{{ cautela.servidor }}" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<label>Nº SÉRIE ARMA</label>
+						<input class="form-control" id="numeroserie" name="numeroserie" type="text" value="{{ cautela.numeroserie }}" readonly>
+					</div>
+					<div class="form-group col-md-3">
+						<label>UNIDADE</label>
+						<input class="form-control" id="unidade" name="unidade" type="text" value="{{ cautela.unidade }}" readonly>
+					</div>
+					<div class="form-group col-md-1">
+						<label></label>
+						<p ><a href="{% url 'cautela_arma' cautela.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-desktop"></i>Editar</a></p>
+					</div>
+
+				</div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if cautelas.has_previous %}
+							<a href="?page={{ cautelas.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ cautelas.number }} de {{ cautelas.paginator.num_pages }}
+					</span>
+
+					{% if cautelas.has_next %}
+							<a href="?page={{ cautelas.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+
+</body>
+
+{% endblock %}

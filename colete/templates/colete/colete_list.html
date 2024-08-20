@@ -1,0 +1,699 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+<head>
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+/* Fixed sidenav, full height */
+.sidenav {
+  height: 100%;
+  width: 210px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  bottom: 0%;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+#menu_lateral {
+  height: 100%;
+  margin-bottom: 0;
+}
+
+
+/* Style the sidenav links and the dropdown button */
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+/* On mouse-over */
+.sidenav a:hover, .dropdown-btn:hover {
+  color: #f1f1f1;
+}
+
+/* Main content */
+.main {
+  margin-left: 240px; /* Same as the width of the sidenav */
+  font-size: 20px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  color: white;
+  margin-top: 0px;
+}
+
+.h2_main {
+  margin-bottom: 0px;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+  background-color: green;
+  color: white;
+}
+
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+  display: none;
+  background-color: #262626;
+  padding-left: 8px;
+}
+
+/* Optional: Style the caret down icon */
+.fa-caret-down {
+  float: right;
+  padding-right: 8px;
+}
+
+.fa {
+  margin-right: 5px;
+}
+
+/* dashboard */
+.dashboard {
+    padding: 0;
+    width: 100%;
+    display: block;
+}
+
+.dashboard h4 {
+    font-size: 20px;
+}
+
+.dashboard span {
+    font-size: 40px;
+    display: block;
+    width: 100%;
+}
+
+.dashboard-box {
+    float: left;
+    background-color: #DFDFDF;
+    color: #FFF;
+    padding: 20px;
+    box-sizing: border-box;
+    height: 130px;
+    width: 32%;
+    text-align: center;
+}
+
+.dashboard-box:nth-child(2) {
+    margin-left: 1.5%;
+    margin-right: 1.5%;
+}
+
+#dashboard-lastdays {
+    background-color: #225fc0;
+}
+
+#dashboard-done {
+    background-color: #13c43f;
+}
+
+#dashboard-doing {
+    background-color: #330c95;
+}
+.box-display-1{
+    margin-top: 20px;
+  }
+  .box-display-2{
+    margin-top: 20px;
+  }
+
+.img-index {
+    border-radius: 50%; 
+    width: 150px; 
+    margin-top: 30px; 
+    margin-bottom:30px;
+  }
+  #links-menu {
+    margin-top: -200px;
+
+  }
+
+/* Some media queries for responsiveness */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+
+@media screen and (max-width: 600px) {
+  .main {
+    margin-left: 5px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .h2_main{
+    margin-top: 0px;
+  }
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: 0px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: column;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 20px;
+      box-sizing: border-box;
+      height: 130px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .dashboard-box:nth-child(2) {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 55px; 
+    height: 55px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 750px) {
+  .main {
+    margin-left: 5px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .h2_main{
+    margin-top: 0px;
+  }
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: 0px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: column;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 5px;
+      box-sizing: border-box;
+      height: 140px;
+      width: 90%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+  .dashboard-box:nth-child(2) {
+    margin-left: 0%;
+    margin-right: 0%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 55px; 
+    height: 55px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 768px)
+.navbar-collapse.collapse {
+    height: 100%;
+}
+
+@media (min-width: 751px) and (max-width: 900px) {
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-box {
+      padding: 5px;
+  }
+  .dashboard span {
+      font-size: 25px;
+      display: block;
+      width: 100%;
+  }
+  .dashboard h4 {
+      font-size: 18px;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 901px) and (max-width: 1150px) {
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+  .dashboard-box {
+      padding: 5px;
+  }
+  .dashboard span {
+      font-size: 27px;
+      display: block;
+      width: 100%;
+  }
+  .dashboard h4 {
+      font-size: 19px;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+}
+
+@media (min-width: 1150px) and (max-width: 1300px) {
+  .main {
+    margin-left: 240px; 
+    font-size: 20px;
+    padding: 0px 10px;
+    color: white;
+    margin-top: 0px;
+  }
+  .sidenav{
+    width: 210px;
+    height: 750px;
+  }
+  .h2_main{
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+  /* menu nav superior */
+  #links-menu {
+    color: white;
+    font-size: 22px;
+    margin-top: -330px;
+  }
+  .dashboard-display {
+    display: flex;
+    flex-direction: row;
+  }
+    /* dashboard */
+  .dashboard {
+      padding: 0;
+      width: 100%;
+  }
+
+  .dashboard h4 {
+      font-size: 20px;
+  }
+
+  .dashboard span {
+      font-size: 30px;
+      display: block;
+      width: 100%;
+  }
+
+  .dashboard-box {
+      background-color: #DFDFDF;
+      color: #FFF;
+      padding: 10px;
+      box-sizing: border-box;
+      height: 140px;
+      width: 32%;
+      text-align: center;
+      margin-bottom: 20px;
+  }
+
+  .dashboard-box:nth-child(2) {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+  .box-display-1{
+    margin-top: 0px;
+  }
+  .box-display-2{
+    margin-top: 0px;
+  }
+  .nav-link2 {
+    color: white;
+  }
+  #img-index {
+    border-radius: 50%; 
+    width: 155px; 
+    height: 155px;
+    margin-top: 10px; 
+    margin-left: 10px;
+  }
+  .menu-lateral {
+    color: white;
+    list-style:none;
+  }
+  .navbar-collapse.collapse {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
+
+
+@media (min-width: 1301px) and (max-width: 2300px){
+  #menu_lateral {
+    display: block!important;
+    height: 100%;
+    padding-bottom: 0;
+    overflow: visible!important;
+  }
+}
+</style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="background-image: url(/static/image/a10.jpg)">
+
+
+<div class="main">
+	<div>
+		<h2>LISTAGEM CAUTELA DE COLETE</h2>
+	</div>
+	<div>
+        <form method="GET" enctype="multipart/form-data" style="margin-bottom: 30px;">
+            <input name="busca" class="form-inline" style="margin-top: 10px; color: #111;" type="text" placeholder="Insira sua busca" >
+           	<button type="submit" class="btn btn-dark" style="color: #111; font-weight: bolder;">Buscar</button>
+        </form>
+    </div>
+	<div class="row">
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		      <div class="card" style="width: auto;">
+				<div>
+					<div class="form-group col-md-3">
+						<label>SERVIDOR</label>
+					</div>
+					<div class="form-group col-md-2">
+						<label>Nº SÉRIE</label>
+					</div>
+					<div class="form-group col-md-3">
+						<label>UNIDADE</label>
+					</div>
+				</div>
+		      </div>
+			</div>
+		</div>
+		<!-- </div> -->
+		<div class="row">
+				{% for colete in coletes %}
+		    <div class="col-md-12" style="margin-bottom: 20px;">
+		      <div class="card" style="width: auto;">
+				<div>
+					<div class="form-group col-md-3">
+						<input class="form-control" name="servidor" type="text" value="{{ colete.servidor|upper }}" readonly>
+					</div>
+					<div class="form-group col-md-1">
+						<input class="form-control" name="numeroserie" type="text" value="{{ colete.numeroserie|upper }}" readonly>
+					</div>
+					<div class="form-group col-md-2">
+						<input class="form-control" name="unidade" type="text" value="{{ colete.unidade|upper }}" readonly>
+					</div>
+                    <!--
+					<div class="form-group col-md-1">
+						<label></label>
+						<p ><a href="{% url 'colete_cautela' colete.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-desktop"></i>Editar</a></p>
+					</div>
+					-->
+
+                    <!-- Button EDIT -->
+                    <div class="form-group col-md-1">
+                          <button
+                          type="button"
+                          class="btn btn-primary btn-lg"
+                          data-toggle="modal"
+                          data-target="#myModalEdit"
+                          data-colete-id="{{ colete.pk }}"
+                          style="border:1px solid transparent; background-color: transparent;"
+                        ><i class="fa fa-fw fa fa-desktop"></i>
+                          Editar
+                        </button>
+                    </div>
+
+                    <!-- Button Imprime -->
+                    <div class="form-group col-md-1">
+                        <button onclick="window.open('{% url 'colete_cautela_imprime' colete.id %}', '_blank')"
+                                style="border:1px solid transparent; background-color: transparent;">
+                            <i class="fa fa-fw fa fa-print"></i>Cautela
+                        </button>
+                    </div>
+
+                    <!-- Button Devolução -->
+                    <div class="form-group col-md-2">
+                        <button onclick="window.open('{% url 'colete_devolucao' colete.id %}', '_blank')"
+                                style="border:1px solid transparent; background-color: transparent;">
+                            <i class="fa fa-fw fa fa-print"></i>Devolução
+                        </button>
+                    </div>
+                    
+                    <!-- Button Devolução -->
+                    <div class="form-group col-md-2">
+                        <button onclick="window.open('{% url 'colete_cautela' colete.id %}', '_blank')"
+                                style="border:1px solid transparent; background-color: transparent;">
+                            <i class="fa fa-fw fa fa-print"></i>Edit 2
+                        </button>
+                    </div>                    
+                
+
+                    <!--
+					<div class="form-group col-md-2">
+						<label></label>
+						<p ><a href="{% url 'colete_cautela_imprime' colete.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-print"></i>Cautela</a></p>
+					</div>
+					<div class="form-group col-md-2">
+						<label></label>
+						<p ><a href="{% url 'colete_devolucao' colete.id %}" target="_blank"  style="color: #f1f1f1;"><i class="fa fa-fw fa fa-file-o"></i>Devolução</a></p>
+					</div>
+					-->
+				</div>
+		      </div>
+				</div>
+				{% endfor %}
+		</div>
+
+	<div class="pagination">
+			<span class="step-links">
+					{% if coletes.has_previous %}
+							<a href="?page={{ coletes.previous_page_number }}">Anterior</a>
+					{% endif %}
+
+					<span class="current">
+							{{ coletes.number }} de {{ coletes.paginator.num_pages }}
+					</span>
+
+					{% if coletes.has_next %}
+							<a href="?page={{ coletes.next_page_number }}">Próxima</a>
+					{% endif %}
+			</span>
+		</div>
+	</div>
+
+
+  <form id="addColeteForm" method="post" action="{% url 'add_colete' %}" enctype="multipart/form-data">
+    <div class="modal fade" id="myModal" role="dialog" style="background-color: #DFDFDF;
+                                                              width: 60%;
+                                                              margin-left: 300px;
+                                                              margin-top: 5%;
+                                                              margin-bottom: 5%;">
+      ...
+      <div class="modal-body">
+        {% include 'colete/add_colete.html' %}
+      </div>
+      ...
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <button type="button" class="btn btn-default closeModalButton" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </form>
+
+  <form id="editColeteForm" method="post" action="{% url 'edit_colete' 10 %}" enctype="multipart/form-data">
+    <div class="modal fade" id="myModalEdit" role="dialog" style="background-color: #f6e4e4;
+                                                              width: 60%;
+                                                              margin-left: 300px;
+                                                              margin-top: 5%;
+                                                              margin-bottom: 5%;">
+      ...
+      <div class="modal-body">
+        {% include 'colete/edit_colete.html' %}
+      </div>
+      ...
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary salveModalButton">Salvar</button>
+        <button type="button" class="btn btn-default closeModalButton" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </form>
+
+  <script>
+$(document).ready(function () {
+  // Variável para armazenar a URL da página antes de abrir o modal
+  var currentPageUrl;
+
+  $("#myModal").on("show.bs.modal", function (event) {
+    // Armazene a URL da página antes de abrir o modal
+    currentPageUrl = window.location.href;
+    console.log(currentPageUrl);
+
+    var button = $(event.relatedTarget); // Botão que acionou o modal
+    var coleteId = button.data("colete-id"); // Extrai o ID do colete do atributo data-colete-id
+  });
+
+  $("#myModalEdit").on("show.bs.modal", function (event) {
+    // Armazene a URL da página antes de abrir o modal
+    currentPageUrl = window.location.href;
+    console.log(currentPageUrl);
+
+    var button = $(event.relatedTarget); // Botão que acionou o modal
+    var coleteId = button.data("colete-id"); // Extrai o ID do colete do atributo data-colete-id
+
+    // Faça uma requisição AJAX para buscar os dados da colete
+    $.ajax({
+      url: "/colete/get_colete_details/",
+      data: {
+        "colete_id": coleteId,
+      },
+      success: function (data) {
+        console.log(data);
+        console.log(data.numeroserie);
+
+        // Atualiza o conteúdo do modal com os dados retornados
+        $("#editColeteForm").attr("action", "{% url 'edit_colete' 0 %}".replace("0", coleteId));
+        $("#modal-numeroserie").val(data.numeroserie);
+        $("#modal-numeropatri").val(data.numeropatri);
+        $("#modal-marca").val(data.marca);
+        $("#modal-especie").val(data.especie);
+        $("#modal-nivel").val(data.nivel);
+        $("#modal-modelo").val(data.modelo);
+        $("#modal-tamanho").val(data.tamanho);
+        $("#modal-unidade").val(data.unidade);
+        $("#modal-servidor").val(data.servidor);
+        $("#modal-matricula").val(data.matricula);
+        $("#modal-cargo").val(data.cargo);
+        $("#modal-datafabricacao").val(data.datafabricacao);
+        $("#modal-garantia").val(data.garantia);
+        $("#modal-capa").val(data.capa);
+        $("#modal-sgpe").val(data.sgpe);
+        $("#modal-datacautela").val(data.datacautela);
+        $("#modal-tipo").val(data.tipo);
+        $("#modal-observacoes").val(data.observacoes);
+        // Adicione outras informações, conforme necessário
+      },
+    });
+  });
+
+  // Adicione esta parte para adicionar um evento de clique no botão "Fechar"
+  $(".closeModalButton").on("click", function () {
+    console.log("botão Fechar clicado");
+    $("#editColeteForm").trigger("reset");
+
+    // Remova as classes "disabled" dos botões
+    $(".closeModalButton, #id_salvar_colete, #id_cancelar_edicao").removeClass("disabled");
+
+    // Feche o modal
+    $("#myModalEdit").modal("hide");
+
+    // Redirecione para a URL armazenada
+    window.location.href = currentPageUrl;
+
+  });
+});
+
+
+    </script>
+
+</body>
+
+{% endblock %}
